@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QuantumVentures">
+  <defs>
+    <linearGradient id="qg" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee"/>
+      <stop offset="0.5" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <!-- orbital paths forming an abstract Q / atom -->
+  <ellipse cx="32" cy="32" rx="13" ry="27" transform="rotate(45 32 32)" stroke="url(#qg)" stroke-width="3"/>
+  <ellipse cx="32" cy="32" rx="13" ry="27" transform="rotate(-45 32 32)" stroke="url(#qg)" stroke-width="3" opacity="0.55"/>
+  <!-- nucleus -->
+  <circle cx="32" cy="32" r="7" fill="url(#qg)"/>
+  <!-- orbiting node (the spark / value) -->
+  <circle cx="51" cy="13" r="3.4" fill="#22d3ee"/>
+</svg>

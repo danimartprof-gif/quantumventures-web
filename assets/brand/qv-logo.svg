@@ -1,0 +1,14 @@
+<svg width="360" height="64" viewBox="0 0 360 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QuantumVentures">
+  <defs>
+    <linearGradient id="qg2" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee"/>
+      <stop offset="0.5" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="32" cy="32" rx="13" ry="27" transform="rotate(45 32 32)" stroke="url(#qg2)" stroke-width="3"/>
+  <ellipse cx="32" cy="32" rx="13" ry="27" transform="rotate(-45 32 32)" stroke="url(#qg2)" stroke-width="3" opacity="0.55"/>
+  <circle cx="32" cy="32" r="7" fill="url(#qg2)"/>
+  <circle cx="51" cy="13" r="3.4" fill="#22d3ee"/>
+  <text x="74" y="40.5" font-family="'Space Grotesk',Inter,sans-serif" font-size="25" font-weight="700" letter-spacing="-0.5" fill="#ffffff">Quantum<tspan fill="#9aa6b8" font-weight="600">Ventures</tspan></text>
+</svg>
