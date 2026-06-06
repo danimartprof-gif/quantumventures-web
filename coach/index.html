@@ -43,6 +43,13 @@ h2{font-size:clamp(24px,4vw,38px);font-weight:700;line-height:1.12;margin-bottom
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.a1,.a2{animation:none}}
 footer{margin-top:76px;border-top:1px solid var(--line);padding-top:24px;color:var(--mute);font-size:13px;text-align:center}
 .tag{display:inline-block;background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.3);color:#c7d2fe;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:500}
+
+.shot{border:1px solid var(--line);border-radius:18px;overflow:hidden;max-width:520px;margin-top:6px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8)}
+.shot img{display:block;width:100%}
+.chat{max-width:560px;display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.msg{padding:12px 16px;border-radius:16px;font-size:15px;max-width:82%;line-height:1.5}
+.msg.me{align-self:flex-end;background:linear-gradient(100deg,#22d3ee,#6366f1);color:#06070d;font-weight:500;border-bottom-right-radius:5px}
+.msg.bot{align-self:flex-start;background:var(--surface);border:1px solid var(--line);color:var(--text);border-bottom-left-radius:5px}
 </style></head><body>
 <div class="aurora"><span class="a1"></span><span class="a2"></span></div>
 <div class="wrap">
@@ -92,6 +99,44 @@ footer{margin-top:76px;border-top:1px solid var(--line);padding-top:24px;color:v
     <div class="two" style="margin-top:30px">
       <div class="panel reveal"><div style="color:var(--cyan);font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Cada semana reporta</div><ul><li>Peso corporal (1 vez por semana, por la mañana en ayunas).</li><li>Medidas (cintura, cadera, muslo, brazo) cada 2 semanas.</li><li>Nivel de energía y calidad del sueño.</li><li>Rendimiento en el entrenamiento (ej. pesos levantados, repeticiones).</li></ul></div>
       <div class="panel accent reveal"><div style="color:var(--cyan);font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Y la IA ajusta</div><p style="color:var(--text);font-size:15px">Realizaremos ajustes en tu plan de entrenamiento y nutrición cada 2-4 semanas, o según sea necesario, basándonos en tu progreso y sensaciones. Tu feedback es clave.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow reveal">Dónde lo usas</div>
+    <h2 class="display reveal">Tus plataformas, <span class="grad">o tu propia app</span>.</h2>
+    <p class="lead reveal">Nos adaptamos a cómo trabajas: lo integramos en las plataformas líderes del sector, o te creamos una app 100% con tu marca.</p>
+    <div class="two">
+      <div class="panel reveal"><div style="color:#22d3ee;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Tus plataformas</div><p style="color:var(--mute);font-size:15px">Everfit, Trainerize y otras. Tus clientes entrenan, registran comidas y ven su progreso donde ya es estándar — y nosotros cargamos los planes por ti.</p></div>
+      <div class="panel accent reveal"><div style="color:#22d3ee;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Tu app a medida</div><p style="color:var(--text);font-size:15px">¿Quieres ir un paso más allá? Te creamos una app con tu nombre, tu logo y tu estilo. Tu marca en el móvil de cada cliente.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow reveal">De la entrevista al plan</div>
+    <h2 class="display reveal">Grabas. La IA hace <span class="grad">el resto</span>.</h2>
+    <p class="lead reveal">Sin fichas eternas. Entrevistas a tu cliente como siempre — y el sistema convierte esa conversación en un plan profesional, solo.</p>
+    <div class="steps" style="margin-top:20px"><div class="step reveal"><div class="sfase">01</div><div><h3>Grabas la entrevista</h3><p>La haces como siempre, por videollamada, y la graba Fathom. Se transcribe sola.</p></div></div><div class="step reveal"><div class="sfase">02</div><div><h3>La IA extrae el contexto</h3><p>Objetivos, nivel, lesiones, preferencias, horarios… todo lo que dijo tu cliente, estructurado.</p></div></div><div class="step reveal"><div class="sfase">03</div><div><h3>Genera el plan profesional</h3><p>Entrenamiento y nutrición con tu método, cargados directamente en tu plataforma o tu app.</p></div></div><div class="step reveal"><div class="sfase">04</div><div><h3>En minutos, no horas</h3><p>Tú revisas y apruebas. El cliente lo tiene el mismo día.</p></div></div></div>
+  </section>
+
+  <section>
+    <div class="eyebrow reveal">Seguimiento por email</div>
+    <h2 class="display reveal">Emails de seguimiento <span class="grad">de otra liga</span>.</h2>
+    <p class="lead reveal">Cada semana tu cliente recibe un email tuyo con su progreso, los ajustes y su foco — automático, pero que parece escrito a mano. Así se ve:</p>
+    <div class="shot reveal"><img src="/assets/img/coach-email.png" alt="Ejemplo de email de seguimiento automático"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow reveal">Tu bot personal</div>
+    <h2 class="display reveal">Controla a todos tus clientes <span class="grad">desde Telegram</span>.</h2>
+    <p class="lead reveal">Te creamos un bot personal. Sin abrir el portátil: preguntas y el bot te responde con el estado de tu negocio y ejecuta por ti.</p>
+    <div class="chat reveal">
+      <div class="msg me">¿Quién no ha entrenado esta semana?</div>
+      <div class="msg bot">3 clientes sin registrar: Ana, Luis y Marta. ¿Les mando recordatorio?</div>
+      <div class="msg me">Sí. Y dame el progreso de Marcos.</div>
+      <div class="msg bot">Marcos · Semana 3: −0,6 kg · adherencia 92% · +2,5 kg en sentadilla 💪 Va de lujo.</div>
+      <div class="msg me">Crea el plan de la nueva clienta, Laura.</div>
+      <div class="msg bot">Hecho ✅ Plan de entreno + nutrición generado y cargado en tu app. Te dejo el borrador para que lo revises.</div>
     </div>
   </section>
 
