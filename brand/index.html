@@ -1,0 +1,279 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantum Ventures — Brand Guidelines</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/brand/qv-favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#06070d;--surface:#0c0e17;--line:rgba(255,255,255,.09);--cyan:#22d3ee;--indigo:#6366f1;--violet:#a855f7;--text:#e7ecf3;--mute:#8b97a8}
+  *{margin:0;box-sizing:border-box}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(28px,6vw,80px)}
+  .display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
+  .grad{background:linear-gradient(100deg,var(--cyan),var(--indigo) 50%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--cyan);font-weight:600}
+  h1{font-size:clamp(34px,6vw,56px);font-weight:700;line-height:1.05;margin-top:14px}
+  h2{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:600;margin:0 0 22px}
+  .hr{height:1px;background:var(--line);margin:clamp(34px,6vw,52px) 0}
+  .grid{display:grid;gap:18px}
+  .logos{grid-template-columns:repeat(3,1fr)}
+  .swatches{grid-template-columns:repeat(3,1fr)}
+  .types{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:680px){.logos{grid-template-columns:1fr}.swatches{grid-template-columns:repeat(2,1fr)}.types{grid-template-columns:1fr}}
+  .tile{border-radius:16px;height:190px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
+  .tile svg{width:120px;height:120px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px}
+  .swatch{height:88px;border-radius:12px;margin-bottom:10px;border:1px solid var(--line)}
+  .sw-name{font-weight:600;font-size:14px}.sw-hex{color:var(--mute);font-size:13px;font-family:'Space Grotesk'}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(100deg,var(--cyan),var(--indigo));color:var(--ink);font-weight:700;text-decoration:none;padding:12px 22px;border-radius:999px;font-size:14px}
+  .muted{color:var(--mute);font-size:14px}
+</style></head>
+<body><div class="wrap">
+
+  <div class="eyebrow">Quantum Ventures · Brand Guidelines</div>
+  <h1 class="display">Sistema de marca.<br><span class="grad">Una sola fuente de verdad.</span></h1>
+  <p class="muted" style="margin-top:14px;max-width:62ch">La guía viva de la identidad de Quantum Ventures: logotipo, color y tipografía. Úsala como referencia única para web, presentaciones, emails y anuncios.</p>
+
+  <div class="hr"></div>
+  <h2>01 · Logotipo — vector (SVG), resolución infinita</h2>
+  <div class="grid logos">
+    <div class="tile" style="background:#06070d"><svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quantum Ventures">
+  <defs>
+    <linearGradient id="ring" x1="40" y1="22" x2="206" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d6fbff"/>
+      <stop offset="0.26" stop-color="#5cc8f5"/>
+      <stop offset="0.58" stop-color="#2293e6"/>
+      <stop offset="0.84" stop-color="#3a57d6"/>
+      <stop offset="1" stop-color="#312a9c"/>
+    </linearGradient>
+    <linearGradient id="ringHi" x1="64" y1="38" x2="176" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="nucleus" cx="0.36" cy="0.29" r="0.85">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.17" stop-color="#d4f3ff"/>
+      <stop offset="0.45" stop-color="#33c6f0"/>
+      <stop offset="0.78" stop-color="#1f7fd6"/>
+      <stop offset="1" stop-color="#15246f"/>
+    </radialGradient>
+    <radialGradient id="electron" cx="0.34" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.4" stop-color="#7fd9fb"/>
+      <stop offset="0.8" stop-color="#1a7ec4"/>
+      <stop offset="1" stop-color="#0a386f"/>
+    </radialGradient>
+    <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3ba9e6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#3ba9e6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="120" cy="198" rx="60" ry="6.5" fill="url(#ground)" filter="url(#soft)"/>
+
+  <!-- glossy orbital ribbons: more elongated + thicker to match the approved render's shield silhouette -->
+  <g filter="url(#glow)">
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="url(#ring)" stroke-width="13"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="url(#ring)" stroke-width="13"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="#0a1f63" stroke-width="2.6" opacity="0.32"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="#0a1f63" stroke-width="2.6" opacity="0.32"/>
+    <ellipse cx="120" cy="118.2" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="url(#ringHi)" stroke-width="2.8"/>
+    <ellipse cx="120" cy="118.2" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="url(#ringHi)" stroke-width="2.8"/>
+  </g>
+
+  <!-- electron (lower-left glossy sphere) -->
+  <g filter="url(#glow)">
+    <circle cx="88" cy="156" r="12" fill="url(#electron)"/>
+    <ellipse cx="83.6" cy="151.6" rx="3.8" ry="2.6" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <!-- nucleus -->
+  <g filter="url(#glow)">
+    <circle cx="120" cy="120" r="19.5" fill="url(#nucleus)"/>
+    <ellipse cx="113.2" cy="113.4" rx="6.2" ry="4.2" fill="#ffffff" opacity="0.8"/>
+  </g>
+
+  <!-- specular sparkles -->
+  <g fill="#ffffff">
+    <path d="M170 58 l2.3 6.4 6.4 2.3 -6.4 2.3 -2.3 6.4 -2.3 -6.4 -6.4 -2.3 6.4 -2.3 z" opacity="0.95" filter="url(#glow)"/>
+    <path d="M80 92 l1.6 4.5 4.5 1.6 -4.5 1.6 -1.6 4.5 -1.6 -4.5 -4.5 -1.6 4.5 -1.6 z" opacity="0.82" filter="url(#glow)"/>
+  </g>
+</svg></div>
+    <div class="tile" style="background:#0c1326"><svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quantum Ventures">
+  <defs>
+    <linearGradient id="ring" x1="40" y1="22" x2="206" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d6fbff"/>
+      <stop offset="0.26" stop-color="#5cc8f5"/>
+      <stop offset="0.58" stop-color="#2293e6"/>
+      <stop offset="0.84" stop-color="#3a57d6"/>
+      <stop offset="1" stop-color="#312a9c"/>
+    </linearGradient>
+    <linearGradient id="ringHi" x1="64" y1="38" x2="176" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="nucleus" cx="0.36" cy="0.29" r="0.85">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.17" stop-color="#d4f3ff"/>
+      <stop offset="0.45" stop-color="#33c6f0"/>
+      <stop offset="0.78" stop-color="#1f7fd6"/>
+      <stop offset="1" stop-color="#15246f"/>
+    </radialGradient>
+    <radialGradient id="electron" cx="0.34" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.4" stop-color="#7fd9fb"/>
+      <stop offset="0.8" stop-color="#1a7ec4"/>
+      <stop offset="1" stop-color="#0a386f"/>
+    </radialGradient>
+    <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3ba9e6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#3ba9e6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="120" cy="198" rx="60" ry="6.5" fill="url(#ground)" filter="url(#soft)"/>
+
+  <!-- glossy orbital ribbons: more elongated + thicker to match the approved render's shield silhouette -->
+  <g filter="url(#glow)">
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="url(#ring)" stroke-width="13"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="url(#ring)" stroke-width="13"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="#0a1f63" stroke-width="2.6" opacity="0.32"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="#0a1f63" stroke-width="2.6" opacity="0.32"/>
+    <ellipse cx="120" cy="118.2" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="url(#ringHi)" stroke-width="2.8"/>
+    <ellipse cx="120" cy="118.2" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="url(#ringHi)" stroke-width="2.8"/>
+  </g>
+
+  <!-- electron (lower-left glossy sphere) -->
+  <g filter="url(#glow)">
+    <circle cx="88" cy="156" r="12" fill="url(#electron)"/>
+    <ellipse cx="83.6" cy="151.6" rx="3.8" ry="2.6" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <!-- nucleus -->
+  <g filter="url(#glow)">
+    <circle cx="120" cy="120" r="19.5" fill="url(#nucleus)"/>
+    <ellipse cx="113.2" cy="113.4" rx="6.2" ry="4.2" fill="#ffffff" opacity="0.8"/>
+  </g>
+
+  <!-- specular sparkles -->
+  <g fill="#ffffff">
+    <path d="M170 58 l2.3 6.4 6.4 2.3 -6.4 2.3 -2.3 6.4 -2.3 -6.4 -6.4 -2.3 6.4 -2.3 z" opacity="0.95" filter="url(#glow)"/>
+    <path d="M80 92 l1.6 4.5 4.5 1.6 -4.5 1.6 -1.6 4.5 -1.6 -4.5 -4.5 -1.6 4.5 -1.6 z" opacity="0.82" filter="url(#glow)"/>
+  </g>
+</svg></div>
+    <div class="tile" style="background:#ffffff"><svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quantum Ventures">
+  <defs>
+    <linearGradient id="ring" x1="40" y1="22" x2="206" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d6fbff"/>
+      <stop offset="0.26" stop-color="#5cc8f5"/>
+      <stop offset="0.58" stop-color="#2293e6"/>
+      <stop offset="0.84" stop-color="#3a57d6"/>
+      <stop offset="1" stop-color="#312a9c"/>
+    </linearGradient>
+    <linearGradient id="ringHi" x1="64" y1="38" x2="176" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="nucleus" cx="0.36" cy="0.29" r="0.85">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.17" stop-color="#d4f3ff"/>
+      <stop offset="0.45" stop-color="#33c6f0"/>
+      <stop offset="0.78" stop-color="#1f7fd6"/>
+      <stop offset="1" stop-color="#15246f"/>
+    </radialGradient>
+    <radialGradient id="electron" cx="0.34" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.4" stop-color="#7fd9fb"/>
+      <stop offset="0.8" stop-color="#1a7ec4"/>
+      <stop offset="1" stop-color="#0a386f"/>
+    </radialGradient>
+    <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3ba9e6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#3ba9e6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="120" cy="198" rx="60" ry="6.5" fill="url(#ground)" filter="url(#soft)"/>
+
+  <!-- glossy orbital ribbons: more elongated + thicker to match the approved render's shield silhouette -->
+  <g filter="url(#glow)">
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="url(#ring)" stroke-width="13"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="url(#ring)" stroke-width="13"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="#0a1f63" stroke-width="2.6" opacity="0.32"/>
+    <ellipse cx="120" cy="120" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="#0a1f63" stroke-width="2.6" opacity="0.32"/>
+    <ellipse cx="120" cy="118.2" rx="34" ry="98" transform="rotate(45 120 120)" fill="none" stroke="url(#ringHi)" stroke-width="2.8"/>
+    <ellipse cx="120" cy="118.2" rx="34" ry="98" transform="rotate(-45 120 120)" fill="none" stroke="url(#ringHi)" stroke-width="2.8"/>
+  </g>
+
+  <!-- electron (lower-left glossy sphere) -->
+  <g filter="url(#glow)">
+    <circle cx="88" cy="156" r="12" fill="url(#electron)"/>
+    <ellipse cx="83.6" cy="151.6" rx="3.8" ry="2.6" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <!-- nucleus -->
+  <g filter="url(#glow)">
+    <circle cx="120" cy="120" r="19.5" fill="url(#nucleus)"/>
+    <ellipse cx="113.2" cy="113.4" rx="6.2" ry="4.2" fill="#ffffff" opacity="0.8"/>
+  </g>
+
+  <!-- specular sparkles -->
+  <g fill="#ffffff">
+    <path d="M170 58 l2.3 6.4 6.4 2.3 -6.4 2.3 -2.3 6.4 -2.3 -6.4 -6.4 -2.3 6.4 -2.3 z" opacity="0.95" filter="url(#glow)"/>
+    <path d="M80 92 l1.6 4.5 4.5 1.6 -4.5 1.6 -1.6 4.5 -1.6 -4.5 -4.5 -1.6 4.5 -1.6 z" opacity="0.82" filter="url(#glow)"/>
+  </g>
+</svg></div>
+  </div>
+  <p class="muted" style="margin-top:16px">El átomo es la marca principal. Área de respeto mínima = el tamaño del núcleo. Sobre fondos claros usa el átomo (el wordmark es blanco). No deformar, no recolorear, no añadir sombras ajenas.</p>
+
+  <div class="hr"></div>
+  <h2>02 · Color</h2>
+  <div class="grid swatches">
+    <div><div class="swatch" style="background:#06070d"></div><div class="sw-name">Ink</div><div class="sw-hex">#06070D</div></div>
+    <div><div class="swatch" style="background:#0c0e17"></div><div class="sw-name">Surface</div><div class="sw-hex">#0C0E17</div></div>
+    <div><div class="swatch" style="background:#22d3ee"></div><div class="sw-name">Cyan</div><div class="sw-hex">#22D3EE</div></div>
+    <div><div class="swatch" style="background:#6366f1"></div><div class="sw-name">Indigo</div><div class="sw-hex">#6366F1</div></div>
+    <div><div class="swatch" style="background:#a855f7"></div><div class="sw-name">Violet</div><div class="sw-hex">#A855F7</div></div>
+    <div><div class="swatch" style="background:linear-gradient(135deg,#22d3ee,#6366f1 50%,#a855f7)"></div><div class="sw-name">Gradiente</div><div class="sw-hex">cyan → indigo → violet</div></div>
+  </div>
+
+  <div class="hr"></div>
+  <h2>03 · Tipografía</h2>
+  <div class="grid types">
+    <div class="card"><div class="muted" style="margin-bottom:6px">Display · Titulares</div><div class="display" style="font-size:clamp(30px,6vw,44px);font-weight:700">Space Grotesk</div><div class="display muted" style="font-size:20px;margin-top:6px">Aa Bb Cc · 0123456789</div></div>
+    <div class="card"><div class="muted" style="margin-bottom:6px">Texto · Cuerpo</div><div style="font-size:clamp(30px,6vw,44px);font-weight:600">Inter</div><div class="muted" style="font-size:16px;margin-top:8px">Cuerpo legible para web, emails y decks. Pesos 400–600.</div></div>
+  </div>
+
+  <div class="hr"></div>
+  <h2>04 · Descargas</h2>
+  <p class="muted" style="margin-bottom:16px">Logo vectorial, PNG en todos los tamaños, lockups, favicons y esta guía en PDF.</p>
+  <a class="btn" href="https://drive.google.com/drive/folders/1_RSqifJRhbhaFo9yF9qyZ7zJI8kTILsS" target="_blank" rel="noopener">Abrir Brand Kit en Drive →</a>
+
+  <div class="hr"></div>
+  <p class="muted" style="font-size:13px">Disponibles gratis en Canva y Google Fonts → coherencia total entre web, email y decks. · <a href="/" style="color:var(--mute)">quantumventures.io</a></p>
+
+</div></body></html>
