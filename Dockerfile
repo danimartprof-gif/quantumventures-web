@@ -9,6 +9,7 @@ COPY coach /usr/share/nginx/html/coach
 COPY fiscal /usr/share/nginx/html/fiscal
 COPY contactos /usr/share/nginx/html/contactos
 COPY onboarding /usr/share/nginx/html/onboarding
+COPY bali /usr/share/nginx/html/bali
 COPY nuevo-cliente /usr/share/nginx/html/nuevo-cliente
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
