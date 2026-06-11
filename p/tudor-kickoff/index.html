@@ -59,7 +59,7 @@ h2.sec{font-size:clamp(27px,4.6vw,44px);font-weight:700;line-height:1.08;margin:
 @media(max-width:600px){.fstep .conv{display:none}}
 /* week strip */
 .week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:26px}
-@media(max-width:720px){.week{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:720px){.week{display:flex;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch}.week .day{flex:0 0 100px}}
 .day{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px 10px;text-align:center}
 .day .dn{font-family:'Space Grotesk';font-size:12px;color:var(--mute);letter-spacing:.1em;text-transform:uppercase}
 .day .di{font-size:19px;margin:8px 0 4px}
