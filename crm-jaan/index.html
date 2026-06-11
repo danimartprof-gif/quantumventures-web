@@ -1,0 +1,165 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jaan España · Pipeline</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/brand/qv-favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#04121c;--surface:#0a1d2b;--s2:#0e2436;--line:rgba(255,255,255,.10);--aqua:#67e8f9;--blue:#38bdf8;--gold:#e8c98e;--text:#eef4f8;--mute:#8fa6b5;--green:#34d399;--red:#f87171}
+*{margin:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+.display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
+.top{position:sticky;top:0;z-index:40;background:rgba(4,18,28,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 18px}
+.top .in{display:flex;align-items:center;gap:14px;height:58px;max-width:1600px;margin:0 auto}
+.top .ttl{font-family:'Space Grotesk';font-weight:700;font-size:15px}
+.top .ttl span{color:var(--mute);font-weight:500}
+.live-pill{font-size:10.5px;font-weight:700;letter-spacing:.08em;background:rgba(52,211,153,.15);color:var(--green);border:1px solid rgba(52,211,153,.35);border-radius:999px;padding:3px 10px}
+.usr{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mute)}
+.refresh{background:var(--s2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px 14px;font:inherit;font-size:13px;cursor:pointer}
+.wrap{max-width:1600px;margin:0 auto;padding:18px}
+.kpis{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:12px 18px}
+.kpi b{font-family:'Space Grotesk';font-size:22px;background:linear-gradient(100deg,var(--aqua),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.kpi span{font-size:11px;color:var(--mute);display:block;text-transform:uppercase;letter-spacing:.07em}
+.board{display:flex;gap:11px;overflow-x:auto;padding-bottom:24px;align-items:flex-start}
+.col{flex:0 0 250px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:16px;padding:11px;min-height:200px}
+.col.drag{border-color:rgba(103,232,249,.55);background:rgba(103,232,249,.05)}
+.colh{display:flex;align-items:center;gap:8px;padding:2px 4px 10px}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.colh h3{font-family:'Space Grotesk';font-size:12.5px;font-weight:600;line-height:1.2}
+.colh .n{margin-left:auto;font-size:11px;color:var(--mute);background:rgba(255,255,255,.06);border-radius:999px;padding:2px 8px}
+.cardlist{display:flex;flex-direction:column;gap:8px;min-height:50px}
+.lead{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:12px;cursor:grab;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s}
+.lead:hover{transform:translateY(-2px);border-color:rgba(103,232,249,.45)}
+.lead.dragging{opacity:.45}
+.lead .nm{font-weight:600;font-size:13.5px;line-height:1.25}
+.lead .sub{font-size:11px;color:var(--mute);margin-top:2px}
+.lead .row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chip{font-size:10px;font-weight:600;border-radius:999px;padding:2.5px 8px;background:rgba(255,255,255,.06);color:var(--mute)}
+.ch-int{background:rgba(52,211,153,.14);color:var(--green)}
+.ch-eur{background:rgba(232,201,142,.14);color:var(--gold)}
+.lead .ag{font-size:10.5px;color:#5f7585;margin-top:7px}
+.gate{max-width:380px;margin:16vh auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:30px;text-align:center}
+.gate input{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:13px;font:inherit;margin:16px 0;text-align:center}
+.gate button{background:linear-gradient(100deg,var(--aqua),var(--blue));color:#03222e;font-weight:700;border:0;border-radius:999px;padding:13px 28px;font-size:15px;cursor:pointer;width:100%}
+.note{font-size:12px;color:var(--mute);text-align:center;margin-top:6px}
+/* drawer */
+.ovl{position:fixed;inset:0;background:rgba(2,10,16,.6);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:60}
+.ovl.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);background:var(--s2);border-left:1px solid var(--line);z-index:70;transform:translateX(102%);transition:transform .38s cubic-bezier(.16,1,.3,1);overflow-y:auto;padding:24px}
+.drawer.open{transform:none}
+.drawer h2{font-family:'Space Grotesk';font-size:20px;margin-bottom:2px}
+.drawer .x{position:absolute;top:18px;right:18px;background:none;border:1px solid var(--line);color:var(--mute);width:32px;height:32px;border-radius:50%;cursor:pointer}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}
+.kv .b{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kv .k{font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.kv .v{font-size:13.5px;font-weight:600;margin-top:2px;word-break:break-word}
+.stsel{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.stbtn{font-size:11px;font-weight:600;border-radius:999px;padding:6px 11px;border:1px solid var(--line);background:none;color:var(--mute);cursor:pointer}
+.stbtn.on{background:linear-gradient(100deg,var(--aqua),var(--blue));color:#03222e;border-color:transparent}
+@media(max-width:700px){.top .ttl span{display:none}}
+</style></head>
+<body>
+<div class="top"><div class="in">
+  <div class="ttl">💧 JAAN <span>· Pipeline España</span></div>
+  <span class="live-pill">● CRM REAL · datos en vivo</span>
+  <div class="usr"><span id="upd"></span><button class="refresh" onclick="load()">↻ Actualizar</button></div>
+</div></div>
+
+<div class="wrap">
+  <div class="gate" id="gate">
+    <div style="font-size:30px">🔐</div>
+    <h2 class="display" style="margin-top:10px">Acceso al pipeline</h2>
+    <input id="key" type="password" placeholder="Clave de acceso" onkeydown="if(event.key==='Enter')enter()">
+    <button onclick="enter()">Entrar</button>
+    <p class="note">Pídele la clave a Dani.</p>
+  </div>
+  <div id="app" style="display:none">
+    <div class="kpis" id="kpis"></div>
+    <div class="board" id="board"></div>
+    <p class="note">Arrastra una tarjeta a otra etapa — se guarda automáticamente en la hoja del proyecto. Cada formulario nuevo entra solo en "Nuevo contacto".</p>
+  </div>
+</div>
+<div class="ovl" id="ovl" onclick="closeD()"></div>
+<aside class="drawer" id="drawer"></aside>
+
+<script>
+const API='https://qv-audit.128.140.44.162.sslip.io';
+const COLORS={'Nuevo contacto':'#8fa6b5','Análisis completado':'#67e8f9','Interesado':'#38bdf8','Muestras / piloto':'#a78bfa','Propuesta formal':'#e8c98e','Negociación':'#fbbf24','GANADO':'#34d399','Descartado':'#f87171'};
+let KEY=localStorage.getItem('jaan_k')||'', DATA={stages:[],leads:[]};
+const $=s=>document.querySelector(s);
+function enter(){KEY=$('#key').value.trim();localStorage.setItem('jaan_k',KEY);load()}
+async function load(){
+  if(!KEY){$('#gate').style.display='';$('#app').style.display='none';return}
+  try{
+    const r=await fetch(`${API}/api/jaan-pipeline?k=${encodeURIComponent(KEY)}`);
+    if(r.status===403){localStorage.removeItem('jaan_k');KEY='';$('#gate').style.display='';$('#app').style.display='none';alert('Clave incorrecta');return}
+    if(!r.ok)throw 0;
+    DATA=await r.json();
+    $('#gate').style.display='none';$('#app').style.display='';
+    $('#upd').textContent='actualizado '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+    render();
+  }catch(_){alert('No se pudo cargar. Reintenta en un minuto.')}
+}
+function render(){
+  const ds=DATA.leads;
+  const won=ds.filter(l=>l.etapa==='GANADO').length;
+  const inter=ds.filter(l=>['Interesado','Muestras / piloto','Propuesta formal','Negociación','GANADO'].includes(l.etapa)).length;
+  $('#kpis').innerHTML=[[ds.length,'Venues totales'],[ds.filter(l=>l.etapa==='Nuevo contacto').length,'Nuevos'],[inter,'Interesados+'],[won,'Ganados']]
+    .map(k=>`<div class="kpi"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('');
+  const b=$('#board');b.innerHTML='';
+  DATA.stages.forEach(st=>{
+    const leads=ds.filter(l=>l.etapa===st);
+    const col=document.createElement('div');col.className='col';
+    col.innerHTML=`<div class="colh"><span class="dot" style="background:${COLORS[st]||'#888'}"></span><h3>${st}</h3><span class="n">${leads.length}</span></div><div class="cardlist"></div>`;
+    const list=col.querySelector('.cardlist');
+    leads.forEach(l=>{
+      const c=document.createElement('div');c.className='lead';c.draggable=true;
+      c.innerHTML=`<div class="nm">${l.local}</div><div class="sub">${l.ciudad||'—'} · ${l.tipo||'—'} · ${l.contacto||''}</div>
+      <div class="row">${l.interes?`<span class="chip ch-int">${l.interes.slice(0,26)}</span>`:''}${l.coste?`<span class="chip ch-eur">coste ${l.coste.slice(0,14)}</span>`:''}${l.agua_actual?`<span class="chip">${l.agua_actual.slice(0,18)}</span>`:''}</div>
+      <div class="ag">${l.fecha||''} · ref: ${l.referido||'—'}</div>`;
+      c.addEventListener('click',()=>openD(l.id));
+      c.addEventListener('dragstart',e=>{c.classList.add('dragging');e.dataTransfer.setData('text/plain',l.id)});
+      c.addEventListener('dragend',()=>c.classList.remove('dragging'));
+      list.appendChild(c);
+    });
+    col.addEventListener('dragover',e=>{e.preventDefault();col.classList.add('drag')});
+    col.addEventListener('dragleave',()=>col.classList.remove('drag'));
+    col.addEventListener('drop',async e=>{e.preventDefault();col.classList.remove('drag');
+      const id=e.dataTransfer.getData('text/plain');await setStage(id,st);});
+    b.appendChild(col);
+  });
+}
+async function setStage(id,etapa){
+  const l=DATA.leads.find(x=>x.id===id);if(!l||l.etapa===etapa)return;
+  const prev=l.etapa;l.etapa=etapa;render();
+  try{
+    const r=await fetch(`${API}/api/jaan-stage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({k:KEY,id,etapa})});
+    if(!r.ok)throw 0;
+  }catch(_){l.etapa=prev;render();alert('No se pudo guardar el cambio de etapa.')}
+}
+function openD(id){
+  const l=DATA.leads.find(x=>x.id===id);if(!l)return;
+  const d=$('#drawer');
+  d.innerHTML=`<button class="x" onclick="closeD()">✕</button>
+    <h2 class="display">${l.local}</h2><div style="font-size:12.5px;color:var(--mute)">${l.tipo||'—'} · ${l.ciudad||'—'} · ${l.fecha||''}</div>
+    <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--aqua);font-weight:600;margin-top:20px">Etapa</div>
+    <div class="stsel">${DATA.stages.map(s=>`<button class="stbtn ${s===l.etapa?'on':''}" onclick="setStage('${l.id}','${s}');openD('${l.id}')">${s}</button>`).join('')}</div>
+    <div class="kv">
+      <div class="b"><div class="k">Contacto</div><div class="v">${l.contacto||'—'}${l.cargo?(' · '+l.cargo):''}</div></div>
+      <div class="b"><div class="k">Email</div><div class="v">${l.email||'—'}</div></div>
+      <div class="b"><div class="k">Teléfono</div><div class="v">${l.telefono||'—'}</div></div>
+      <div class="b"><div class="k">Referido por</div><div class="v">${l.referido||'—'}</div></div>
+      <div class="b"><div class="k">Agua actual</div><div class="v">${l.agua_actual||'—'}</div></div>
+      <div class="b"><div class="k">Coste botella</div><div class="v">${l.coste||'—'}</div></div>
+      <div class="b"><div class="k">PVP en mesa</div><div class="v">${l.pvp||'—'}</div></div>
+      <div class="b"><div class="k">Consumo/mes</div><div class="v">${l.consumo||'—'}</div></div>
+      <div class="b" style="grid-column:1/-1"><div class="k">Interés</div><div class="v">${l.interes||'—'}</div></div>
+      ${l.comentarios?`<div class="b" style="grid-column:1/-1"><div class="k">Comentarios</div><div class="v">${l.comentarios}</div></div>`:''}
+    </div>`;
+  d.classList.add('open');$('#ovl').classList.add('open');
+}
+function closeD(){$('#drawer').classList.remove('open');$('#ovl').classList.remove('open')}
+load();
+</script>
+</body></html>
