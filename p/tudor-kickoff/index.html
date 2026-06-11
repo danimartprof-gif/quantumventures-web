@@ -66,6 +66,15 @@ h2.sec{font-size:clamp(27px,4.6vw,44px);font-weight:700;line-height:1.08;margin:
 .day .dt{font-size:11px;color:#cbd5e1;line-height:1.4}
 .day.live{border-color:rgba(34,211,238,.55);background:linear-gradient(160deg,rgba(34,211,238,.12),var(--surface));box-shadow:0 0 24px rgba(34,211,238,.12)}
 .day.live .dn{color:var(--cyan)}
+/* classroom map */
+.cmap{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:22px}
+@media(max-width:900px){.cmap{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.cmap{grid-template-columns:repeat(2,1fr)}}
+.cb{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px 12px}
+.cb .ic2{font-size:18px}.cb h5{font-size:12.5px;font-weight:600;margin:7px 0 5px;line-height:1.3}
+.cb .bdg2{font-size:9px;font-weight:700;letter-spacing:.08em;border-radius:999px;padding:2.5px 8px;text-transform:uppercase}
+.bdg-ev{background:rgba(255,255,255,.07);color:var(--mute)}
+.bdg-live{background:rgba(34,211,238,.16);color:var(--cyan)}
+.cb.hotc{border-color:rgba(34,211,238,.5);background:linear-gradient(160deg,rgba(34,211,238,.1),var(--surface))}
 /* phases */
 .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
 @media(max-width:760px){.phases{grid-template-columns:1fr}}
@@ -244,9 +253,49 @@ nav .golive{margin-left:auto;font-size:12px;font-weight:700;color:var(--ink);bac
   <p class="sm mute reveal" style="margin-top:16px">Your part: 3–4 posts a week (we hand you script + what to show) and the Sunday live. <b style="color:var(--cyan)">First live: Sunday, June 14 — morning (target: 100+ attendees). Launch #1 opens Sunday, June 21 — one-week window.</b></p>
 </div></section>
 
+<!-- 07 THE PRODUCT -->
+<section><div class="wrap">
+  <span class="eyebrow reveal">07 · The product</span>
+  <h2 class="sec display reveal">Inside the community: <span class="grad">a membership that never goes stale</span></h2>
+  <p class="lead reveal">People don't pay monthly for a stack of videos — they pay to stay up to date and accompanied. AI tools change every week; the community is built to win on speed, actionable depth and constant updates.</p>
+  <div class="cards c4 reveal" style="margin-top:24px">
+    <div class="card" style="border-color:rgba(34,211,238,.45)"><h3>🛰 Tool Radar</h3><p><b style="color:#e7ecf3">The differential.</b> A weekly "Tool of the Week": first to cover every new AI tool that matters, tested, with a real demo and how to plug it into your workflow.</p></div>
+    <div class="card"><h3>🎬 Creation</h3><p>The "AI that doesn't look AI" system: idea → cinematic scene, consistent characters &amp; worlds, viral storytelling.</p></div>
+    <div class="card"><h3>🎚 Editing</h3><p>Cuts, sound, pacing and retention — what separates an "AI video" from a sellable one. Presets &amp; templates included.</p></div>
+    <div class="card"><h3>📤 Distribution</h3><p>Publishing right, understanding the algorithm, multi-platform scaling — and turning content into income.</p></div>
+  </div>
+  <p class="kicker reveal" style="margin:30px 0 0">The classroom: evergreen core + living blocks</p>
+  <div class="cmap reveal">
+    <div class="cb"><div class="ic2">🚀</div><h5>Start Here</h5><span class="bdg2 bdg-ev">Evergreen</span></div>
+    <div class="cb"><div class="ic2">🎬</div><h5>Storytelling</h5><span class="bdg2 bdg-ev">Evergreen</span></div>
+    <div class="cb"><div class="ic2">🖼</div><h5>AI Images</h5><span class="bdg2 bdg-ev">Core</span></div>
+    <div class="cb"><div class="ic2">🎞</div><h5>Animations</h5><span class="bdg2 bdg-ev">Core</span></div>
+    <div class="cb"><div class="ic2">💰</div><h5>Monetise Your Content</h5><span class="bdg2 bdg-ev">Evergreen+</span></div>
+    <div class="cb hotc"><div class="ic2">🛰</div><h5>Tool Radar / What's New</h5><span class="bdg2 bdg-live">LIVE · weekly</span></div>
+    <div class="cb"><div class="ic2">🎥</div><h5>Live Sessions (recordings)</h5><span class="bdg2 bdg-live">LIVE</span></div>
+    <div class="cb"><div class="ic2">📚</div><h5>Resources: prompts &amp; presets</h5><span class="bdg2 bdg-live">LIVE</span></div>
+    <div class="cb"><div class="ic2">🏆</div><h5>Challenges &amp; Leaderboard</h5><span class="bdg2 bdg-live">LIVE</span></div>
+    <div class="cb"><div class="ic2">🎚</div><h5>Editing &amp; Sound</h5><span class="bdg2 bdg-ev">Core</span></div>
+  </div>
+  <p class="kicker reveal" style="margin:30px 0 0">A member's week — 2 member lives + challenges</p>
+  <div class="week reveal">
+    <div class="day"><div class="dn">Mon</div><div class="di">🛰</div><div class="dt">Tool of the Week<br>+ challenge opens</div></div>
+    <div class="day live"><div class="dn">Tue</div><div class="di">🔴</div><div class="dt"><b>TOOL LAB</b><br>live demo of new tools</div></div>
+    <div class="day"><div class="dn">Wed</div><div class="di">📚</div><div class="dt">New lesson<br>(create/edit/publish)</div></div>
+    <div class="day"><div class="dn">Thu</div><div class="di">🎬</div><div class="dt">Hot-seat<br>submissions</div></div>
+    <div class="day live"><div class="dn">Fri</div><div class="di">🔴</div><div class="dt"><b>BUILD &amp; REVIEW</b><br>live build + hot seats + prize</div></div>
+    <div class="day"><div class="dn">Sat</div><div class="di">🤝</div><div class="dt">Wins &amp;<br>community</div></div>
+    <div class="day"><div class="dn">Sun</div><div class="di">📣</div><div class="dt">Free public class<br>(the funnel hook)</div></div>
+  </div>
+  <div class="cards c2 reveal" style="margin-top:22px">
+    <div class="card"><h3>🏆 Gamification that retains</h3><p>Weekly micro-challenges (winner announced at Friday's live) + monthly macro-challenges with leaderboard · badges for real milestones (first video, 10k views, first sale) · Skool levels unlock templates, 1:1 reviews and high-ticket discounts.</p></div>
+    <div class="card"><h3>🔄 Never goes stale (why they stay)</h3><p>Public changelog "What's New" + versioned lessons (tool changes → v2; tool dies → replaced) + quarterly review of every module. Members SEE the community is alive — that's what justifies paying monthly.</p></div>
+  </div>
+</div></section>
+
 <!-- 08 METHOD -->
 <section><div class="wrap">
-  <span class="eyebrow reveal">07 · The method · Quantum Ventures</span>
+  <span class="eyebrow reveal">08 · The method · Quantum Ventures</span>
   <h2 class="sec display reveal">How we build it, <span class="grad">in phases</span></h2>
   <div class="phases reveal">
     <div class="ph"><div class="pn">PHASE 1</div><h3>VALIDATE</h3><p>Organic + free live warm the audience and prove demand. Capital-light — no money burned.</p></div>
@@ -259,7 +308,7 @@ nav .golive{margin-left:auto;font-size:12px;font-weight:700;color:var(--ink);bac
 
 <!-- 09 NUMBERS -->
 <section><div class="wrap">
-  <span class="eyebrow reveal">08 · The numbers</span>
+  <span class="eyebrow reveal">09 · The numbers</span>
   <h2 class="sec display reveal">What the funnel <span class="grad">can produce</span></h2>
   <p class="lead reveal">A realistic estimate anchored to your previous campaign — ~4,000 buyers of a ~30€ course, achieved with organic content alone: no funnel, no ads, no team. That is the baseline we scale from.</p>
   <div class="cards c3 reveal" style="margin-top:22px">
@@ -301,7 +350,7 @@ nav .golive{margin-left:auto;font-size:12px;font-weight:700;color:var(--ink);bac
 
 <!-- 10 ACTIVATION -->
 <section><div class="wrap">
-  <span class="eyebrow reveal">09 · Activation plan</span>
+  <span class="eyebrow reveal">10 · Activation plan</span>
   <h2 class="sec display reveal">From today to <span class="grad">Sunday, June 14</span></h2>
   <div class="tl2 reveal">
     <div class="tcard"><div class="td">Thu – Fri</div><ul><li>GoHighLevel auto-DM set up + WhatsApp channel created</li><li>CTAs prepared (words, auto-replies, links)</li></ul></div>
