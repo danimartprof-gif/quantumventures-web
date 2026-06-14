@@ -20,6 +20,7 @@ COPY p /usr/share/nginx/html/p
 COPY como-trabajamos /usr/share/nginx/html/como-trabajamos
 COPY crm-demo /usr/share/nginx/html/crm-demo
 COPY villa-brisa /usr/share/nginx/html/villa-brisa
+COPY brave-the-world /usr/share/nginx/html/brave-the-world
 COPY jaan-venues /usr/share/nginx/html/jaan-venues
 COPY crm-jaan /usr/share/nginx/html/crm-jaan
 COPY nginx.conf /etc/nginx/conf.d/default.conf
