@@ -53,12 +53,29 @@ nav a{color:var(--mute);text-decoration:none;font-size:13px;font-weight:500}nav 
 .sm{font-size:13px}.mute{color:var(--mute)}
 ul.clean{list-style:none;padding:0;margin:8px 0 0}ul.clean li{font-size:14px;color:var(--mute);padding:5px 0 5px 22px;position:relative}
 ul.clean li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
+.flywheel{position:relative;width:min(560px,94vw);aspect-ratio:1;margin:34px auto 10px}
+.fw-ring{position:absolute;inset:9%;border:2px dashed rgba(255,255,255,.14);border-radius:50%}
+.fw-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40%;height:40%;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(99,102,241,.4),rgba(168,85,247,.16));border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px}
+.fw-core b{font-family:'Space Grotesk';font-size:clamp(13px,2.6vw,18px);line-height:1.12}
+.fw-core span{font-size:11px;color:var(--text);opacity:.8;margin-top:5px}
+.fw-node{position:absolute;width:33%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 12px;text-align:center}
+.fw-node .ic{font-size:20px;line-height:1}
+.fw-node .n{font-family:'Space Grotesk';font-size:12px;font-weight:700;color:var(--cyan);letter-spacing:.05em}
+.fw-node .t{font-size:12.5px;font-weight:600;margin-top:1px}
+.fw-node .d{font-size:11px;color:var(--mute);margin-top:3px;line-height:1.32}
+.fw-1{left:50%;top:5%}.fw-2{left:91%;top:31%}.fw-3{left:91%;top:69%}.fw-4{left:50%;top:95%}.fw-5{left:9%;top:69%}.fw-6{left:9%;top:31%}
+@media(max-width:640px){
+ .flywheel{width:100%;aspect-ratio:auto;display:grid;gap:10px}
+ .fw-ring,.fw-core{display:none}
+ .fw-node{position:static;transform:none;width:auto;text-align:left;display:flex;gap:12px;align-items:flex-start}
+ .fw-node .ic{font-size:24px;flex-shrink:0}
+}
 </style></head>
 <body>
 <nav><div class="wrap">
   <img src="/assets/brand/qv-mark.svg" alt="QV">
   <div class="links">
-    <a href="#analisis">Análisis</a><a href="#oportunidad">Puntos de dolor</a><a href="#propuesta">Propuesta</a>
+    <a href="#analisis">Análisis</a><a href="#oportunidad">Puntos de dolor</a><a href="#sistema">Cómo trabajamos</a>
     <a href="#potencial">Potencial</a><a href="#servicios">Servicios</a>
     <a href="#oferta">Por qué QV</a><a href="#equipo">Equipo</a><a href="#supuestos">Supuestos</a>
   </div>
@@ -68,7 +85,7 @@ ul.clean li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
   <div class="aurora a1"></div><div class="aurora a2"></div>
   <span class="pill">Quantum Ventures · Construimos el sistema empresarial de tu marca</span>
   <h1 class="display">Ismael Rachidi <span class="grad">× Quantum Ventures</span></h1>
-  <p class="lead" style="font-size:18px">Hoy facturas ~<b style="color:var(--text)">3.000&nbsp;€/mes</b> vendiendo sobre todo tu tiempo. Tu alcance vale mucho más. Te proponemos convertir esa influencia en un negocio escalable de marca personal — con TODA nuestra estructura trabajando para ti y sin que pongas capital.</p>
+  <p class="lead" style="font-size:18px">Hoy vendes sobre todo tu tiempo (asesoría 1-1) y tu alcance da para muchísimo más. Te proponemos convertir esa influencia en un negocio escalable de marca personal — con TODA nuestra estructura trabajando para ti y sin que pongas capital.</p>
   <p class="lead" style="margin-top:10px"><b style="color:var(--text)">No somos una agencia de promos: somos los que construyen el SISTEMA EMPRESARIAL detrás de tu marca personal.</b> Tú pones el talento y la cara; nosotros montamos y operamos la empresa que hay detrás.</p>
   <span class="real">✔ Datos de la cuenta de @ismarg · 16/06/2026</span>
   <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -128,12 +145,32 @@ ul.clean li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
   <h2 class="sec">Tienes la audiencia. Te falta la máquina de negocio.</h2>
   <p class="lead">Creces en orgánico y tienes alcance de sobra — pero ese alcance hoy no se convierte en un negocio a su altura. Esto es lo que te está frenando (y exactamente lo que resolvemos):</p>
   <div class="cards c2" style="margin-top:24px">
-    <div class="card"><h3>📉 Tu audiencia rinde muy por debajo</h3><p class="sm">311K seguidores y subiendo, pero ~3.000€/mes. Una audiencia así da para muchísimo más: cada mes estás dejando dinero sobre la mesa. <b style="color:var(--text)">→ Te montamos un ecosistema de ingresos.</b></p></div>
+    <div class="card"><h3>📉 Tu audiencia rinde muy por debajo</h3><p class="sm">311K seguidores y subiendo, pero monetizas solo una mínima parte. Una audiencia así da para muchísimo más: cada mes estás dejando dinero sobre la mesa. <b style="color:var(--text)">→ Te montamos un ecosistema de ingresos.</b></p></div>
     <div class="card"><h3>🧩 Contenido sin estructura de venta</h3><p class="sm">Publicas y creces, pero tu contenido no está diseñado para VENDER tus servicios. Generas atención que no se convierte. <b style="color:var(--text)">→ Sistema de contenido orientado a conversión.</b></p></div>
     <div class="card"><h3>🎯 Un solo producto, con techo</h3><p class="sm">Solo tienes asesoría 1-1, limitada por tus horas: si paras de vender tu tiempo, paras de ingresar — y aún con mucho margen de mejora. <b style="color:var(--text)">→ La depuramos al máximo con IA y le sumamos productos que escalan.</b></p></div>
     <div class="card"><h3>🚫 Sin sistema de captación de clientes</h3><p class="sm">No tienes un equipo de ventas (setters/closers) ni un proceso: los interesados se enfrían en los DMs. <b style="color:var(--text)">→ Equipo de ventas especialista en fitness + CRM.</b></p></div>
     <div class="card"><h3>📡 Nunca has hecho tráfico de pago</h3><p class="sm">Todo tu crecimiento es orgánico. Imagina amplificar con ads lo que YA te funciona: tienes un canal entero sin explotar. <b style="color:var(--text)">→ Media buyers que multiplican tu alcance.</b></p></div>
     <div class="card" style="background:linear-gradient(100deg,rgba(99,102,241,.14),transparent)"><h3>🧠 Lo haces todo tú solo</h3><p class="sm">Estrategia, ventas, sistemas, fiscalidad… o no se hacen, o te comen el tiempo de crear. <b style="color:var(--text)">→ Equipo humano especializado + IA operando por ti.</b></p></div>
+  </div>
+</div></section>
+
+<!-- EL SISTEMA / FLYWHEEL -->
+<section id="sistema"><div class="wrap">
+  <span class="eyebrow">Cómo trabajamos contigo</span>
+  <h2 class="sec">Una máquina que trabaja por ti, en ciclo</h2>
+  <p class="lead">No es un servicio suelto: es un sistema completo que repetimos una y otra vez. Cada vuelta hace tu marca más grande y tus ingresos mayores. Tú solo creas — la máquina hace el resto.</p>
+  <div class="flywheel">
+    <div class="fw-ring"></div>
+    <div class="fw-core"><b>EL SISTEMA QV</b><span>gira solo · cada vez más rápido</span></div>
+    <div class="fw-node fw-1"><div class="ic">🔍</div><div class="n">01 · AUDITORÍA</div><div class="t">Te entendemos</div><div class="d">Analizamos tu marca, tu audiencia y tus servicios para ver dónde está el negocio.</div></div>
+    <div class="fw-node fw-2"><div class="ic">⚙️</div><div class="n">02 · TECNOLOGÍA</div><div class="t">Lo montamos</div><div class="d">Web, embudos, CRM, automatizaciones e IA: la infraestructura que lo hace funcionar.</div></div>
+    <div class="fw-node fw-3"><div class="ic">🚀</div><div class="n">03 · LANZAMIENTO</div><div class="t">Lo vendemos</div><div class="d">Sacamos al mercado tu comunidad, tus ofertas y tus servicios con campañas.</div></div>
+    <div class="fw-node fw-4"><div class="ic">💰</div><div class="n">04 · CAPITALIZACIÓN</div><div class="t">Generas ingresos</div><div class="d">Convertimos tu audiencia en ingresos reales y recurrentes, cada mes.</div></div>
+    <div class="fw-node fw-5"><div class="ic">🔁</div><div class="n">05 · REINVERSIÓN</div><div class="t">Crece más rápido</div><div class="d">Parte de lo generado vuelve a tu marca: más contenido, más ads, más alcance.</div></div>
+    <div class="fw-node fw-6"><div class="ic">📈</div><div class="n">06 · MEJORA</div><div class="t">Optimizamos</div><div class="d">Medimos con datos + IA y afinamos cada mes. Y vuelta a empezar, más grandes.</div></div>
+  </div>
+  <div class="card" style="margin-top:8px;background:linear-gradient(100deg,rgba(34,211,238,.12),rgba(168,85,247,.08));text-align:center">
+    <p class="sm">↻ <b style="color:var(--text)">Es un volante:</b> cada vuelta del ciclo, tu marca y tus ingresos crecen — y el sistema gira cada vez más rápido sin que tú hagas más.</p>
   </div>
 </div></section>
 
@@ -159,7 +196,7 @@ ul.clean li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
 <!-- POTENCIAL -->
 <section id="potencial"><div class="wrap">
   <span class="eyebrow">04 · El salto</span>
-  <h2 class="sec">De 3.000&nbsp;€/mes a un objetivo de 50.000&nbsp;€/mes</h2>
+  <h2 class="sec">Tu objetivo con nosotros: 50.000&nbsp;€/mes</h2>
   <p class="lead">Hoy tu ingreso depende de tu tiempo (1-1) y tiene techo. Cuando convertimos tu alcance en audiencia propia + comunidad recurrente + escalera de valor, el ingreso deja de depender de tus horas. Esto es lo que cambia 👇</p>
   <div class="card" style="margin-top:20px;background:linear-gradient(100deg,rgba(34,211,238,.16),rgba(168,85,247,.10));border-color:rgba(34,211,238,.4)">
     <h3 style="font-size:18px">🎯 Nuestro objetivo contigo: que ganes <span class="grad display" style="font-size:22px">al menos 50.000&nbsp;€/mes</span></h3>
@@ -168,7 +205,7 @@ ul.clean li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
   <div class="cards c2" style="margin-top:24px">
     <div class="card">
       <div class="metric">Hoy · vendes tu tiempo</div>
-      <div class="kpi">~3.000&nbsp;€<span class="sm mute" style="font-size:14px">/mes</span></div>
+      <div class="kpi s">Techo de horas</div>
       <ul class="clean" style="margin-top:10px">
         <li>Ingreso 1-1: techo de horas, no escala.</li>
         <li>Reach viral que se evapora (no captura email/comunidad).</li>
@@ -202,7 +239,7 @@ ul.clean li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
   <p class="sm mute" style="margin-top:10px">No es humo: 1.000 miembros es menos del 1% de la gente que ya te sigue, y la comunidad la operamos nosotros de principio a fin. Marcado como objetivo de fase, a aterrizar contigo.</p>
   <div class="card" style="margin-top:16px;background:linear-gradient(100deg,rgba(168,85,247,.12),transparent)">
     <h3>🤝 Y tu 1-1 no desaparece: lo mejoramos</h3>
-    <p class="sm">Hoy el 1-1 te da los 3.000€ pero te come las horas. Con el sistema lo reposicionamos como tu <b>tier premium/élite</b> (ticket más alto, plazas limitadas, lista de espera) alimentado por la comunidad — y lo potenciamos con <b>IA</b> (seguimiento automático, generación de planes, paneles de progreso del cliente) para dar más valor en menos tiempo. El 1-1 deja de ser tu techo y pasa a ser tu producto de mayor margen.</p>
+    <p class="sm">Hoy el 1-1 te aporta ingresos pero te come las horas. Con el sistema lo reposicionamos como tu <b>tier premium/élite</b> (ticket más alto, plazas limitadas, lista de espera) alimentado por la comunidad — y lo potenciamos con <b>IA</b> (seguimiento automático, generación de planes, paneles de progreso del cliente) para dar más valor en menos tiempo. El 1-1 deja de ser tu techo y pasa a ser tu producto de mayor margen.</p>
   </div>
 
   <h3 class="display" style="font-size:20px;margin:32px 0 8px">Lo más importante: tu ecosistema de ingresos</h3>
@@ -219,7 +256,7 @@ ul.clean li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
     <span class="node">📡 Tráfico de pago (acelerador)</span>
   </div>
 
-  <p class="sm mute" style="margin-top:16px">La diferencia entre los 3.000€ de hoy y estos números no es más esfuerzo tuyo — es <b style="color:var(--text)">sistema</b>. Y el sistema (equipo humano especializado + IA) lo ponemos y lo gestionamos nosotros.</p>
+  <p class="sm mute" style="margin-top:16px">La diferencia entre lo que ingresas hoy y estos números no es más esfuerzo tuyo — es <b style="color:var(--text)">sistema</b>. Y el sistema (equipo humano especializado + IA) lo ponemos y lo gestionamos nosotros.</p>
 </div></section>
 
 <!-- SERVICIOS · TODO LO QUE SOMOS -->
