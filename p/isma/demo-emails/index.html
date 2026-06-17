@@ -4,84 +4,85 @@
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0a0b0a;--paper:#ffffff;--surface:#13150f;--line:rgba(255,255,255,.10);--acid:#c6f24e;--text:#eef2e9;--mute:#9aa394;--ink2:#11130d}
+:root{--ink:#0a0b0a;--paper:#faf9f5;--surface:#13150f;--line:rgba(255,255,255,.10);--acid:#c6f24e;--text:#eef2e9;--mute:#9aa394;--dark:#11130d}
 *{margin:0;box-sizing:border-box}
-body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block}
 .display{font-family:'Space Grotesk',sans-serif}
 .demo-badge{position:fixed;top:10px;right:10px;z-index:99;background:var(--acid);color:#0a0b0a;font-weight:700;font-size:11px;padding:6px 12px;border-radius:999px;font-family:'Space Grotesk'}
-.wrap{max-width:760px;margin:0 auto;padding:clamp(34px,6vw,64px) clamp(16px,5vw,24px)}
+.wrap{max-width:680px;margin:0 auto;padding:clamp(34px,6vw,64px) clamp(16px,5vw,24px)}
 .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--acid);font-weight:600}
 h1{font-size:clamp(28px,5vw,42px);font-weight:700;margin:10px 0 8px}
-.lead{color:var(--mute);margin-bottom:30px}
-.tag{display:inline-block;font-size:12px;color:var(--acid);border:1px solid rgba(198,242,78,.4);border-radius:999px;padding:4px 12px;margin-bottom:12px}
-.mail{background:var(--paper);color:#1a1d16;border-radius:16px;overflow:hidden;margin-bottom:34px;border:1px solid var(--line)}
-.mail .bar{background:#f3f5ee;border-bottom:1px solid #e4e7dd;padding:12px 18px;font-size:13px;color:#5a6152}
-.mail .bar b{color:#1a1d16}
-.mail .hd{background:var(--ink2);padding:22px 26px;display:flex;align-items:center;gap:14px}
-.mail .hd img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--acid)}
-.mail .hd .nm{color:#fff;font-family:'Space Grotesk';font-weight:700}
-.mail .hd .nm span{display:block;font-size:12px;color:#b9c2ad;font-weight:400}
-.mail .bd{padding:26px}
-.mail .bd h2{font-family:'Space Grotesk';font-size:22px;margin-bottom:12px;color:#15170f}
-.mail .bd p{font-size:15px;color:#3a3f33;margin-bottom:14px}
-.mail .bd .cta{display:inline-block;background:#15170f;color:var(--acid);font-weight:700;text-decoration:none;padding:13px 26px;border-radius:999px;font-family:'Space Grotesk';font-size:15px}
-.mail .bd img.hero{width:100%;border-radius:12px;margin:6px 0 16px;max-height:240px;object-fit:cover}
-.mail .ft{padding:16px 26px;border-top:1px solid #e4e7dd;font-size:12px;color:#8a907e}
+.lead{color:var(--mute);margin-bottom:34px}
+.mono{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;font-size:16px;color:#0a0b0a;background:linear-gradient(135deg,var(--acid),#7cb518);flex-shrink:0}
+.tag{display:inline-block;font-size:12px;color:var(--acid);border:1px solid rgba(198,242,78,.4);border-radius:999px;padding:5px 14px;margin-bottom:14px;font-family:'Space Grotesk';font-weight:600}
+.mail{background:var(--paper);color:#20231a;border-radius:18px;overflow:hidden;margin-bottom:38px;border:1px solid var(--line);box-shadow:0 30px 70px -36px rgba(0,0,0,.8)}
+.subjbar{background:#eceadf;border-bottom:1px solid #ddd9c9;padding:13px 22px;font-size:13px;color:#6a6f5d}
+.subjbar b{color:#20231a}
+.hd{background:var(--dark);padding:20px 26px;display:flex;align-items:center;gap:13px}
+.hd .nm{color:#fff;font-family:'Space Grotesk';font-weight:700;line-height:1.2}
+.hd .nm span{display:block;font-size:12px;color:#aeb89f;font-weight:400;margin-top:2px}
+.bd{padding:30px 26px 8px}
+.bd h2{font-family:'Space Grotesk';font-size:23px;margin-bottom:14px;color:#16180f;line-height:1.15}
+.bd p{font-size:15px;color:#3d4234;margin-bottom:15px}
+.figimg{border-radius:14px;overflow:hidden;margin:4px 0 20px;aspect-ratio:16/9;border:1px solid #e2decf}
+.figimg img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.ctawrap{text-align:center;margin:22px 0 8px}
+.cta{display:inline-block;background:#16180f;color:var(--acid);font-weight:700;text-decoration:none;padding:15px 30px;border-radius:999px;font-family:'Space Grotesk';font-size:15px}
+.ft{padding:18px 26px;border-top:1px solid #e2decf;font-size:12px;color:#8a907e;background:#f3f1e7}
+.dis{color:var(--mute);font-size:13px;text-align:center;margin-top:6px}
 </style></head>
 <body>
 <div class="demo-badge">DEMO · creada por Quantum Ventures</div>
 <div class="wrap">
   <span class="eyebrow">Secuencia de emails</span>
   <h1 class="display">Los emails que reciben tus clientes</h1>
-  <p class="lead">Ejemplo de la secuencia automática que montamos: dan la bienvenida, aportan valor y convierten — todo con tu marca y tu tono. (Textos de muestra.)</p>
+  <p class="lead">Ejemplo de la secuencia automática que montamos: da la bienvenida, aporta valor y convierte — todo con tu marca y tu tono. (Textos de muestra.)</p>
 
-  <!-- 1 BIENVENIDA -->
-  <span class="tag">Email 1 · Bienvenida (minuto 0)</span>
-  <div class="mail">
-    <div class="bar">De: <b>Ismael Rachidi</b> &lt;hola@ismarg.com&gt;<br>Asunto: <b>Bienvenido a Train to Perform 💪 (empieza por aquí)</b></div>
-    <div class="hd"><img src="/p/isma/img/isma-gym-front.jpg" alt="Isma"><div class="nm">Ismael Rachidi<span>Train to Perform</span></div></div>
+  <span class="tag">Email 1 · Bienvenida — minuto 0</span>
+  <article class="mail">
+    <div class="subjbar">Asunto: <b>Bienvenido a Fuerza Híbrida 💪 (empieza por aquí)</b></div>
+    <div class="hd"><span class="mono">IR</span><div class="nm">Ismael Rachidi<span>hola@ismarg.com · Fuerza Híbrida</span></div></div>
     <div class="bd">
+      <div class="figimg"><img src="/p/isma/img/isma-running.jpg" alt="" loading="lazy"></div>
       <h2>¡Estás dentro! Vamos al lío.</h2>
-      <img class="hero" src="/p/isma/img/isma-running.jpg" alt="">
       <p>Qué tal, soy Isma. Acabas de dar el paso que la mayoría no da: comprometerte de verdad con tu físico. Bienvenido.</p>
       <p>Para empezar con buen pie, entra en el módulo <b>"Empieza aquí"</b> y haz tu primera sesión hoy mismo. No necesitas material, solo ganas.</p>
-      <p style="text-align:center"><a class="cta" href="#">Acceder a la comunidad →</a></p>
+      <div class="ctawrap"><a class="cta" href="#">Acceder a la comunidad →</a></div>
       <p>Nos vemos dentro. A entrenar para rendir. 🔥</p>
     </div>
-    <div class="ft">Ismael Rachidi · Train to Perform · Recibes este email porque te uniste a la comunidad. Darse de baja.</div>
-  </div>
+    <div class="ft">Ismael Rachidi · Fuerza Híbrida · Recibes este email porque te uniste a la comunidad. Darse de baja.</div>
+  </article>
 
-  <!-- 2 VALOR -->
-  <span class="tag">Email 2 · Valor (día 2)</span>
-  <div class="mail">
-    <div class="bar">De: <b>Ismael Rachidi</b> &lt;hola@ismarg.com&gt;<br>Asunto: <b>El error nº1 que frena tu progreso (lo cometía yo también)</b></div>
-    <div class="hd"><img src="/p/isma/img/isma-cable-row.jpg" alt="Isma"><div class="nm">Ismael Rachidi<span>Train to Perform</span></div></div>
+  <span class="tag">Email 2 · Valor — día 2</span>
+  <article class="mail">
+    <div class="subjbar">Asunto: <b>El error nº1 que frena tu progreso (lo cometía yo también)</b></div>
+    <div class="hd"><span class="mono">IR</span><div class="nm">Ismael Rachidi<span>hola@ismarg.com · Fuerza Híbrida</span></div></div>
     <div class="bd">
       <h2>No es tu rutina. Es esto.</h2>
       <p>La mayoría cambia de rutina cada 2 semanas buscando "la mejor". Y ese es justo el error: <b>sin progresión y constancia, ninguna rutina funciona.</b></p>
-      <p>En el directo de esta semana te enseño cómo estructurar tu progreso para no estancarte nunca. Te dejo también la guía rápida dentro del Classroom.</p>
-      <p style="text-align:center"><a class="cta" href="#">Ver la guía de progresión →</a></p>
+      <p>En el directo de esta semana te enseño cómo estructurar tu progreso para no estancarte nunca. Tienes la guía rápida dentro del Classroom.</p>
+      <div class="ctawrap"><a class="cta" href="#">Ver la guía de progresión →</a></div>
       <p>Cualquier duda, respóndeme a este email. Leo todo. 💪</p>
     </div>
-    <div class="ft">Ismael Rachidi · Train to Perform · Darse de baja.</div>
-  </div>
+    <div class="ft">Ismael Rachidi · Fuerza Híbrida · Darse de baja.</div>
+  </article>
 
-  <!-- 3 OFERTA -->
-  <span class="tag">Email 3 · Oferta 1-1 élite (día 5)</span>
-  <div class="mail">
-    <div class="bar">De: <b>Ismael Rachidi</b> &lt;hola@ismarg.com&gt;<br>Asunto: <b>¿Quieres ir más rápido? Abro 5 plazas de asesoría 1-1</b></div>
-    <div class="hd"><img src="/p/isma/img/isma-pullup.jpg" alt="Isma"><div class="nm">Ismael Rachidi<span>Train to Perform</span></div></div>
+  <span class="tag">Email 3 · Oferta 1-1 élite — día 5</span>
+  <article class="mail">
+    <div class="subjbar">Asunto: <b>¿Quieres ir más rápido? Abro 5 plazas de asesoría 1-1</b></div>
+    <div class="hd"><span class="mono">IR</span><div class="nm">Ismael Rachidi<span>hola@ismarg.com · Fuerza Híbrida</span></div></div>
     <div class="bd">
+      <div class="figimg"><img src="/p/isma/img/isma-handstand-rio.jpg" alt="" loading="lazy"></div>
       <h2>Acompañamiento personal, solo 5 plazas</h2>
-      <img class="hero" src="/p/isma/img/isma-handstand-rio.jpg" alt="">
       <p>La comunidad te da el sistema. Pero si quieres resultados al máximo y que te lleve <b>de la mano yo personalmente</b>, abro plazas de asesoría 1-1 élite.</p>
-      <p>Plan a tu medida, revisiones de técnica y contacto directo conmigo. Cupo muy limitado para poder cuidar a cada persona.</p>
-      <p style="text-align:center"><a class="cta" href="#">Solicitar mi plaza →</a></p>
+      <p>Plan a tu medida, revisiones de técnica y contacto directo conmigo. Cupo muy limitado para cuidar a cada persona.</p>
+      <div class="ctawrap"><a class="cta" href="#">Solicitar mi plaza →</a></div>
       <p>Si es tu momento, no lo dejes pasar. Nos vemos arriba.</p>
     </div>
-    <div class="ft">Ismael Rachidi · Train to Perform · Darse de baja.</div>
-  </div>
+    <div class="ft">Ismael Rachidi · Fuerza Híbrida · Darse de baja.</div>
+  </article>
 
-  <p style="color:var(--mute);font-size:13px;text-align:center">DEMO de secuencia de emails · ejemplo creado por Quantum Ventures. Textos y direcciones de muestra.</p>
+  <p class="dis">DEMO de secuencia de emails · ejemplo creado por Quantum Ventures. Textos y direcciones de muestra.</p>
 </div>
 </body></html>
