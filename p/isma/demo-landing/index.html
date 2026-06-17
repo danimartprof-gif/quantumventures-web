@@ -1,0 +1,149 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ismael Rachidi · Train to Perform — DEMO</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0b0a;--surface:#13150f;--line:rgba(255,255,255,.10);--acid:#c6f24e;--acid2:#a3e635;--text:#eef2e9;--mute:#9aa394}
+*{margin:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+.display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+.demo-badge{position:fixed;top:12px;right:12px;z-index:99;background:var(--acid);color:#0a0b0a;font-weight:700;font-size:11px;padding:6px 12px;border-radius:999px;font-family:'Space Grotesk'}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--acid2);font-weight:600}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,11,10,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:18px;height:62px}
+.logo{font-family:'Space Grotesk';font-weight:700;font-size:18px}
+.logo b{color:var(--acid)}
+nav .links{display:flex;gap:18px;margin-left:auto}
+nav a{color:var(--mute);text-decoration:none;font-size:14px}
+@media(max-width:760px){nav .links{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--acid);color:#0a0b0a;font-weight:700;text-decoration:none;padding:14px 26px;border-radius:999px;font-size:15px;font-family:'Space Grotesk'}
+.btn:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.55) saturate(1.05)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,10,.2),rgba(10,11,10,.95))}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(40px,7vw,80px);padding-top:60px}
+.hero h1{font-size:clamp(40px,8vw,86px);font-weight:700;line-height:.98;margin:14px 0}
+.hero h1 .acid{color:var(--acid)}
+.hero p{color:#d6dccf;font-size:clamp(16px,2vw,20px);max-width:620px}
+.pill{display:inline-flex;gap:8px;align-items:center;font-size:12px;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:7px 15px;background:rgba(0,0,0,.3)}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+section{padding:clamp(50px,8vw,96px) 0;border-top:1px solid var(--line)}
+h2.sec{font-size:clamp(28px,5vw,46px);font-weight:700;line-height:1.05;margin:10px 0 10px}
+.lead{color:var(--mute);max-width:680px}
+.grid{display:grid;gap:18px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card h3{font-size:17px;margin-bottom:6px;font-family:'Space Grotesk'}
+.card p{font-size:14px;color:var(--mute)}
+.num{font-family:'Space Grotesk';font-size:34px;font-weight:700;color:var(--acid)}
+.feat{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+.feat .ic{font-size:24px}
+.imgrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.imrow img{width:100%;height:230px;object-fit:cover;border-radius:14px}
+@media(max-width:760px){.imrow img{height:180px}}
+.price{display:flex;flex-direction:column;align-items:center;text-align:center;background:linear-gradient(180deg,rgba(198,242,78,.12),transparent);border:1px solid rgba(198,242,78,.4);border-radius:22px;padding:34px}
+.price .big{font-family:'Space Grotesk';font-size:56px;font-weight:700}
+.foot{padding:40px 0;border-top:1px solid var(--line);color:var(--mute);font-size:13px;text-align:center}
+ul.ck{list-style:none;padding:0;margin:14px 0 0}ul.ck li{padding:7px 0 7px 28px;position:relative;color:var(--text);font-size:15px}
+ul.ck li:before{content:"✓";position:absolute;left:0;color:var(--acid);font-weight:700}
+</style></head>
+<body>
+<div class="demo-badge">DEMO · creada por Quantum Ventures</div>
+
+<nav><div class="wrap">
+  <div class="logo">ISMA<b>RG</b></div>
+  <div class="links"><a href="#metodo">Método</a><a href="#programa">Programa</a><a href="#resultados">Resultados</a><a href="#precio">Únete</a></div>
+  <a class="btn" href="#precio" style="margin-left:auto;padding:10px 20px">Empieza hoy</a>
+</div></nav>
+
+<header class="hero">
+  <img class="bg" src="/p/isma/img/isma-running.jpg" alt="Ismael Rachidi entrenando">
+  <div class="wrap">
+    <span class="pill">🏃 Hybrid Athlete · Online Coach</span>
+    <h1 class="display">ENTRENA PARA <span class="acid">RENDIR</span>.<br>NO SOLO PARA VERTE BIEN.</h1>
+    <p>El método de Ismael Rachidi para construir un físico atlético, fuerte y funcional — combinando calistenia y gimnasio. Para gente real, sin humo.</p>
+    <div class="btnrow">
+      <a class="btn" href="#precio">Unirme a la comunidad →</a>
+      <a class="btn ghost" href="#metodo">Ver el método</a>
+    </div>
+  </div>
+</header>
+
+<section id="metodo"><div class="wrap">
+  <span class="eyebrow">El método</span>
+  <h2 class="sec">Físico atlético, fuerza real, hábito que dura</h2>
+  <p class="lead">Nada de rutinas imposibles ni dietas absurdas. Un sistema progresivo que combina lo mejor de la calistenia y el hierro, adaptado a tu nivel.</p>
+  <div class="imrow">
+    <img src="/p/isma/img/isma-handstand-rio.jpg" alt="Calistenia">
+    <img src="/p/isma/img/isma-pullup.jpg" alt="Tracción">
+    <img src="/p/isma/img/isma-cable-row.jpg" alt="Gimnasio">
+  </div>
+  <div class="grid g3" style="margin-top:24px">
+    <div class="card"><div class="num">01</div><h3>Fuerza & calistenia</h3><p>Domina tu propio cuerpo: dominadas, fondos, handstand y progresiones reales hasta los movimientos avanzados.</p></div>
+    <div class="card"><div class="num">02</div><h3>Hipertrofia inteligente</h3><p>Estructura de gimnasio para crecer sin lesionarte, con técnica y progresión medida semana a semana.</p></div>
+    <div class="card"><div class="num">03</div><h3>Hábito & mentalidad</h3><p>Lo que de verdad cambia tu físico: constancia, nutrición simple y una comunidad que te empuja.</p></div>
+  </div>
+</div></section>
+
+<section id="programa"><div class="wrap">
+  <span class="eyebrow">Qué incluye</span>
+  <h2 class="sec">Todo lo que necesitas, en un solo sitio</h2>
+  <div class="grid g2" style="margin-top:10px">
+    <div>
+      <div class="feat"><div class="ic">🏋️</div><div><b>Programas de entreno</b><div style="color:var(--mute);font-size:14px">Rutinas de calistenia y gimnasio por nivel, con vídeos de cada ejercicio.</div></div></div>
+      <div class="feat"><div class="ic">🍽️</div><div><b>Nutrición sin complicarte</b><div style="color:var(--mute);font-size:14px">Guías y plantillas para comer bien sin pesar cada gramo.</div></div></div>
+      <div class="feat"><div class="ic">📲</div><div><b>Comunidad privada</b><div style="color:var(--mute);font-size:14px">Resuelve dudas, comparte avances y entrena acompañado.</div></div></div>
+    </div>
+    <div>
+      <div class="feat"><div class="ic">🎥</div><div><b>Directos y Q&A semanales</b><div style="color:var(--mute);font-size:14px">Conmigo, en directo, para corregir y motivarte.</div></div></div>
+      <div class="feat"><div class="ic">🏆</div><div><b>Retos mensuales</b><div style="color:var(--mute);font-size:14px">Objetivos claros, premios y ranking. Progreso medible.</div></div></div>
+      <div class="feat"><div class="ic">⭐</div><div><b>Asesoría 1-1 élite (opcional)</b><div style="color:var(--mute);font-size:14px">Acompañamiento personal para quien quiere ir más rápido.</div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="resultados"><div class="wrap">
+  <span class="eyebrow">Resultados</span>
+  <h2 class="sec">Gente normal, transformaciones reales</h2>
+  <p class="lead">(Espacio para testimonios y antes/después reales de tus alumnos.)</p>
+  <div class="grid g3" style="margin-top:24px">
+    <div class="card"><p>"En 12 semanas saqué mi primera dominada estricta y bajé 6 kg. El método y la comunidad lo cambian todo."</p><p style="color:var(--text);margin-top:10px"><b>— Alumno demo</b></p></div>
+    <div class="card"><p>"Por fin entreno con sentido. No es magia, es constancia con un plan que funciona."</p><p style="color:var(--text);margin-top:10px"><b>— Alumno demo</b></p></div>
+    <div class="card"><p>"La gente de la comunidad te empuja cada día. Es lo que me faltaba para no abandonar."</p><p style="color:var(--text);margin-top:10px"><b>— Alumno demo</b></p></div>
+  </div>
+</div></section>
+
+<section id="precio"><div class="wrap">
+  <span class="eyebrow">Únete hoy</span>
+  <h2 class="sec">Entra en la comunidad Train to Perform</h2>
+  <div class="grid g2" style="margin-top:24px;align-items:center">
+    <div class="price">
+      <span class="pill" style="border-color:rgba(198,242,78,.4)">Plazas limitadas</span>
+      <div class="big" style="margin-top:14px">25€<span style="font-size:20px;color:var(--mute)">/mes</span></div>
+      <p style="color:var(--mute)">Sin permanencia · cancela cuando quieras</p>
+      <a class="btn" href="#" style="margin-top:18px;width:100%;justify-content:center">Quiero entrar →</a>
+      <p style="font-size:12px;color:var(--mute);margin-top:10px">Acceso inmediato a programas, comunidad y directos.</p>
+    </div>
+    <div>
+      <h3 class="display" style="font-size:24px">Lo que te llevas:</h3>
+      <ul class="ck">
+        <li>Todos los programas de entreno (calistenia + gimnasio)</li>
+        <li>Comunidad privada activa 24/7</li>
+        <li>Directos y Q&A semanales conmigo</li>
+        <li>Retos mensuales con premios</li>
+        <li>Guías de nutrición y hábitos</li>
+        <li>Acceso a la opción de asesoría 1-1 élite</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <div class="logo" style="font-size:22px">ISMA<b>RG</b></div><br>
+  Ismael Rachidi · Train to Perform — @ismarg<br>
+  <span style="opacity:.7">DEMO de landing page · ejemplo creado por Quantum Ventures. Textos y testimonios de muestra.</span>
+</div></footer>
+</body></html>
