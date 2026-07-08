@@ -29,15 +29,18 @@
   .beam{position:absolute;left:50%;top:0;width:1px;height:100%;background:linear-gradient(180deg,transparent,rgba(139,110,255,.6) 30%,rgba(139,110,255,.6) 70%,transparent);transform:translateX(-50%)}
   .beam-glow{position:absolute;left:50%;top:8%;width:520px;height:520px;transform:translate(-50%,0);border-radius:50%;background:radial-gradient(circle,rgba(99,66,255,.35),transparent 68%);filter:blur(20px);pointer-events:none}
   .grid-tex{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 50% 20%,#000 40%,transparent 100%);pointer-events:none}
-  .btn-w{background:#f2f3f5;color:#060607;font-weight:700;transition:transform .25s,filter .25s}
-  .btn-w:hover{transform:translateY(-2px);filter:brightness(1.05)}
-  .btn-o{border:1px solid rgba(255,255,255,.22);color:#f2f3f5;transition:background .25s,border-color .25s}
-  .btn-o:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4)}
+  .btn-w{background:linear-gradient(180deg,#fff,#e4e6ea);color:#060607;font-weight:700;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 8px 24px -8px rgba(0,0,0,.55);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,filter .25s}
+  .btn-w:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 14px 32px -10px rgba(0,0,0,.6)}
+  .btn-w:active{transform:translateY(0);filter:brightness(.97)}
+  .btn-o{border:1px solid rgba(255,255,255,.22);color:#f2f3f5;background:rgba(255,255,255,.03);backdrop-filter:blur(6px);transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s,border-color .25s}
+  .btn-o:hover{transform:translateY(-2px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.45)}
+  .btn-o:active{transform:translateY(0);background:rgba(255,255,255,.06)}
+  .btn-w:focus-visible,.btn-o:focus-visible{outline:2px solid #39ff88;outline-offset:2px}
   /* consistent button sizing scale — always paired with .btn-w or .btn-o for color */
-  .btn-lg,.btn-md,.btn-sm{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;white-space:nowrap}
-  .btn-lg{padding:1rem 2rem;font-size:.95rem;font-weight:600}
-  .btn-md{padding:.8rem 1.6rem;font-size:.86rem;font-weight:600}
-  .btn-sm{padding:.6rem 1.2rem;font-size:.82rem;font-weight:600}
+  .btn-lg,.btn-md,.btn-sm{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;white-space:nowrap;letter-spacing:-.01em}
+  .btn-lg{padding:1.05rem 2.1rem;font-size:.95rem;font-weight:700}
+  .btn-md{padding:.85rem 1.7rem;font-size:.86rem;font-weight:700}
+  .btn-sm{padding:.65rem 1.3rem;font-size:.82rem;font-weight:700}
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
@@ -58,6 +61,14 @@
   .svc-4{background:linear-gradient(135deg,#2563eb,#1e1b6e)}
   .svc-5{background:linear-gradient(135deg,#16a34a,#0a3d2a)}
   .svc-6{background:linear-gradient(135deg,#6d28d9,#1b1140)}
+  .svc-7{background:linear-gradient(135deg,#0891b2,#0e3a5f)}
+  .svc-8{background:linear-gradient(135deg,#be185d,#4a0e2e)}
+  /* guarantee banner */
+  .guarantee{border-radius:22px;padding:clamp(24px,3.5vw,36px);background:linear-gradient(135deg,rgba(57,255,136,.12),rgba(57,255,136,.02) 60%);border:1px solid rgba(57,255,136,.35);position:relative;overflow:hidden}
+  .guarantee .badge{display:inline-flex;align-items:center;gap:.5rem;background:#39ff88;color:#062015;font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+  /* imagine examples */
+  .imagine{background:#0c0d10;border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:26px}
+  .imagine .tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#39ff88}
   /* process connected steps */
   .proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:34px}
   @media(max-width:900px){.proc{grid-template-columns:1fr;gap:14px}}
@@ -142,9 +153,9 @@
     <div class="pillar p2">
       <span class="tag text-emerald-100">Para cualquier negocio que quiera empezar</span>
       <h3 class="display text-3xl font-bold mt-6">Sistemas de IA</h3>
-      <p class="text-white/75 mt-4 leading-relaxed">Instalamos agentes de IA que hacen el trabajo que te consume tiempo pero no aporta valor: dudas, seguimiento, revisiones, captación, ventas. Sin honorarios de agencia ni meses de desarrollo — el proceso ya está construido, solo lo conectamos a tus canales.</p>
+      <p class="text-white/75 mt-4 leading-relaxed">Instalamos agentes de IA que hacen el trabajo que te consume tiempo pero no aporta valor: dudas, seguimiento, revisiones, captación, ventas, contabilidad. Menos coste, más facturación, más horas libres para ti — con garantía de resultado.</p>
       <ul class="mt-6 space-y-2 text-sm text-white/80">
-        <li>◆ Planes productizados, precio cerrado desde el día 1</li>
+        <li>◆ Si no aumentas tu facturación en 2 meses, te devolvemos todo</li>
         <li>◆ Se instala sobre tus canales actuales (WhatsApp, IG, email)</li>
         <li>◆ Abierto a cualquier creador, coach o negocio que empiece</li>
       </ul>
@@ -189,12 +200,32 @@
 <!-- PILLAR 2: SISTEMAS DE IA -->
 <section id="sistemas" class="py-24 sm:py-32"><div class="wrap">
   <span class="eyebrow reveal"><span class="dot"></span>03 · Sistemas de IA</span>
-  <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-4 max-w-3xl">Imagina delegar en la IA todo lo que te quita tiempo, pero no aporta nada.</h2>
-  <p class="reveal text-mute text-lg mt-5 max-w-2xl">Las grandes empresas escalan porque tienen sistemas y equipos para cada proceso repetitivo. Nosotros instalamos ese mismo tipo de infraestructura en tu negocio — pero con agentes de IA en vez de un departamento entero. El objetivo: que tu tiempo se dedique solo a lo que de verdad tiene valor para ti.</p>
+  <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-4 max-w-3xl">Más facturación, más margen, más tiempo. En ese orden.</h2>
+  <p class="reveal text-mute text-lg mt-5 max-w-2xl">No instalamos un chatbot. Instalamos la infraestructura de una empresa grande dentro de la tuya: planificamos tus lanzamientos y tu estrategia de venta, optimizamos cómo entregas y haces seguimiento a cada cliente, ordenamos tu contabilidad y unificamos todos tus canales de captación en un solo sistema. Resultado: cada euro que inviertes rinde más, y tu tiempo se libera para lo único que nadie puede hacer por ti — crear.</p>
 
-  <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-8">Ejemplos reales para el sector fitness — el mismo principio aplica a cualquier nicho.</p>
+  <div class="guarantee reveal mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
+    <div>
+      <span class="badge">Oferta con garantía</span>
+      <p class="display text-2xl sm:text-3xl font-bold mt-4">Si no aumentas tu facturación en 2 meses, te devolvemos el 100% de lo invertido.</p>
+      <p class="text-white/70 text-sm mt-3 max-w-xl">Sin letra pequeña. Minimizamos tus costes, unificamos tu captación en un solo embudo, metemos sistemas de venta que ya funcionan en otros negocios y mejoramos tu producto y tu servicio — el riesgo lo asumimos nosotros, no tú.</p>
+    </div>
+    <a href="#contacto" class="btn-w btn-lg shrink-0">Quiero esta garantía →</a>
+  </div>
+
+  <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-14">Así se siente por dentro, en la práctica.</p>
+  <div class="grid sm:grid-cols-3 gap-5 mt-6 reveal">
+    <div class="imagine"><span class="tag">Marketing</span><p class="text-white/85 text-base mt-3 leading-relaxed">Imagina crear una secuencia entera de email marketing — bienvenida, nutrición, oferta — en <span class="text-white font-semibold">2 minutos</span>, no en 2 tardes.</p></div>
+    <div class="imagine"><span class="tag">Web</span><p class="text-white/85 text-base mt-3 leading-relaxed">Imagina cambiar el precio, la oferta o el texto de tu landing page en <span class="text-white font-semibold">segundos</span>, sin depender de nadie ni esperar a que "alguien tenga hueco".</p></div>
+    <div class="imagine"><span class="tag">Gestión</span><p class="text-white/85 text-base mt-3 leading-relaxed">Imagina preguntarle a tu agente personal, <span class="text-white font-semibold">desde el móvil</span>, un reporte de tus clientes con las tareas prioritarias de hoy — y tenerlo al instante.</p></div>
+  </div>
+
+  <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-14">Ejemplos reales para el sector fitness — el mismo principio aplica a cualquier nicho.</p>
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8 reveal">
+    <div class="svc svc-7">
+      <div class="ic">🚀</div>
+      <div><h4 class="display font-bold text-lg mt-4">Lanzamientos y estrategia de venta</h4><p class="text-white/80 text-sm mt-2">Planifica el calendario, la secuencia de oferta y el copy de cada lanzamiento — listo para ejecutar, no para improvisar.</p></div>
+    </div>
     <div class="svc svc-1">
       <div class="ic">💬</div>
       <div><h4 class="display font-bold text-lg mt-4">Resolución de dudas 24/7</h4><p class="text-white/80 text-sm mt-2">Responde al instante preguntas repetidas de nutrición, series y descanso por WhatsApp o IG — sin que tú tengas que escribir una palabra.</p></div>
@@ -219,10 +250,14 @@
       <div class="ic">💳</div>
       <div><h4 class="display font-bold text-lg mt-4">Ventas y cobros</h4><p class="text-white/80 text-sm mt-2">Hace seguimiento de propuestas enviadas, manda el enlace de pago y recupera carritos abandonados solo.</p></div>
     </div>
+    <div class="svc svc-8">
+      <div class="ic">🧾</div>
+      <div><h4 class="display font-bold text-lg mt-4">Contabilidad y reporting</h4><p class="text-white/80 text-sm mt-2">Ordena ingresos, gastos y márgenes por servicio, y te manda un resumen claro de en qué estás ganando y en qué estás perdiendo dinero.</p></div>
+    </div>
   </div>
 
   <div class="card p-8 mt-10 reveal flex flex-col sm:flex-row items-center gap-6 justify-between">
-    <p class="text-white/85 text-lg max-w-xl"><span class="text-2xl">🎁</span> ¿No sabes por dónde empezar? En 20 minutos te decimos gratis qué 1-2 agentes te devolverían más horas esta misma semana — sin compromiso.</p>
+    <p class="text-white/85 text-lg max-w-xl"><span class="text-2xl">🎁</span> ¿No sabes por dónde empezar? En 20 minutos te decimos gratis qué 1-2 agentes te devolverían más horas y más facturación esta misma semana — sin compromiso. Solo tienes que rellenar el formulario.</p>
     <a href="#contacto" class="btn-w btn-lg">Auditoría gratuita de 20 min →</a>
   </div>
 </div></section>
