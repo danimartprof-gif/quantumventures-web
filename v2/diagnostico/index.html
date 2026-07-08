@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diagnóstico Sistemas de IA — Quantum Ventures</title>
+<meta name="description" content="Cuéntanos dónde pierdes más tiempo en tu negocio y te decimos qué sistema de IA te devuelve más horas y más facturación.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/brand/qv-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background:#060607;color:#f2f3f5;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.025em}
+  .wrap{max-width:680px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#a1a6ad}
+  .eyebrow .dot{width:7px;height:7px;border-radius:99px;background:#39ff88;box-shadow:0 0 12px #39ff8899}
+  .btn-w{background:linear-gradient(180deg,#fff,#e4e6ea);color:#060607;font-weight:700;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 8px 24px -8px rgba(0,0,0,.55);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,filter .25s;border:none;cursor:pointer}
+  .btn-w:hover{transform:translateY(-2px);filter:brightness(1.04)}
+  .btn-w:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .btn-o{border:1px solid rgba(255,255,255,.22);color:#f2f3f5;background:rgba(255,255,255,.03);transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s,border-color .25s;cursor:pointer}
+  .btn-o:hover{transform:translateY(-2px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.45)}
+  .btn-lg{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;padding:1.05rem 2.1rem;font-size:.95rem;font-weight:700}
+  .card{background:#0c0d10;border:1px solid rgba(255,255,255,.09);border-radius:20px}
+  .field{width:100%;margin-top:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 16px;font-size:14px;outline:none;transition:border-color .2s}
+  .field:focus{border-color:rgba(255,255,255,.4)}
+  .label{font-size:.72rem;font-weight:600;color:#8a8f98;text-transform:uppercase;letter-spacing:.05em}
+  .opt{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .2s,background .2s}
+  .opt:hover{border-color:rgba(255,255,255,.3)}
+  .opt input{accent-color:#39ff88;width:18px;height:18px;flex:0 0 auto}
+  .opt.checked{border-color:#39ff88;background:rgba(57,255,136,.08)}
+  .bar{height:4px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+  .bar-fill{height:100%;background:linear-gradient(90deg,#22d3ee,#39ff88);border-radius:99px;transition:width .4s cubic-bezier(.16,1,.3,1)}
+  .step{display:none}
+  .step.active{display:block;animation:fadeIn .4s cubic-bezier(.16,1,.3,1)}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="wrap flex items-center h-[72px] gap-3">
+  <a href="/v2/" class="flex items-center gap-2"><img src="/assets/brand/qv-mark.svg" style="height:24px" alt="Quantum Ventures"><span class="display font-bold text-sm">QUANTUM VENTURES</span></a>
+</nav>
+
+<header class="pt-8 pb-6"><div class="wrap">
+  <span class="eyebrow"><span class="dot"></span>Diagnóstico gratuito · 2 minutos</span>
+  <h1 class="display text-3xl sm:text-4xl font-bold leading-tight mt-4">Dinos dónde pierdes más tiempo. Te decimos qué instalar primero.</h1>
+  <p class="text-[#8a8f98] mt-3 leading-relaxed">Esto no es un formulario de contacto genérico — son las preguntas que necesitamos para diseñar tu sistema antes de hablar contigo. Así, cuando nos llamemos, vamos directos a lo que importa.</p>
+</div></header>
+
+<div class="wrap mt-6">
+  <div class="bar"><div class="bar-fill" id="barFill" style="width:20%"></div></div>
+  <div class="text-xs text-[#8a8f98] mt-2" id="stepLabel">Paso 1 de 5 · Contacto</div>
+</div>
+
+<main class="wrap py-8">
+  <form id="diagForm">
+
+    <!-- STEP 1: CONTACTO -->
+    <div class="step active card p-7 sm:p-9" data-step="1">
+      <h2 class="display text-xl font-bold">¿Quién eres?</h2>
+      <div class="grid sm:grid-cols-2 gap-4 mt-6">
+        <div class="sm:col-span-2"><label class="label">Nombre *</label><input required name="nombre" type="text" class="field" placeholder="Tu nombre"></div>
+        <div><label class="label">Email *</label><input required name="email" type="email" class="field" placeholder="tu@email.com"></div>
+        <div><label class="label">Teléfono</label><input name="telefono" type="tel" class="field" placeholder="+34 600 000 000"></div>
+        <div class="sm:col-span-2"><label class="label">Negocio / Instagram</label><input name="negocio" type="text" class="field" placeholder="@tu_negocio"></div>
+      </div>
+    </div>
+
+    <!-- STEP 2: TIPO DE NEGOCIO -->
+    <div class="step card p-7 sm:p-9" data-step="2">
+      <h2 class="display text-xl font-bold">¿Cómo es tu negocio hoy?</h2>
+      <div class="grid gap-3 mt-6" id="tipoNegocioOpts">
+        <label class="opt"><input type="radio" name="tipo_negocio" value="coach-1-1"><span>Coach 1:1</span></label>
+        <label class="opt"><input type="radio" name="tipo_negocio" value="coach-grupal"><span>Coach grupal / comunidad</span></label>
+        <label class="opt"><input type="radio" name="tipo_negocio" value="agencia"><span>Agencia</span></label>
+        <label class="opt"><input type="radio" name="tipo_negocio" value="infoproductos"><span>Infoproductos</span></label>
+        <label class="opt"><input type="radio" name="tipo_negocio" value="otro"><span>Otro</span></label>
+      </div>
+      <div class="mt-6"><label class="label">Clientes activos ahora mismo</label>
+        <select name="num_clientes" class="field">
+          <option value="">Selecciona…</option>
+          <option value="1-10">1-10</option>
+          <option value="11-30">11-30</option>
+          <option value="31-100">31-100</option>
+          <option value="100+">100+</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- STEP 3: NUMEROS -->
+    <div class="step card p-7 sm:p-9" data-step="3">
+      <h2 class="display text-xl font-bold">Los números que nos ayudan a diseñar tu sistema</h2>
+      <div class="grid gap-4 mt-6">
+        <div><label class="label">Facturación mensual aproximada</label>
+          <select name="facturacion_mensual" class="field">
+            <option value="">Selecciona…</option>
+            <option value="<2.000€">Menos de 2.000€</option>
+            <option value="2.000-5.000€">2.000-5.000€</option>
+            <option value="5.000-15.000€">5.000-15.000€</option>
+            <option value="15.000-40.000€">15.000-40.000€</option>
+            <option value="40.000€+">Más de 40.000€</option>
+          </select>
+        </div>
+        <div><label class="label">Horas/semana en tareas operativas (no en crear/vender)</label>
+          <select name="horas_operativas" class="field">
+            <option value="">Selecciona…</option>
+            <option value="<5h">Menos de 5h</option>
+            <option value="5-15h">5-15h</option>
+            <option value="15-30h">15-30h</option>
+            <option value="30h+">Más de 30h</option>
+          </select>
+        </div>
+        <div><label class="label">¿Qué herramientas usas hoy?</label><input name="herramientas_actuales" type="text" class="field" placeholder="Ej: WhatsApp Business, Excel, ningún CRM…"></div>
+      </div>
+    </div>
+
+    <!-- STEP 4: PUNTOS DE DOLOR -->
+    <div class="step card p-7 sm:p-9" data-step="4">
+      <h2 class="display text-xl font-bold">¿Dónde se te va más el tiempo? (marca todas las que apliquen)</h2>
+      <div class="grid gap-3 mt-6" id="doloresOpts">
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="dudas"><span>Dudas repetitivas de clientes</span></label>
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="seguimiento"><span>Seguimiento / check-ins</span></label>
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="onboarding"><span>Onboarding de clientes nuevos</span></label>
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="contenido"><span>Creación de contenido</span></label>
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="captacion"><span>Captación de leads</span></label>
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="ventas"><span>Ventas / cierre</span></label>
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="contabilidad"><span>Contabilidad y facturación</span></label>
+        <label class="opt"><input type="checkbox" name="puntos_dolor" value="equipo"><span>Gestión de equipo</span></label>
+      </div>
+    </div>
+
+    <!-- STEP 5: OBJETIVO + URGENCIA -->
+    <div class="step card p-7 sm:p-9" data-step="5">
+      <h2 class="display text-xl font-bold">Última pregunta</h2>
+      <div class="mt-6"><label class="label">¿Cuál es tu objetivo principal ahora mismo?</label>
+        <textarea name="objetivo" rows="3" class="field resize-none" placeholder="Ej: quiero dejar de contestar los mismos mensajes 20 veces al día"></textarea>
+      </div>
+      <div class="mt-6"><label class="label">¿Cuándo quieres empezar?</label>
+        <div class="grid gap-3 mt-2">
+          <label class="opt"><input type="radio" name="urgencia" value="ya"><span>Ya mismo</span></label>
+          <label class="opt"><input type="radio" name="urgencia" value="mes"><span>En el próximo mes</span></label>
+          <label class="opt"><input type="radio" name="urgencia" value="explorando"><span>Solo estoy explorando</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between mt-8">
+      <button type="button" id="backBtn" class="btn-o btn-lg" style="visibility:hidden">← Atrás</button>
+      <button type="button" id="nextBtn" class="btn-w btn-lg">Siguiente →</button>
+      <button type="submit" id="submitBtn" class="btn-w btn-lg" style="display:none">Enviar diagnóstico →</button>
+    </div>
+    <p id="formMsg" class="text-sm mt-4 text-center hidden"></p>
+  </form>
+</main>
+
+<script>
+const TOTAL = 5;
+let current = 1;
+const steps = document.querySelectorAll('.step');
+const barFill = document.getElementById('barFill');
+const stepLabel = document.getElementById('stepLabel');
+const backBtn = document.getElementById('backBtn');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+const labels = {1:'Contacto',2:'Tu negocio',3:'Números',4:'Puntos de dolor',5:'Objetivo'};
+
+document.querySelectorAll('.opt input').forEach(inp => {
+  inp.addEventListener('change', () => {
+    const opt = inp.closest('.opt');
+    if (inp.type === 'radio') {
+      opt.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('checked'));
+    }
+    opt.classList.toggle('checked', inp.checked);
+  });
+});
+
+function showStep(n) {
+  steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+  barFill.style.width = (n / TOTAL * 100) + '%';
+  stepLabel.textContent = `Paso ${n} de ${TOTAL} · ${labels[n]}`;
+  backBtn.style.visibility = n === 1 ? 'hidden' : 'visible';
+  nextBtn.style.display = n === TOTAL ? 'none' : 'inline-flex';
+  submitBtn.style.display = n === TOTAL ? 'inline-flex' : 'none';
+}
+
+function validateStep(n) {
+  const stepEl = document.querySelector(`.step[data-step="${n}"]`);
+  const required = stepEl.querySelectorAll('[required]');
+  for (const el of required) { if (!el.value.trim()) { el.focus(); return false; } }
+  return true;
+}
+
+nextBtn.addEventListener('click', () => {
+  if (!validateStep(current)) return;
+  current = Math.min(TOTAL, current + 1);
+  showStep(current);
+});
+backBtn.addEventListener('click', () => {
+  current = Math.max(1, current - 1);
+  showStep(current);
+});
+
+const form = document.getElementById('diagForm');
+const formMsg = document.getElementById('formMsg');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!validateStep(current)) return;
+  const fd = new FormData(form);
+  const data = {};
+  for (const [k, v] of fd.entries()) {
+    if (k === 'puntos_dolor') { (data[k] = data[k] || []).push(v); }
+    else data[k] = v;
+  }
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Enviando…';
+  formMsg.classList.add('hidden');
+  try {
+    const r = await fetch('https://qv-audit.128.140.44.162.sslip.io/api/diagnostico-sistemas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!r.ok) throw new Error('bad status');
+    form.innerHTML = '<div class="card p-9 text-center"><div class="text-4xl mb-4">✓</div><h2 class="display text-2xl font-bold">Diagnóstico recibido</h2><p class="text-[#8a8f98] mt-3">Te contactamos en menos de 24h con lo que hemos visto — y qué sistema instalaríamos primero en tu caso.</p></div>';
+  } catch (err) {
+    formMsg.textContent = 'No se pudo enviar. Escríbenos directo a hola@quantumventures.io';
+    formMsg.className = 'text-sm mt-4 text-center text-red-400';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar diagnóstico →';
+  }
+});
+</script>
+</body>
+</html>
