@@ -81,6 +81,13 @@
   .mockup-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
   .mockup-stats .n{font-family:'Space Grotesk';font-weight:700;font-size:1.5rem;color:#39ff88}
   .mockup-stats .l{font-size:.66rem;color:#8a8f98;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+  /* dashboard mockup */
+  .dash-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px}
+  .dash-card .dl{font-size:.64rem;color:#8a8f98;text-transform:uppercase;letter-spacing:.04em}
+  .dash-card .dv{font-family:'Space Grotesk';font-weight:700;font-size:1.35rem;margin-top:6px;color:#f2f3f5}
+  .dash-card .dd{font-size:.72rem;margin-top:4px;font-weight:600;color:#39ff88}
+  .dash-chart{display:flex;align-items:flex-end;gap:8px;height:80px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}
+  .dash-chart .bar{flex:1;background:linear-gradient(180deg,#22d3ee,#6366f1);border-radius:6px 6px 2px 2px;opacity:.85}
   /* process connected steps */
   .proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:34px}
   @media(max-width:900px){.proc{grid-template-columns:1fr;gap:14px}}
@@ -256,6 +263,23 @@
     <div class="imagine"><span class="tag" data-i18n="sistemas.imagine1.tag">Marketing</span><p class="text-white/85 text-base mt-3 leading-relaxed" data-i18n="sistemas.imagine1.p">Una secuencia de email completa en <span class="text-white font-semibold">2 minutos</span>, no en 2 tardes.</p></div>
     <div class="imagine"><span class="tag" data-i18n="sistemas.imagine2.tag">Web</span><p class="text-white/85 text-base mt-3 leading-relaxed" data-i18n="sistemas.imagine2.p">Cambia el precio o el copy de tu landing en <span class="text-white font-semibold">segundos</span>, sin esperar a nadie.</p></div>
     <div class="imagine"><span class="tag" data-i18n="sistemas.imagine3.tag">Gestión</span><p class="text-white/85 text-base mt-3 leading-relaxed" data-i18n="sistemas.imagine3.p">Pídele a tu agente, <span class="text-white font-semibold">desde el móvil</span>, qué clientes priorizar hoy — al instante.</p></div>
+  </div>
+
+  <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-14" data-i18n="dash.kicker">Todo tu negocio, en un panel — con datos que antes no medías.</p>
+  <div class="mockup-frame reveal mt-6 max-w-2xl">
+    <div class="mockup-bar"><span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span><span class="who" data-i18n="dash.who">Panel de control · Tu negocio</span></div>
+    <div class="mockup-body">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="dash-card"><div class="dl" data-i18n="dash.mrr">Ingresos recurrentes</div><div class="dv">€8.420</div><div class="dd">+18%</div></div>
+        <div class="dash-card"><div class="dl" data-i18n="dash.churn">Bajas este mes</div><div class="dv">2</div><div class="dd">-40%</div></div>
+        <div class="dash-card"><div class="dl" data-i18n="dash.leads">Leads nuevos</div><div class="dv">37</div><div class="dd">+12</div></div>
+        <div class="dash-card"><div class="dl" data-i18n="dash.resp">Tiempo de respuesta</div><div class="dv">8s</div><div class="dd">-91%</div></div>
+      </div>
+      <div class="dash-chart">
+        <div class="bar" style="height:38%"></div><div class="bar" style="height:52%"></div><div class="bar" style="height:46%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:64%"></div><div class="bar" style="height:84%"></div><div class="bar" style="height:100%"></div>
+      </div>
+      <p class="text-xs text-mute mt-4" data-i18n="dash.caption">Variables que ahora ves — antes no las medías.</p>
+    </div>
   </div>
 
   <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-14" data-i18n="sistemas.examples.kicker">Ejemplos reales para el sector fitness — el mismo principio aplica a cualquier nicho.</p>
@@ -482,6 +506,7 @@ const I18N = {
     "sistemas.imagine1.tag":"Marketing","sistemas.imagine1.p":"Una secuencia de email completa en <span class=\"text-white font-semibold\">2 minutos</span>, no en 2 tardes.",
     "sistemas.imagine2.tag":"Web","sistemas.imagine2.p":"Cambia el precio o el copy de tu landing en <span class=\"text-white font-semibold\">segundos</span>, sin esperar a nadie.",
     "sistemas.imagine3.tag":"Gestión","sistemas.imagine3.p":"Pídele a tu agente, <span class=\"text-white font-semibold\">desde el móvil</span>, qué clientes priorizar hoy — al instante.",
+    "dash.kicker":"Todo tu negocio, en un panel — con datos que antes no medías.","dash.who":"Panel de control · Tu negocio","dash.mrr":"Ingresos recurrentes","dash.churn":"Bajas este mes","dash.leads":"Leads nuevos","dash.resp":"Tiempo de respuesta","dash.caption":"Variables que ahora ves — antes no las medías.",
     "sistemas.examples.kicker":"Ejemplos reales para el sector fitness — el mismo principio aplica a cualquier nicho.",
     "svc7.h4":"Lanzamientos y estrategia de venta","svc7.p":"Calendario, oferta y copy listos para ejecutar, no para improvisar.",
     "svc1.h4":"Resolución de dudas 24/7","svc1.p":"Responde dudas repetidas por WhatsApp o IG al instante.",
@@ -545,6 +570,7 @@ const I18N = {
     "sistemas.imagine1.tag":"Marketing","sistemas.imagine1.p":"A full email sequence in <span class=\"text-white font-semibold\">2 minutes</span>, not 2 afternoons.",
     "sistemas.imagine2.tag":"Web","sistemas.imagine2.p":"Change the price or copy on your landing in <span class=\"text-white font-semibold\">seconds</span>, without waiting on anyone.",
     "sistemas.imagine3.tag":"Management","sistemas.imagine3.p":"Ask your agent, <span class=\"text-white font-semibold\">from your phone</span>, which clients to prioritize today — instantly.",
+    "dash.kicker":"Your whole business, in one dashboard — with data you never tracked before.","dash.who":"Dashboard · Your business","dash.mrr":"Recurring revenue","dash.churn":"Churn this month","dash.leads":"New leads","dash.resp":"Response time","dash.caption":"Variables you can see now — you never measured before.",
     "sistemas.examples.kicker":"Real examples for the fitness sector — the same principle applies to any niche.",
     "svc7.h4":"Launches and sales strategy","svc7.p":"Calendar, offer and copy ready to execute, not improvise.",
     "svc1.h4":"24/7 FAQ resolution","svc1.p":"Answers repeated questions over WhatsApp or IG instantly.",
@@ -608,6 +634,7 @@ const I18N = {
     "sistemas.imagine1.tag":"Маркетинг","sistemas.imagine1.p":"Целая email-серия за <span class=\"text-white font-semibold\">2 минуты</span>, а не за 2 вечера.",
     "sistemas.imagine2.tag":"Сайт","sistemas.imagine2.p":"Меняете цену или текст на лендинге за <span class=\"text-white font-semibold\">секунды</span>, не дожидаясь никого.",
     "sistemas.imagine3.tag":"Управление","sistemas.imagine3.p":"Спрашиваете агента <span class=\"text-white font-semibold\">с телефона</span>, каких клиентов приоритизировать сегодня — мгновенно.",
+    "dash.kicker":"Весь ваш бизнес на одной панели — с данными, которые вы раньше не отслеживали.","dash.who":"Панель управления · Ваш бизнес","dash.mrr":"Регулярная выручка","dash.churn":"Отток за месяц","dash.leads":"Новые лиды","dash.resp":"Время ответа","dash.caption":"Показатели, которые вы теперь видите — раньше вы их не измеряли.",
     "sistemas.examples.kicker":"Реальные примеры для фитнес-ниши — тот же принцип применим к любой нише.",
     "svc7.h4":"Запуски и стратегия продаж","svc7.p":"Календарь, предложение и текст готовы к исполнению, не к импровизации.",
     "svc1.h4":"Ответы на вопросы 24/7","svc1.p":"Мгновенно отвечает на повторяющиеся вопросы в WhatsApp или IG.",
