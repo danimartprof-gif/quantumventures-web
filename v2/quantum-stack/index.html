@@ -107,13 +107,14 @@
   .dash-chart .bar{flex:1;background:var(--accent);border-radius:4px 4px 2px 2px;opacity:.9}
   .dash-leads{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:12px;padding:14px}
   .dash-leads .t{font-size:.64rem;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
-  .dash-lead{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)}
+  .dash-lead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;padding:9px 0;border-top:1px solid var(--line)}
   .dash-lead:first-of-type{border-top:none;padding-top:0}
-  .dash-lead .nm{font-size:.8rem;color:var(--fg);font-weight:600}
+  .dash-lead .nm{font-size:.74rem;line-height:1.35;color:var(--fg);font-weight:600;flex:1 1 130px;min-width:0}
   .dash-lead .tg-pill{font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:6px;text-transform:uppercase;flex:0 0 auto;background:rgba(255,255,255,.06);color:var(--mute);border:1px solid var(--line)}
   .dash-lead .tg-pill.new{background:var(--accent-dim);color:var(--accent);border-color:transparent}
   .dash-lead .tg-pill.qual{background:rgba(255,255,255,.08);color:var(--fg)}
   .dash-lead .tg-pill.client{background:rgba(255,255,255,.06);color:var(--mute)}
+  .dash-lead .tg-pill.alert{background:rgba(239,68,68,.15);color:#f87171;border-color:transparent}
   .slogan-line{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.02em}
   /* process connected steps */
   .proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:34px}
@@ -127,6 +128,21 @@
   .tier .price{font-family:'Inter';font-weight:800;font-size:2.5rem}
   .tier li{display:flex;gap:10px;font-size:.92rem;color:#c9cdd3;padding:7px 0}
   .tier li:before{content:"✓";color:var(--accent);font-weight:700}
+  /* storytelling path — two-chapter narrative CTA, distinct from card/pillar/svc patterns */
+  .story-path{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:start}
+  @media(max-width:900px){.story-path{grid-template-columns:1fr}}
+  .story-chapter{padding:4px 6px}
+  .story-kicker{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .story-divider{display:flex;align-items:center;justify-content:center;position:relative;padding:0 32px;min-width:64px}
+  .story-divider:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--line-strong)}
+  .story-divider span{position:relative;z-index:1;background:var(--bg);border:1px solid var(--line-strong);color:var(--mute);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:8px 10px;border-radius:99px}
+  @media(max-width:900px){.story-divider{padding:26px 0;min-width:0}.story-divider:before{top:50%;bottom:auto;left:0;right:0;width:auto;height:1px}}
+  .story-link{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.05rem;color:var(--fg);position:relative;margin-top:1.9rem;padding-bottom:4px}
+  .story-link .arrow{transition:transform .3s cubic-bezier(.16,1,.3,1);color:var(--accent)}
+  .story-link:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line-strong);transform:scaleX(.28);transform-origin:left;transition:transform .35s cubic-bezier(.16,1,.3,1),background .3s}
+  .story-link:hover{color:var(--accent)}
+  .story-link:hover:after{transform:scaleX(1);background:var(--accent)}
+  .story-link:hover .arrow{transform:translateX(6px)}
   /* toast */
   #toast{position:fixed;left:20px;bottom:20px;z-index:60;background:var(--panel);border:1px solid var(--line-strong);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;max-width:320px;box-shadow:0 20px 50px rgba(0,0,0,.6);transform:translateY(140%);transition:transform .5s cubic-bezier(.16,1,.3,1)}
   #toast.show{transform:translateY(0)}
@@ -225,28 +241,28 @@
     </div>
   </div>
 
-  <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-14" data-i18n="dash.kicker">Todo tu negocio, en un panel — con datos que antes no medías.</p>
+  <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-14" data-i18n="dash.kicker">Tu perfil de creador, en un panel — con datos que antes no medías.</p>
   <div class="mockup-frame reveal mt-6 max-w-4xl">
-    <div class="mockup-bar"><span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span><span class="who" data-i18n="dash.who">Panel de control · Tu negocio</span></div>
+    <div class="mockup-bar"><span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span><span class="who" data-i18n="dash.who">Panel de control · Perfil de influencer</span></div>
     <div class="mockup-body">
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div class="dash-card"><div class="dl" data-i18n="dash.mrr">Ingresos recurrentes</div><div class="dv">€8.420</div><div class="dd">+18%</div></div>
-        <div class="dash-card"><div class="dl" data-i18n="dash.churn">Bajas este mes</div><div class="dv">2</div><div class="dd">-40%</div></div>
-        <div class="dash-card"><div class="dl" data-i18n="dash.leads">Leads nuevos</div><div class="dv">37</div><div class="dd">+12</div></div>
-        <div class="dash-card"><div class="dl" data-i18n="dash.resp">Tiempo de respuesta</div><div class="dv">8s</div><div class="dd">-91%</div></div>
+        <div class="dash-card"><div class="dl" data-i18n="dash.followers">Nuevos seguidores</div><div class="dv">+1.240</div><div class="dd">+8%</div></div>
+        <div class="dash-card"><div class="dl" data-i18n="dash.unfollows">Dejaron de seguir</div><div class="dv">86</div><div class="dd">-15%</div></div>
+        <div class="dash-card"><div class="dl" data-i18n="dash.engagement">Engagement medio</div><div class="dv">6,8%</div><div class="dd">+1,2%</div></div>
+        <div class="dash-card"><div class="dl" data-i18n="dash.roas">ROAS en anuncios</div><div class="dv">4,2x</div><div class="dd">+0,6</div></div>
       </div>
       <div class="grid lg:grid-cols-[1fr_240px] gap-5 mt-5">
         <div class="dash-chart">
           <div class="bar" style="height:38%"></div><div class="bar" style="height:52%"></div><div class="bar" style="height:46%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:64%"></div><div class="bar" style="height:84%"></div><div class="bar" style="height:100%"></div>
         </div>
         <div class="dash-leads">
-          <div class="t" data-i18n="dash.leadsTitle">Leads recientes</div>
-          <div class="dash-lead"><span class="nm">María G.</span><span class="tg-pill new" data-i18n="dash.tagNew">Nuevo</span></div>
-          <div class="dash-lead"><span class="nm">Jordan R.</span><span class="tg-pill qual" data-i18n="dash.tagQual">Cualif.</span></div>
-          <div class="dash-lead"><span class="nm">Sofía B.</span><span class="tg-pill client" data-i18n="dash.tagClient">Cliente</span></div>
+          <div class="t" data-i18n="dash.activityTitle">Actividad reciente</div>
+          <div class="dash-lead"><span class="nm" data-i18n="dash.act1">Colaboración de marca cerrada</span><span class="tg-pill new" data-i18n="dash.tagNew">Nuevo</span></div>
+          <div class="dash-lead"><span class="nm" data-i18n="dash.act2">Post viral: +12k likes</span><span class="tg-pill qual" data-i18n="dash.tagFeatured">Destacado</span></div>
+          <div class="dash-lead"><span class="nm" data-i18n="dash.act3">3 comentarios negativos detectados</span><span class="tg-pill alert" data-i18n="dash.tagAlert">Alerta</span></div>
         </div>
       </div>
-      <p class="text-xs text-mute mt-4" data-i18n="dash.caption">Variables que ahora ves — antes no las medías.</p>
+      <p class="text-xs text-mute mt-4" data-i18n="dash.caption">Crecimiento de seguidores — últimas 7 semanas.</p>
     </div>
   </div>
 
@@ -360,7 +376,6 @@
   <div class="grid sm:grid-cols-4 gap-10">
     <div class="sm:col-span-2">
       <img src="/assets/brand/qv-lockup.png" style="height:28px" alt="Quantum Ventures">
-      <p class="text-white/70 text-sm mt-4 max-w-xs" data-i18n="footer.tagline">Venture builder y sistemas de IA para creadores. De la audiencia al imperio, con el motor que corresponda a cada etapa.</p>
     </div>
     <div>
       <div class="text-xs font-bold uppercase tracking-widest text-white/60" data-i18n="footer.negocio">Negocio</div>
@@ -431,8 +446,9 @@ const I18N = {
     "sistemas.g.p":"Sin letra pequeña. No pagas por promesas, pagas cuando te funciona — el riesgo es nuestro. Tú no arriesgas nada.","sistemas.g.cta":"Quiero esta garantía →",
     "sistemas.mobile.kicker":"Todo tu negocio, en el bolsillo.","sistemas.mobile.p":"Email, calendarios, tareas, campañas, datos de clientes, alertas, feedback, revisiones — todo, en un mismo sitio, desde el móvil. Sin abrir seis apps distintas para saber cómo va tu negocio hoy.",
     "sistemas.mobile.t1":"Email","sistemas.mobile.t2":"Calendarios","sistemas.mobile.t3":"Tareas","sistemas.mobile.t4":"Campañas","sistemas.mobile.t5":"Datos de clientes","sistemas.mobile.t6":"Alertas","sistemas.mobile.t7":"Feedback","sistemas.mobile.t8":"Revisiones",
-    "dash.kicker":"Todo tu negocio, en un panel — con datos que antes no medías.","dash.who":"Panel de control · Tu negocio","dash.mrr":"Ingresos recurrentes","dash.churn":"Bajas este mes","dash.leads":"Leads nuevos","dash.resp":"Tiempo de respuesta","dash.caption":"Variables que ahora ves — antes no las medías.",
-    "dash.leadsTitle":"Leads recientes","dash.tagNew":"Nuevo","dash.tagQual":"Cualif.","dash.tagClient":"Cliente",
+    "dash.kicker":"Tu perfil de creador, en un panel — con datos que antes no medías.","dash.who":"Panel de control · Perfil de influencer","dash.followers":"Nuevos seguidores","dash.unfollows":"Dejaron de seguir","dash.engagement":"Engagement medio","dash.roas":"ROAS en anuncios","dash.caption":"Crecimiento de seguidores — últimas 7 semanas.",
+    "dash.activityTitle":"Actividad reciente","dash.tagNew":"Nuevo","dash.tagFeatured":"Destacado","dash.tagAlert":"Alerta",
+    "dash.act1":"Colaboración de marca cerrada","dash.act2":"Post viral: +12k likes","dash.act3":"3 comentarios negativos detectados",
     "tg.kicker":"Tu panel, también desde tu propio bot de Telegram.","tg.who":"Tu bot · Telegram","tg.msg1":"Dame un reporte de mis clientes esta semana","tg.msg2":"📊 12 nuevos · 3 en riesgo de baja · MRR +18%. Panel completo aquí 👉 tupanel.io","tg.msg3":"¿Quién está en riesgo?","tg.msg4":"Ana, Marco y Julia — ya les mandé una oferta de retención. Marco ya confirmó que se queda 🎉",
     "sistemas.examples.kicker":"Ejemplos reales — funcionan igual para un coach online que para una agencia que escala.",
     "fit.yes.h3":"Esto es para ti si...","fit.yes.li1":"◆ Eres coach online (fitness, negocio, idiomas, lo que sea) y contestas las mismas preguntas cada día","fit.yes.li2":"◆ Diriges una agencia y la captación u onboarding te quita más tiempo del que factura","fit.yes.li3":"◆ Tienes clientes recurrentes y no sabes quién está a punto de irse hasta que ya se ha ido","fit.yes.li4":"◆ Facturas ya de forma estable y quieres escalar sin montar un equipo entero",
@@ -469,6 +485,9 @@ const I18N = {
     "toast.name":"Un coach online","toast.action":"activó su Agente de Retención hace 6 min",
     "value.eyebrow":"Nuestro stack tecnológico","value.h2":"El motor detrás de negocios que escalan sin caos.",
     "value.p":"Automatizamos lo repetitivo, instalamos IA donde antes había horas manuales, y ordenamos cada proceso para que tu negocio crezca sin que tengas que estar en todas partes a la vez.",
+    "story.eyebrow":"Dos caminos, un mismo destino","story.or":"o",
+    "story.c1.h3":"Construimos contigo","story.c1.p":"No lanzas sola. Ponemos nuestro equipo, nuestro capital y nuestro riesgo a tu servicio, y construimos la empresa a tu alrededor mientras tú sigues creando. Solo aceptamos a quien seleccionamos — aunque siempre puedes aplicar.","story.c1.cta":"Conoce el camino Venture",
+    "story.c2.h3":"Te damos las llaves","story.c2.p":"Instalamos el sistema completo de IA en tu negocio y te enseñamos a operarlo tú mismo, al 100% de su capacidad. Abierto a cualquiera que esté listo para escalar ya.","story.c2.cta":"Conoce el camino Stack",
     "value.c1.h4":"Automatizaciones","value.c1.p":"Procesos que hoy haces a mano, funcionando solos — ventas, seguimiento, administración.",
     "value.c2.h4":"Inteligencia Artificial","value.c2.p":"Agentes que atienden, cualifican y resuelven 24/7, sin que tú estés detrás de la pantalla.",
     "value.c3.h4":"Organización","value.c3.p":"Un único sistema para clientes, tareas y datos — no seis herramientas sueltas que nadie revisa.",
@@ -522,8 +541,9 @@ const I18N = {
     "sistemas.g.p":"No fine print. You don't pay for promises, you pay when it works — the risk is ours. You risk nothing.","sistemas.g.cta":"I want this guarantee →",
     "sistemas.mobile.kicker":"Your whole business, in your pocket.","sistemas.mobile.p":"Email, calendars, tasks, campaigns, client data, alerts, feedback, reviews — all in one place, from your phone. No opening six different apps to know how your business is doing today.",
     "sistemas.mobile.t1":"Email","sistemas.mobile.t2":"Calendars","sistemas.mobile.t3":"Tasks","sistemas.mobile.t4":"Campaigns","sistemas.mobile.t5":"Client data","sistemas.mobile.t6":"Alerts","sistemas.mobile.t7":"Feedback","sistemas.mobile.t8":"Reviews",
-    "dash.kicker":"Your whole business, in one dashboard — with data you never tracked before.","dash.who":"Dashboard · Your business","dash.mrr":"Recurring revenue","dash.churn":"Churn this month","dash.leads":"New leads","dash.resp":"Response time","dash.caption":"Variables you can see now — you never measured before.",
-    "dash.leadsTitle":"Recent leads","dash.tagNew":"New","dash.tagQual":"Qualified","dash.tagClient":"Client",
+    "dash.kicker":"Your creator profile, in one dashboard — with data you never tracked before.","dash.who":"Dashboard · Influencer profile","dash.followers":"New followers","dash.unfollows":"Unfollows","dash.engagement":"Avg. engagement","dash.roas":"Ad ROAS","dash.caption":"Follower growth — last 7 weeks.",
+    "dash.activityTitle":"Recent activity","dash.tagNew":"New","dash.tagFeatured":"Featured","dash.tagAlert":"Alert",
+    "dash.act1":"Brand collab closed","dash.act2":"Viral post: +12k likes","dash.act3":"3 negative comments flagged",
     "tg.kicker":"Your dashboard, also from your own Telegram bot.","tg.who":"Your bot · Telegram","tg.msg1":"Give me a report on my clients this week","tg.msg2":"📊 12 new · 3 at churn risk · MRR +18%. Full dashboard here 👉 tupanel.io","tg.msg3":"Who's at risk?","tg.msg4":"Ana, Marco and Julia — I already sent them a retention offer. Marco already confirmed he's staying 🎉",
     "sistemas.examples.kicker":"Real examples — the same for an online coach as for an agency scaling up.",
     "fit.yes.h3":"This is for you if...","fit.yes.li1":"◆ You're an online coach (fitness, business, languages, anything) answering the same questions every day","fit.yes.li2":"◆ You run an agency and lead gen or onboarding eats more time than it bills","fit.yes.li3":"◆ You have recurring clients and don't know who's about to leave until they're gone","fit.yes.li4":"◆ You already bill steadily and want to scale without building a whole team",
@@ -560,6 +580,9 @@ const I18N = {
     "toast.name":"An online coach","toast.action":"activated their Retention Agent 6 min ago",
     "value.eyebrow":"Our technology stack","value.h2":"The engine behind businesses that scale without chaos.",
     "value.p":"We automate the repetitive, install AI where manual hours used to go, and bring order to every process so your business grows without you having to be everywhere at once.",
+    "story.eyebrow":"Two paths, one destination","story.or":"or",
+    "story.c1.h3":"We build with you","story.c1.p":"You don't launch alone. We put our team, our capital and our risk to work, and build the company around you while you keep creating. We only take who we select — though you can always apply.","story.c1.cta":"See the Venture path",
+    "story.c2.h3":"We hand you the keys","story.c2.p":"We install the complete AI system in your business and teach you to run it yourself, at full capacity. Open to anyone ready to scale now.","story.c2.cta":"See the Stack path",
     "value.c1.h4":"Automations","value.c1.p":"Processes you handle by hand today, running on their own — sales, follow-up, admin.",
     "value.c2.h4":"Artificial Intelligence","value.c2.p":"Agents that respond, qualify and resolve 24/7, without you behind the screen.",
     "value.c3.h4":"Organization","value.c3.p":"One single system for clients, tasks and data — not six scattered tools nobody checks.",
@@ -613,8 +636,9 @@ const I18N = {
     "sistemas.g.p":"Без мелкого шрифта. Вы не платите за обещания, вы платите, когда это работает — риск берём на себя мы. Вы не рискуете ничем.","sistemas.g.cta":"Хочу эту гарантию →",
     "sistemas.mobile.kicker":"Весь ваш бизнес — в кармане.","sistemas.mobile.p":"Email, календари, задачи, кампании, данные клиентов, уведомления, обратная связь, отчёты — всё в одном месте, с телефона. Без открытия шести разных приложений, чтобы узнать, как идут дела сегодня.",
     "sistemas.mobile.t1":"Email","sistemas.mobile.t2":"Календари","sistemas.mobile.t3":"Задачи","sistemas.mobile.t4":"Кампании","sistemas.mobile.t5":"Данные клиентов","sistemas.mobile.t6":"Уведомления","sistemas.mobile.t7":"Обратная связь","sistemas.mobile.t8":"Отчёты",
-    "dash.kicker":"Весь ваш бизнес на одной панели — с данными, которые вы раньше не отслеживали.","dash.who":"Панель управления · Ваш бизнес","dash.mrr":"Регулярная выручка","dash.churn":"Отток за месяц","dash.leads":"Новые лиды","dash.resp":"Время ответа","dash.caption":"Показатели, которые вы теперь видите — раньше вы их не измеряли.",
-    "dash.leadsTitle":"Недавние лиды","dash.tagNew":"Новый","dash.tagQual":"Квалиф.","dash.tagClient":"Клиент",
+    "dash.kicker":"Ваш профиль автора на одной панели — с данными, которые вы раньше не отслеживали.","dash.who":"Панель управления · Профиль инфлюенсера","dash.followers":"Новые подписчики","dash.unfollows":"Отписки","dash.engagement":"Средняя вовлечённость","dash.roas":"ROAS по рекламе","dash.caption":"Рост подписчиков — последние 7 недель.",
+    "dash.activityTitle":"Недавняя активность","dash.tagNew":"Новый","dash.tagFeatured":"В топе","dash.tagAlert":"Внимание",
+    "dash.act1":"Заключена коллаборация с брендом","dash.act2":"Вирусный пост: +12k лайков","dash.act3":"Обнаружено 3 негативных комментария",
     "tg.kicker":"Ваша панель — и в собственном Telegram-боте.","tg.who":"Ваш бот · Telegram","tg.msg1":"Дай отчёт по клиентам за эту неделю","tg.msg2":"📊 12 новых · 3 в зоне риска оттока · MRR +18%. Полная панель здесь 👉 tupanel.io","tg.msg3":"Кто в зоне риска?","tg.msg4":"Ана, Марко и Юлия — я уже отправил им предложение об удержании. Марко уже подтвердил, что остаётся 🎉",
     "sistemas.examples.kicker":"Реальные примеры — работает одинаково для онлайн-коуча и для агентства, которое масштабируется.",
     "fit.yes.h3":"Это для вас, если...","fit.yes.li1":"◆ Вы онлайн-коуч (фитнес, бизнес, языки — что угодно) и отвечаете на одни и те же вопросы каждый день","fit.yes.li2":"◆ Вы ведёте агентство, и привлечение или онбординг клиентов съедают больше времени, чем приносят денег","fit.yes.li3":"◆ У вас есть постоянные клиенты, и вы не знаете, кто вот-вот уйдёт, пока он не ушёл","fit.yes.li4":"◆ У вас уже стабильный доход, и вы хотите расти без найма целой команды",
@@ -651,6 +675,9 @@ const I18N = {
     "toast.name":"Онлайн-коуч","toast.action":"подключил своего агента удержания 6 минут назад",
     "value.eyebrow":"Наш технологический стек","value.h2":"Двигатель для бизнеса, который растёт без хаоса.",
     "value.p":"Мы автоматизируем рутину, внедряем ИИ там, где раньше уходили часы ручного труда, и наводим порядок в каждом процессе, чтобы ваш бизнес рос без необходимости быть везде одновременно.",
+    "story.eyebrow":"Два пути, одна цель","story.or":"или",
+    "story.c1.h3":"Мы строим вместе с вами","story.c1.p":"Вы не начинаете в одиночку. Мы вкладываем свою команду, капитал и риск и строим компанию вокруг вас, пока вы продолжаете создавать. Мы берём только тех, кого выбираем сами — но вы всегда можете подать заявку.","story.c1.cta":"Узнать про путь Venture",
+    "story.c2.h3":"Мы передаём вам ключи","story.c2.p":"Мы устанавливаем полную ИИ-систему в вашем бизнесе и учим вас управлять ею самостоятельно, на полную мощность. Открыто для всех, кто готов расти уже сейчас.","story.c2.cta":"Узнать про путь Stack",
     "value.c1.h4":"Автоматизация","value.c1.p":"Процессы, которые сегодня вы делаете вручную, теперь работают сами — продажи, сопровождение, администрирование.",
     "value.c2.h4":"Искусственный интеллект","value.c2.p":"Агенты отвечают, квалифицируют и решают вопросы 24/7, без вашего постоянного участия.",
     "value.c3.h4":"Организация","value.c3.p":"Единая система для клиентов, задач и данных — а не шесть разрозненных инструментов, которые никто не проверяет.",
