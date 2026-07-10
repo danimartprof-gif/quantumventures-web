@@ -36,11 +36,14 @@
   .beam{position:absolute;left:50%;top:0;width:1px;height:100%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.16) 30%,rgba(255,255,255,.16) 70%,transparent);transform:translateX(-50%)}
   .beam-glow{position:absolute;left:50%;top:8%;width:560px;height:560px;transform:translate(-50%,0);border-radius:50%;background:radial-gradient(circle,var(--accent-dim),transparent 68%);filter:blur(30px);pointer-events:none}
   /* scroll-driven fusion animation — two atoms converge as the section scrolls through view */
-  .fusion-visual{position:relative;height:62vh;min-height:380px;max-height:560px;max-width:720px;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 50%,rgba(109,109,251,.05),transparent 70%)}
-  .fusion-atom{position:absolute;top:50%;left:50%;width:34%;max-width:210px;aspect-ratio:1/1;border-radius:50%;background-size:cover;background-position:center;will-change:transform,opacity}
+  .fusion-section{min-height:100vh;display:flex;align-items:center;padding:64px 0}
+  .fusion-visual{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  .fusion-atom{position:absolute;top:50%;left:50%;width:min(46vw,620px);aspect-ratio:1/1;border-radius:50%;background-size:cover;background-position:center;will-change:transform,opacity;filter:drop-shadow(0 0 60px rgba(109,109,251,.25))}
   .fusion-flash{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;will-change:opacity}
-  .fusion-flash .core{width:38%;max-width:250px;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle,#fff 0%,var(--accent) 38%,transparent 72%);filter:blur(3px)}
+  .fusion-flash .core{width:min(30vw,420px);aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle,#fff 0%,var(--accent) 38%,transparent 72%);filter:blur(4px)}
+  .fusion-veil{position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(5,5,5,.72) 0%,rgba(5,5,5,.55) 45%,var(--bg) 100%)}
   @media(prefers-reduced-motion:reduce){.fusion-atom{transform:translate(-50%,-50%) !important}}
+  @media(max-width:640px){.fusion-section{min-height:auto;padding:96px 0 80px}.fusion-atom{width:min(60vw,320px)}}
   .hero-photo{position:absolute;inset:0;background-image:url('/v2/assets/hero-glow.jpg');background-size:cover;background-position:center 60%;opacity:.55}
   .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.2),var(--bg) 88%)}
   .side-photo{border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/4;background-size:cover;background-position:center}
@@ -223,19 +226,20 @@
 </div></section>
 
 <!-- FUSION STORYTELLING -->
-<section class="py-24 sm:py-32 relative overflow-hidden"><div class="wrap text-center relative">
-  <span class="eyebrow reveal justify-center"><span class="dot"></span><span data-i18n="fusion.eyebrow">La tesis</span></span>
-  <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-5 max-w-2xl mx-auto" data-i18n="fusion.h2">Dos átomos. Una fusión.</h2>
-  <p class="reveal text-mute text-lg mt-5 max-w-xl mx-auto" data-i18n="fusion.p">En el núcleo de una estrella, dos átomos ligeros se funden en uno solo bajo presión extrema — y liberan más energía de la que ninguno tenía por separado. No sucede con cualquier átomo: solo bajo las condiciones adecuadas.</p>
-
-  <div class="fusion-visual reveal mt-10 mx-auto">
+<section class="fusion-section relative overflow-hidden">
+  <div class="fusion-visual">
     <div class="fusion-atom left" style="background-image:url('/v2/assets/atom-left.jpg')"></div>
     <div class="fusion-atom right" style="background-image:url('/v2/assets/atom-right.jpg')"></div>
     <div class="fusion-flash"><div class="core"></div></div>
+    <div class="fusion-veil"></div>
   </div>
-
-  <p class="kicker reveal text-xl sm:text-2xl text-white mt-10 max-w-2xl mx-auto" data-i18n="fusion.result">Esa energía no es simbólica: es contenido que se vuelve producto, audiencia que se vuelve negocio, negocio que se vuelve imperio.</p>
-</div></section>
+  <div class="wrap text-center relative" style="z-index:1">
+    <span class="eyebrow reveal justify-center"><span class="dot"></span><span data-i18n="fusion.eyebrow">La tesis</span></span>
+    <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-5 max-w-2xl mx-auto" data-i18n="fusion.h2">Dos átomos. Una fusión.</h2>
+    <p class="reveal text-mute text-lg mt-5 max-w-xl mx-auto" data-i18n="fusion.p">En el núcleo de una estrella, dos átomos ligeros se funden en uno solo bajo presión extrema — y liberan más energía de la que ninguno tenía por separado. No sucede con cualquier átomo: solo bajo las condiciones adecuadas.</p>
+    <p class="kicker reveal text-xl sm:text-2xl text-white mt-16 sm:mt-24 max-w-2xl mx-auto" data-i18n="fusion.result">Esa energía no es simbólica: es contenido que se vuelve producto, audiencia que se vuelve negocio, negocio que se vuelve imperio.</p>
+  </div>
+</section>
 
 <!-- VALUE / STACK OVERVIEW -->
 <section class="py-24 sm:py-32"><div class="wrap">
@@ -366,18 +370,20 @@ setTimeout(()=>{const t=document.getElementById('toast');t.classList.add('show')
     atomR.style.transform = 'translate(calc(-50% + 70px),-50%)';
     return;
   }
+  const SPEED = 1.8; // >1 = convergence completes before the section finishes scrolling through
   let ticking = false;
   function update(){
     ticking = false;
     const r = vis.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
     let p = 1 - (r.bottom / (vh + r.height));
-    p = Math.max(0, Math.min(1, p));
+    p = Math.max(0, Math.min(1, p * SPEED));
     const e = p * p * (3 - 2 * p);
-    const spread = (1 - e) * 150;
+    const maxSpread = Math.min(r.width, vh) * 0.34;
+    const spread = (1 - e) * maxSpread;
     atomL.style.transform = `translate(calc(-50% - ${spread}px),-50%) scale(${1 - e * 0.12})`;
     atomR.style.transform = `translate(calc(-50% + ${spread}px),-50%) scale(${1 - e * 0.12})`;
-    const flashP = Math.max(0, (e - 0.72) / 0.28);
+    const flashP = Math.max(0, (e - 0.7) / 0.3);
     flash.style.opacity = flashP;
     atomL.style.opacity = 1 - flashP * 0.55;
     atomR.style.opacity = 1 - flashP * 0.55;
