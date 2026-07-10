@@ -66,9 +66,18 @@
   .pillar .tag{align-self:flex-start;display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--mute)}
   .pillar.p2 .tag{color:var(--accent);border-color:var(--accent-dim);background:var(--accent-dim)}
   /* service grid — flat neutral cards, icon carries the only color */
-  .svc{border-radius:16px;padding:26px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
-  .svc .ic{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+  .svc{border-radius:16px;padding:26px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .3s}
+  .svc .ic{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.16,1,.3,1),background .3s,border-color .3s}
   .svc-1,.svc-2,.svc-3,.svc-4,.svc-5,.svc-6,.svc-7,.svc-8{background:var(--panel)}
+  /* pillars: sequential process feel with connecting line + interactive hover */
+  .pillars-grid{position:relative}
+  .pillars-grid .svc{cursor:default}
+  .pillars-grid .svc:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 24px 48px -24px var(--accent-dim)}
+  .pillars-grid .svc:hover .ic{transform:scale(1.15) rotate(-6deg);background:var(--accent-dim);border-color:transparent}
+  .pillars-grid .svc:hover .step-badge{background:var(--accent);color:#fff}
+  .step-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent-dim);color:var(--accent);font-size:.66rem;font-weight:800;transition:background .3s,color .3s}
+  .pillars-grid .svc:not(:last-child):after{content:"";position:absolute;top:37px;right:-1.35rem;width:1.1rem;height:1px;background:var(--line-strong);display:none}
+  @media(min-width:1024px){.pillars-grid .svc:not(:last-child):after{display:block}}
   /* guarantee banner — neutral panel, accent only on badge */
   .guarantee{border-radius:16px;padding:clamp(24px,3.5vw,36px);background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden}
   .guarantee .badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:6px}
@@ -132,6 +141,10 @@
   .lang-switch button:hover{color:var(--fg)}
   .lang-switch button.active{color:#fff;background:var(--accent)}
   .lang-switch button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* persistent venture-builder vs sistemas scroll indicator */
+  #scrollTag{position:fixed;top:96px;left:24px;z-index:40;padding:8px 16px;border-radius:999px;background:rgba(10,10,11,.85);backdrop-filter:blur(10px);border:1px solid var(--line-strong);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);opacity:0;transform:translateX(-14px);transition:opacity .35s,transform .35s,color .3s,border-color .3s;pointer-events:none}
+  #scrollTag.show{opacity:1;transform:translateX(0)}
+  #scrollTag.mode-sistemas{color:var(--accent);border-color:var(--accent-dim)}
 </style>
 </head>
 <body>
@@ -153,6 +166,8 @@
     <a href="#contacto" class="btn-w btn-sm" data-i18n="nav.cta">Hablemos</a>
   </div>
 </div></nav>
+
+<div id="scrollTag" class="hidden lg:block"></div>
 
 <!-- HERO -->
 <header id="top" class="relative pt-24 pb-28 sm:pt-32 sm:pb-36 overflow-hidden">
@@ -274,18 +289,18 @@
   <div class="grid lg:grid-cols-[1fr_300px] gap-10 items-start">
     <div>
       <span class="eyebrow reveal"><span class="dot"></span><span data-i18n="sistemas.eyebrow">03 · Sistemas de IA</span></span>
-      <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-4 max-w-3xl" data-i18n="sistemas.h2">Más facturación, más margen, más tiempo. En ese orden.</h2>
-      <p class="reveal text-mute text-lg mt-5 max-w-2xl" data-i18n="sistemas.p">No es un chatbot, y no lo operamos nosotros — eso es el partnership. Te damos la infraestructura <span class="text-white font-medium">y la metodología para que tú la operes al 100%</span>. Cada euro rinde más, y tu tiempo se libera para lo único que nadie puede hacer por ti: crear.</p>
+      <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-4 max-w-3xl" data-i18n="sistemas.h2">Más facturación, más margen, más tiempo.</h2>
+      <p class="reveal text-mute text-lg mt-5 max-w-2xl" data-i18n="sistemas.p"><span class="text-white font-medium">Te instalamos toda la infraestructura</span> — y la metodología para que la operes al 100%. No es un chatbot, y no lo operamos nosotros por ti: eso es el partnership. Cada euro rinde más, y tu tiempo se libera para lo único que nadie puede hacer por ti: crear.</p>
     </div>
     <div class="side-photo reveal hidden lg:block" style="background-image:url('/v2/assets/reach.jpg')"></div>
   </div>
 
   <p class="kicker reveal text-xl sm:text-2xl text-white/85 mt-10" data-i18n="pillars.kicker">Qué incluye, de principio a fin.</p>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-6 reveal">
-    <div class="svc svc-1"><div class="ic">🔍</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p1.h4">Auditoría completa</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p1.p">¿Por dónde se te escapa el dinero? Vemos tu negocio entero antes de tocar nada — orden, procesos, herramientas, cuellos de botella.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p1.out">→ Entrega: informe de prioridades</p></div></div>
-    <div class="svc svc-4"><div class="ic">⚙️</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p2.h4">Implementación de IA</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p2.p">Captación, onboarding, seguimiento, ventas — todo lo que hoy gestionas a mano (o no gestionas), automatizado de punta a punta.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p2.out">→ Entrega: agentes activos en días</p></div></div>
-    <div class="svc svc-2"><div class="ic">📊</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p3.h4">Dashboards personalizados</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p3.p">Deja de improvisar mirando la cuenta bancaria. Panel a medida con tus métricas reales — ves el impacto, no lo intuyes.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p3.out">→ Entrega: panel + acceso por Telegram</p></div></div>
-    <div class="svc svc-6"><div class="ic">🔄</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p4.h4">Actualización constante</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p4.p">La IA cambia cada mes y quedarte atrás sale caro. Nosotros integramos las herramientas nuevas por ti.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p4.out">→ Entrega: revisión mensual incluida</p></div></div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-6 reveal pillars-grid">
+    <div class="svc svc-1"><div class="flex items-center justify-between"><div class="ic">🔍</div><span class="step-badge">01</span></div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p1.h4">Auditoría completa</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p1.p">¿Por dónde se te escapa el dinero? Vemos tu negocio entero antes de tocar nada — orden, procesos, herramientas, cuellos de botella.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p1.out">→ Entrega: informe de prioridades</p></div></div>
+    <div class="svc svc-4"><div class="flex items-center justify-between"><div class="ic">⚙️</div><span class="step-badge">02</span></div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p2.h4">Implementación de IA</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p2.p">Captación, onboarding, seguimiento, ventas — todo lo que hoy gestionas a mano (o no gestionas), automatizado de punta a punta.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p2.out">→ Entrega: agentes activos en días</p></div></div>
+    <div class="svc svc-2"><div class="flex items-center justify-between"><div class="ic">📊</div><span class="step-badge">03</span></div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p3.h4">Dashboards personalizados</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p3.p">Deja de improvisar mirando la cuenta bancaria. Panel a medida con tus métricas reales — ves el impacto, no lo intuyes.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p3.out">→ Entrega: panel + acceso por Telegram</p></div></div>
+    <div class="svc svc-6"><div class="flex items-center justify-between"><div class="ic">🔄</div><span class="step-badge">04</span></div><div><h4 class="display font-bold text-lg mt-4" data-i18n="pillars.p4.h4">Actualización constante</h4><p class="text-white/80 text-sm mt-2" data-i18n="pillars.p4.p">La IA cambia cada mes y quedarte atrás sale caro. Nosotros integramos las herramientas nuevas por ti.</p><p class="text-xs mt-3 font-semibold text-[#6d6dfb]" data-i18n="pillars.p4.out">→ Entrega: revisión mensual incluida</p></div></div>
   </div>
 
   <div class="mockup-frame reveal mt-10 max-w-xl">
@@ -492,7 +507,7 @@
   <p class="reveal text-mute text-lg mt-5 max-w-2xl" data-i18n="proceso.p">Este es el camino para los Sistemas de IA — al final, el sistema es tuyo y lo operas tú. Nosotros te acompañamos en cada fase.</p>
 
   <div class="proc reveal">
-    <div class="st"><div class="ghost-num text-3xl">01</div><h4 class="display font-bold mt-3" data-i18n="proceso.s1.h4">Onboarding</h4><p class="text-mute text-sm mt-2" data-i18n="proceso.s1.p">Rellenas la secuencia de <a href="/v2/diagnostico/" class="text-white underline decoration-white/30 hover:decoration-white">formularios de diagnóstico</a>: puntos de dolor, dónde pierdes más tiempo y qué infraestructura necesitas.</p></div>
+    <div class="st"><div class="ghost-num text-3xl">01</div><h4 class="display font-bold mt-3" data-i18n="proceso.s1.h4">Auditoría en 48h</h4><p class="text-mute text-sm mt-2" data-i18n="proceso.s1.p">Rellenas la secuencia de <a href="/v2/diagnostico/" class="text-white underline decoration-white/30 hover:decoration-white">formularios de diagnóstico</a> y recibes tu auditoría completa en menos de 48h.</p></div>
     <div class="st"><div class="ghost-num text-3xl">02</div><h4 class="display font-bold mt-3" data-i18n="proceso.s2.h4">Diseñamos</h4><p class="text-mute text-sm mt-2" data-i18n="proceso.s2.p">Con tu contexto, diseñamos qué agentes instalar primero y en qué orden.</p></div>
     <div class="st"><div class="ghost-num text-3xl">03</div><h4 class="display font-bold mt-3" data-i18n="proceso.s3.h4">Implementamos</h4><p class="text-mute text-sm mt-2" data-i18n="proceso.s3.p">Reunión de implementación física del sistema: datos sensibles, conexiones y accesos (MCPs, CRM, canales).</p></div>
     <div class="st"><div class="ghost-num text-3xl">04</div><h4 class="display font-bold mt-3" data-i18n="proceso.s4.h4">Manual</h4><p class="text-mute text-sm mt-2" data-i18n="proceso.s4.p">Te entregamos el manual de utilización — tú operas el sistema desde el día 1.</p></div>
@@ -612,8 +627,8 @@ const I18N = {
     "partnership.c2.h3":"Adquisición y ventas","partnership.c2.p":"Meta Ads, funnel, setters y closers propios. Cada lead entra en un pipeline con seguimiento diario, no en tu bandeja de DMs sin responder.",
     "partnership.c3.h3":"Marca y expansión","partnership.c3.p":"De un producto a un portfolio de ingresos: relanzamientos programados, nuevas líneas, nuevas marcas bajo tu nombre.",
     "partnership.fit.h3":"¿Encajas en el perfil?","partnership.fit.p":"Buscamos creadores con audiencia real, algo que ya vender (o casi) y voluntad de construir algo grande — no un lanzamiento puntual ni un experimento de fin de semana.","partnership.fit.cta":"Aplicar al partnership →",
-    "sistemas.eyebrow":"03 · Sistemas de IA","sistemas.h2":"Más facturación, más margen, más tiempo. En ese orden.",
-    "sistemas.p":"No es un chatbot, y no lo operamos nosotros — eso es el partnership. Te damos la infraestructura <span class=\"text-white font-medium\">y la metodología para que tú la operes al 100%</span>. Cada euro rinde más, y tu tiempo se libera para lo único que nadie puede hacer por ti: crear.",
+    "sistemas.eyebrow":"03 · Sistemas de IA","sistemas.h2":"Más facturación, más margen, más tiempo.",
+    "sistemas.p":"<span class=\"text-white font-medium\">Te instalamos toda la infraestructura</span> — y la metodología para que la operes al 100%. No es un chatbot, y no lo operamos nosotros por ti: eso es el partnership. Cada euro rinde más, y tu tiempo se libera para lo único que nadie puede hacer por ti: crear.",
     "pillars.kicker":"Qué incluye, de principio a fin.",
     "pillars.p1.h4":"Auditoría completa","pillars.p1.p":"¿Por dónde se te escapa el dinero? Vemos tu negocio entero antes de tocar nada — orden, procesos, herramientas, cuellos de botella.","pillars.p1.out":"→ Entrega: informe de prioridades",
     "pillars.p2.h4":"Implementación de IA","pillars.p2.p":"Captación, onboarding, seguimiento, ventas — todo lo que hoy gestionas a mano (o no gestionas), automatizado de punta a punta.","pillars.p2.out":"→ Entrega: agentes activos en días",
@@ -647,7 +662,7 @@ const I18N = {
     "precios.per":"/mes","precios.custom":"A medida","precios.closedNote":"Precio cerrado en tu auditoría",
     "precios.footnote":"Sin cifras genéricas: tu precio se cierra en la auditoría gratuita, según tus canales y volumen real.",
     "proceso.eyebrow":"05 · Cómo trabajamos","proceso.h2":"Del diagnóstico al sistema funcionando en tus manos.","proceso.p":"Este es el camino para los Sistemas de IA — al final, el sistema es tuyo y lo operas tú. Nosotros te acompañamos en cada fase.",
-    "proceso.s1.h4":"Onboarding","proceso.s1.p":"Rellenas la secuencia de <a href=\"/v2/diagnostico/\" class=\"text-white underline decoration-white/30 hover:decoration-white\">formularios de diagnóstico</a>: puntos de dolor, dónde pierdes más tiempo y qué infraestructura necesitas.",
+    "proceso.s1.h4":"Auditoría en 48h","proceso.s1.p":"Rellenas la secuencia de <a href=\"/v2/diagnostico/\" class=\"text-white underline decoration-white/30 hover:decoration-white\">formularios de diagnóstico</a> y recibes tu auditoría completa en menos de 48h.",
     "proceso.s2.h4":"Diseñamos","proceso.s2.p":"Con tu contexto, diseñamos qué agentes instalar primero y en qué orden.",
     "proceso.s3.h4":"Implementamos","proceso.s3.p":"Reunión de implementación física del sistema: datos sensibles, conexiones y accesos (MCPs, CRM, canales).",
     "proceso.s4.h4":"Manual","proceso.s4.p":"Te entregamos el manual de utilización — tú operas el sistema desde el día 1.",
@@ -687,8 +702,8 @@ const I18N = {
     "partnership.c2.h3":"Acquisition and sales","partnership.c2.p":"Meta Ads, funnel, our own setters and closers. Every lead enters a pipeline with daily follow-up, not an unanswered DM inbox.",
     "partnership.c3.h3":"Brand and expansion","partnership.c3.p":"From one product to a revenue portfolio: scheduled relaunches, new lines, new brands under your name.",
     "partnership.fit.h3":"Do you fit the profile?","partnership.fit.p":"We look for creators with a real audience, something to sell already (or close to it) and the will to build something big — not a one-off launch or a weekend experiment.","partnership.fit.cta":"Apply to the partnership →",
-    "sistemas.eyebrow":"03 · AI Systems","sistemas.h2":"More revenue, more margin, more time. In that order.",
-    "sistemas.p":"Not a chatbot, and we don't run it for you — that's the Venture Partnership. We give you the infrastructure <span class=\"text-white font-medium\">and the methodology to run it at 100% efficiency</span>. Every euro returns more, and your time frees up for the one thing nobody can do for you: creating.",
+    "sistemas.eyebrow":"03 · AI Systems","sistemas.h2":"More revenue, more margin, more time.",
+    "sistemas.p":"<span class=\"text-white font-medium\">We install all the infrastructure</span> — and the methodology to run it at 100%. Not a chatbot, and we don't run it for you: that's the Venture Partnership. Every euro returns more, and your time frees up for the one thing nobody can do for you: creating.",
     "pillars.kicker":"What's included, start to finish.",
     "pillars.p1.h4":"Full audit","pillars.p1.p":"Where is the money leaking? We look at your whole business before touching anything — order, processes, tools, bottlenecks.","pillars.p1.out":"→ Delivered: a prioritized report",
     "pillars.p2.h4":"AI implementation","pillars.p2.p":"Lead gen, onboarding, follow-up, sales — everything you handle by hand today (or don't), automated end to end.","pillars.p2.out":"→ Delivered: agents live in days",
@@ -722,7 +737,7 @@ const I18N = {
     "precios.per":"/mo","precios.custom":"Custom","precios.closedNote":"Fixed price set during your audit",
     "precios.footnote":"No generic numbers: your price is set during the free audit, based on your actual channels and volume.",
     "proceso.eyebrow":"05 · How we work","proceso.h2":"From diagnostic to a system running in your hands.","proceso.p":"This is the path for AI Systems — at the end, the system is yours and you run it. We're with you at every stage.",
-    "proceso.s1.h4":"Onboarding","proceso.s1.p":"You fill out the <a href=\"/v2/diagnostico/\" class=\"text-white underline decoration-white/30 hover:decoration-white\">diagnostic form sequence</a>: pain points, where you lose the most time and what infrastructure you need.",
+    "proceso.s1.h4":"Audit in 48h","proceso.s1.p":"You fill out the <a href=\"/v2/diagnostico/\" class=\"text-white underline decoration-white/30 hover:decoration-white\">diagnostic form sequence</a> and get your full audit back in under 48h.",
     "proceso.s2.h4":"We design","proceso.s2.p":"Using your context, we design which agents to install first and in what order.",
     "proceso.s3.h4":"We implement","proceso.s3.p":"Implementation meeting to physically set up the system: sensitive data, connections and access (MCPs, CRM, channels).",
     "proceso.s4.h4":"Manual","proceso.s4.p":"We hand you the usage manual — you run the system from day 1.",
@@ -762,8 +777,8 @@ const I18N = {
     "partnership.c2.h3":"Привлечение и продажи","partnership.c2.p":"Meta Ads, воронка, собственные setters и closers. Каждый лид попадает в пайплайн с ежедневным сопровождением, а не в непрочитанные личные сообщения.",
     "partnership.c3.h3":"Бренд и экспансия","partnership.c3.p":"От одного продукта к портфелю источников дохода: запланированные релончи, новые линейки, новые бренды под вашим именем.",
     "partnership.fit.h3":"Подходите ли вы под профиль?","partnership.fit.p":"Мы ищем авторов с реальной аудиторией, тем, что уже продаётся (или почти) и желанием построить что-то большое — а не разовый запуск или эксперимент на выходные.","partnership.fit.cta":"Подать заявку на партнёрство →",
-    "sistemas.eyebrow":"03 · ИИ-системы","sistemas.h2":"Больше выручки, больше маржи, больше времени. Именно в этом порядке.",
-    "sistemas.p":"Это не чат-бот, и мы не управляем им за вас — это венчурное партнёрство. Мы даём вам инфраструктуру <span class=\"text-white font-medium\">и методологию, чтобы вы управляли ею со 100% эффективностью</span>. Каждый евро приносит больше, а ваше время освобождается для единственного, что за вас никто не сделает — создавать.",
+    "sistemas.eyebrow":"03 · ИИ-системы","sistemas.h2":"Больше выручки, больше маржи, больше времени.",
+    "sistemas.p":"<span class=\"text-white font-medium\">Мы устанавливаем всю инфраструктуру</span> — и методологию, чтобы вы управляли ею со 100% эффективностью. Это не чат-бот, и мы не управляем им за вас — это венчурное партнёрство. Каждый евро приносит больше, а ваше время освобождается для единственного, что за вас никто не сделает — создавать.",
     "pillars.kicker":"Что входит, от начала до конца.",
     "pillars.p1.h4":"Полный аудит","pillars.p1.p":"Где утекают деньги? Смотрим на весь ваш бизнес, прежде чем что-то менять — порядок, процессы, инструменты, узкие места.","pillars.p1.out":"→ Результат: отчёт с приоритетами",
     "pillars.p2.h4":"Внедрение ИИ","pillars.p2.p":"Привлечение клиентов, онбординг, сопровождение, продажи — всё, что вы сегодня делаете вручную (или не делаете), автоматизировано от начала до конца.","pillars.p2.out":"→ Результат: агенты работают за дни",
@@ -797,7 +812,7 @@ const I18N = {
     "precios.per":"/мес","precios.custom":"Индивидуально","precios.closedNote":"Фиксированная цена по итогам аудита",
     "precios.footnote":"Без общих цифр: ваша цена определяется на бесплатном аудите, с учётом ваших каналов и объёма.",
     "proceso.eyebrow":"05 · Как мы работаем","proceso.h2":"От диагностики до системы, работающей в ваших руках.","proceso.p":"Это путь для ИИ-систем — в итоге система принадлежит вам, и управляете ею вы. Мы сопровождаем вас на каждом этапе.",
-    "proceso.s1.h4":"Онбординг","proceso.s1.p":"Вы заполняете серию <a href=\"/v2/diagnostico/\" class=\"text-white underline decoration-white/30 hover:decoration-white\">диагностических форм</a>: болевые точки, где вы теряете больше всего времени и какая инфраструктура вам нужна.",
+    "proceso.s1.h4":"Аудит за 48 часов","proceso.s1.p":"Вы заполняете серию <a href=\"/v2/diagnostico/\" class=\"text-white underline decoration-white/30 hover:decoration-white\">диагностических форм</a> и получаете полный аудит менее чем за 48 часов.",
     "proceso.s2.h4":"Проектируем","proceso.s2.p":"На основе вашего контекста определяем, каких агентов устанавливать первыми и в каком порядке.",
     "proceso.s3.h4":"Внедряем","proceso.s3.p":"Встреча по физическому внедрению системы: чувствительные данные, подключения и доступы (MCP, CRM, каналы).",
     "proceso.s4.h4":"Инструкция","proceso.s4.p":"Передаём вам инструкцию по использованию — вы управляете системой с первого дня.",
@@ -814,6 +829,16 @@ const I18N = {
 };
 const LANGS = ["es","en","ru"];
 let currentLang = "es";
+const SCROLL_TAG_LABELS = {
+  partnership: { es:"Venture Partnership", en:"Venture Partnership", ru:"Venture Partnership" },
+  sistemas: { es:"Sistemas de IA", en:"AI Systems", ru:"ИИ-системы" }
+};
+function updateScrollTag(){
+  const tag = document.getElementById('scrollTag');
+  if(!tag || !tag.dataset.mode) return;
+  const labels = SCROLL_TAG_LABELS[tag.dataset.mode];
+  if(labels) tag.textContent = labels[currentLang] || labels.es;
+}
 function setLang(lang){
   if(!I18N[lang]) lang = "es";
   currentLang = lang;
@@ -834,6 +859,7 @@ function setLang(lang){
     b.classList.toggle("active", b.dataset.lang === lang);
   });
   try { localStorage.setItem("qv_lang", lang); } catch(e){}
+  updateScrollTag();
 }
 (function initLang(){
   let saved = null;
@@ -844,6 +870,25 @@ function setLang(lang){
   document.querySelectorAll(".lang-switch button").forEach(function(b){
     b.addEventListener("click", function(){ setLang(b.dataset.lang); });
   });
+})();
+
+(function initScrollTag(){
+  const tag = document.getElementById('scrollTag');
+  if(!tag || !('IntersectionObserver' in window)) return;
+  const modes = ['partnership','sistemas'];
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if(!entry.isIntersecting) {
+        if(tag.dataset.mode === entry.target.id){ tag.classList.remove('show','mode-sistemas'); tag.dataset.mode=''; }
+        return;
+      }
+      tag.dataset.mode = entry.target.id;
+      tag.classList.add('show');
+      tag.classList.toggle('mode-sistemas', entry.target.id === 'sistemas');
+      updateScrollTag();
+    });
+  }, { rootMargin: '-96px 0px -70% 0px', threshold: 0 });
+  modes.forEach((id) => { const el = document.getElementById(id); if(el) io.observe(el); });
 })();
 
 const leadForm = document.getElementById('leadForm');
