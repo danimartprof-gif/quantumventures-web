@@ -35,15 +35,12 @@
   .ghost-num{font-family:'Inter';font-weight:800;-webkit-text-stroke:1.5px rgba(255,255,255,.18);color:transparent}
   .beam{position:absolute;left:50%;top:0;width:1px;height:100%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.16) 30%,rgba(255,255,255,.16) 70%,transparent);transform:translateX(-50%)}
   .beam-glow{position:absolute;left:50%;top:8%;width:560px;height:560px;transform:translate(-50%,0);border-radius:50%;background:radial-gradient(circle,var(--accent-dim),transparent 68%);filter:blur(30px);pointer-events:none}
-  /* scroll-driven fusion animation — two atoms converge as the section scrolls through view */
+  /* scroll-scrubbed fusion video — plays forward to the fusion moment as the section scrolls through view */
   .fusion-section{min-height:100vh;display:flex;align-items:center;padding:64px 0}
   .fusion-visual{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-  .fusion-atom{position:absolute;top:50%;left:50%;width:min(46vw,620px);aspect-ratio:1/1;border-radius:50%;background-size:cover;background-position:center;will-change:transform,opacity;filter:drop-shadow(0 0 60px rgba(109,109,251,.25))}
-  .fusion-flash{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;will-change:opacity}
-  .fusion-flash .core{width:min(30vw,420px);aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle,#fff 0%,var(--accent) 38%,transparent 72%);filter:blur(4px)}
+  .fusion-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
   .fusion-veil{position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(5,5,5,.72) 0%,rgba(5,5,5,.55) 45%,var(--bg) 100%)}
-  @media(prefers-reduced-motion:reduce){.fusion-atom{transform:translate(-50%,-50%) !important}}
-  @media(max-width:640px){.fusion-section{min-height:auto;padding:96px 0 80px}.fusion-atom{width:min(60vw,320px)}}
+  @media(max-width:640px){.fusion-section{min-height:auto;padding:96px 0 80px}}
   .hero-photo{position:absolute;inset:0;background-image:url('/v2/assets/hero-glow.jpg');background-size:cover;background-position:center 60%;opacity:.55}
   .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.2),var(--bg) 88%)}
   .side-photo{border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/4;background-size:cover;background-position:center}
@@ -87,6 +84,14 @@
   .step-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent-dim);color:var(--accent);font-size:.66rem;font-weight:800;transition:background .3s,color .3s}
   .pillars-grid .svc:not(:last-child):after{content:"";position:absolute;top:37px;right:-1.35rem;width:1.1rem;height:1px;background:var(--line-strong);display:none}
   @media(min-width:1024px){.pillars-grid .svc:not(:last-child):after{display:block}}
+  /* horizontal auto-scrolling panel — stack pillars slide through continuously */
+  .stack-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .stack-track{display:flex;gap:20px;width:max-content;animation:stackScroll 40s linear infinite}
+  .stack-marquee:hover .stack-track{animation-play-state:paused}
+  @keyframes stackScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .stack-card{flex:0 0 auto;width:280px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .3s,transform .3s}
+  .stack-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  @media(prefers-reduced-motion:reduce){.stack-track{animation:none}}
   /* guarantee banner — neutral panel, accent only on badge */
   .guarantee{border-radius:16px;padding:clamp(24px,3.5vw,36px);background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden}
   .guarantee .badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:6px}
@@ -228,9 +233,9 @@
 <!-- FUSION STORYTELLING -->
 <section class="fusion-section relative overflow-hidden">
   <div class="fusion-visual">
-    <div class="fusion-atom left" style="background-image:url('/v2/assets/atom-left.jpg')"></div>
-    <div class="fusion-atom right" style="background-image:url('/v2/assets/atom-right.jpg')"></div>
-    <div class="fusion-flash"><div class="core"></div></div>
+    <video class="fusion-video" muted playsinline preload="auto">
+      <source src="/v2/assets/atoms-bg.mp4" type="video/mp4">
+    </video>
     <div class="fusion-veil"></div>
   </div>
   <div class="wrap text-center relative" style="z-index:1">
@@ -247,12 +252,21 @@
   <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-4 max-w-3xl" data-i18n="value.h2">El motor detrás de negocios que escalan sin caos.</h2>
   <p class="reveal text-mute text-lg mt-5 max-w-2xl" data-i18n="value.p">Automatizamos lo repetitivo, instalamos IA donde antes había horas manuales, y ordenamos cada proceso para que tu negocio crezca sin que tengas que estar en todas partes a la vez.</p>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-12 reveal pillars-grid">
-    <div class="svc svc-1"><div class="ic">🤖</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="value.c1.h4">Automatizaciones</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c1.p">Procesos que hoy haces a mano, funcionando solos — ventas, seguimiento, administración.</p></div></div>
-    <div class="svc svc-4"><div class="ic">🧠</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="value.c2.h4">Inteligencia Artificial</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c2.p">Agentes que atienden, cualifican y resuelven 24/7, sin que tú estés detrás de la pantalla.</p></div></div>
-    <div class="svc svc-2"><div class="ic">🗂️</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="value.c3.h4">Organización</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c3.p">Un único sistema para clientes, tareas y datos — no seis herramientas sueltas que nadie revisa.</p></div></div>
-    <div class="svc svc-6"><div class="ic">⏱️</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="value.c4.h4">Optimización de tiempo</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c4.p">Cada hora que antes perdías en lo operativo, ahora se destina a crear y decidir.</p></div></div>
-    <div class="svc svc-3"><div class="ic">📈</div><div><h4 class="display font-bold text-lg mt-4" data-i18n="value.c5.h4">Escalabilidad empresarial</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c5.p">Infraestructura pensada para crecer sin que el caos crezca contigo.</p></div></div>
+  <div class="stack-marquee mt-12 reveal">
+    <div class="stack-track">
+      <div class="stack-card"><h4 class="display font-bold text-lg" data-i18n="value.c1.h4">Automatizaciones</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c1.p">Procesos que hoy haces a mano, funcionando solos — ventas, seguimiento, administración.</p></div>
+      <div class="stack-card"><h4 class="display font-bold text-lg" data-i18n="value.c2.h4">Inteligencia Artificial</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c2.p">Agentes que atienden, cualifican y resuelven 24/7, sin que tú estés detrás de la pantalla.</p></div>
+      <div class="stack-card"><h4 class="display font-bold text-lg" data-i18n="value.c3.h4">Organización</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c3.p">Un único sistema para clientes, tareas y datos — no seis herramientas sueltas que nadie revisa.</p></div>
+      <div class="stack-card"><h4 class="display font-bold text-lg" data-i18n="value.c4.h4">Optimización de tiempo</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c4.p">Cada hora que antes perdías en lo operativo, ahora se destina a crear y decidir.</p></div>
+      <div class="stack-card"><h4 class="display font-bold text-lg" data-i18n="value.c5.h4">Escalabilidad empresarial</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c5.p">Infraestructura pensada para crecer sin que el caos crezca contigo.</p></div>
+      <div class="stack-card"><h4 class="display font-bold text-lg" data-i18n="value.c6.h4">Optimización fiscal</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c6.p">Estructura y procesos para que lo que factura tu negocio se quede en tu negocio, no en fricciones evitables.</p></div>
+      <div class="stack-card" aria-hidden="true"><h4 class="display font-bold text-lg" data-i18n="value.c1.h4">Automatizaciones</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c1.p">Procesos que hoy haces a mano, funcionando solos — ventas, seguimiento, administración.</p></div>
+      <div class="stack-card" aria-hidden="true"><h4 class="display font-bold text-lg" data-i18n="value.c2.h4">Inteligencia Artificial</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c2.p">Agentes que atienden, cualifican y resuelven 24/7, sin que tú estés detrás de la pantalla.</p></div>
+      <div class="stack-card" aria-hidden="true"><h4 class="display font-bold text-lg" data-i18n="value.c3.h4">Organización</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c3.p">Un único sistema para clientes, tareas y datos — no seis herramientas sueltas que nadie revisa.</p></div>
+      <div class="stack-card" aria-hidden="true"><h4 class="display font-bold text-lg" data-i18n="value.c4.h4">Optimización de tiempo</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c4.p">Cada hora que antes perdías en lo operativo, ahora se destina a crear y decidir.</p></div>
+      <div class="stack-card" aria-hidden="true"><h4 class="display font-bold text-lg" data-i18n="value.c5.h4">Escalabilidad empresarial</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c5.p">Infraestructura pensada para crecer sin que el caos crezca contigo.</p></div>
+      <div class="stack-card" aria-hidden="true"><h4 class="display font-bold text-lg" data-i18n="value.c6.h4">Optimización fiscal</h4><p class="text-white/80 text-sm mt-2" data-i18n="value.c6.p">Estructura y procesos para que lo que factura tu negocio se quede en tu negocio, no en fricciones evitables.</p></div>
+    </div>
   </div>
 
   <div class="mt-20 reveal">
@@ -262,14 +276,14 @@
         <div class="story-kicker">Quantum</div>
         <div class="story-name solid">VENTURE</div>
         <p class="text-white/75 mt-4 leading-relaxed max-w-md" data-i18n="story.c1.p">Construimos y operamos tu empresa contigo — nuestro equipo, nuestro capital y nuestro riesgo, a cambio de una parte de lo que crezca. Solo con quienes seleccionamos, aunque siempre puedes aplicar.</p>
-        <span class="story-link"><span data-i18n="story.c1.cta">Descubre cómo funciona</span><span class="arrow">→</span></span>
+        <span class="story-link"><span data-i18n="story.c1.cta">Saber más</span><span class="arrow">→</span></span>
       </a>
       <div class="story-divider"><span data-i18n="story.or">o</span></div>
       <a href="/v2/quantum-stack/" class="story-chapter">
         <div class="story-kicker">Quantum</div>
         <div class="story-name outline">STACK</div>
         <p class="text-white/75 mt-4 leading-relaxed max-w-md" data-i18n="story.c2.p">Instalamos el sistema completo de IA en tu negocio y te enseñamos a operarlo tú mismo, al 100% de su capacidad — con garantía de resultado. Abierto a cualquiera que esté listo para escalar ya.</p>
-        <span class="story-link"><span data-i18n="story.c2.cta">Descubre cómo funciona</span><span class="arrow">→</span></span>
+        <span class="story-link"><span data-i18n="story.c2.cta">Saber más</span><span class="arrow">→</span></span>
       </a>
     </div>
   </div>
@@ -281,7 +295,7 @@
   <div class="wrap relative">
     <div class="text-center max-w-2xl mx-auto">
       <span class="eyebrow reveal justify-center"><span class="dot"></span><span data-i18n="contacto.eyebrow">Hablemos</span></span>
-      <h2 class="display reveal text-4xl sm:text-6xl font-bold mt-5" data-i18n="contacto.h2">¿Partner o sistema de IA?<br>Cuéntanos y vemos qué encaja.</h2>
+      <h2 class="display reveal text-4xl sm:text-6xl font-bold mt-5" data-i18n="contacto.h2">El primer paso es una conversación.</h2>
       <p class="reveal text-mute text-lg mt-6" data-i18n="contacto.p">Sin compromiso. Te decimos con franqueza si tu negocio encaja mejor en un partnership o en un plan de sistemas de IA — respondemos en menos de 24h.</p>
     </div>
 
@@ -357,36 +371,31 @@ const rv=document.querySelectorAll('.reveal');
 if('IntersectionObserver'in window){const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -8% 0px'});rv.forEach(el=>io.observe(el));setTimeout(()=>rv.forEach(el=>el.classList.add('in')),2500)}else{rv.forEach(el=>el.classList.add('in'))}
 setTimeout(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),7000)},3500);
 
-// ===== fusion scroll animation — two atoms converge as the section scrolls through view =====
+// ===== fusion scroll-scrubbed video — plays forward to the fusion moment as the section scrolls through view =====
 (function initFusionScroll(){
   const vis = document.querySelector('.fusion-visual');
   if(!vis) return;
-  const atomL = vis.querySelector('.fusion-atom.left');
-  const atomR = vis.querySelector('.fusion-atom.right');
-  const flash = vis.querySelector('.fusion-flash');
+  const video = vis.querySelector('.fusion-video');
+  if(!video) return;
+  const FUSION_TIME = 4.9; // seconds into the clip where the atoms are fully merged — never scrub past this
+  const SPEED = 1.8; // >1 = reaches the fusion moment before the section finishes scrolling through
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced){
-    atomL.style.transform = 'translate(calc(-50% - 70px),-50%)';
-    atomR.style.transform = 'translate(calc(-50% + 70px),-50%)';
+    video.addEventListener('loadedmetadata', () => { video.currentTime = FUSION_TIME; }, { once: true });
     return;
   }
-  const SPEED = 1.8; // >1 = convergence completes before the section finishes scrolling through
+  let ready = false;
+  video.addEventListener('loadedmetadata', () => { ready = true; update(); }, { once: true });
   let ticking = false;
   function update(){
     ticking = false;
+    if(!ready) return;
     const r = vis.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
     let p = 1 - (r.bottom / (vh + r.height));
     p = Math.max(0, Math.min(1, p * SPEED));
     const e = p * p * (3 - 2 * p);
-    const maxSpread = Math.min(r.width, vh) * 0.34;
-    const spread = (1 - e) * maxSpread;
-    atomL.style.transform = `translate(calc(-50% - ${spread}px),-50%) scale(${1 - e * 0.12})`;
-    atomR.style.transform = `translate(calc(-50% + ${spread}px),-50%) scale(${1 - e * 0.12})`;
-    const flashP = Math.max(0, (e - 0.7) / 0.3);
-    flash.style.opacity = flashP;
-    atomL.style.opacity = 1 - flashP * 0.55;
-    atomR.style.opacity = 1 - flashP * 0.55;
+    try { video.currentTime = e * FUSION_TIME; } catch(err) {}
   }
   function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -462,7 +471,7 @@ const I18N = {
     "proceso.s3.h4":"Implementamos","proceso.s3.p":"Reunión de implementación física del sistema: datos sensibles, conexiones y accesos (MCPs, CRM, canales).",
     "proceso.s4.h4":"Manual","proceso.s4.p":"Te entregamos el manual de utilización — tú operas el sistema desde el día 1.",
     "proceso.s5.h4":"Soporte","proceso.s5.p":"Seguimiento, mantenimiento y soporte continuo mientras lo operas tú.",
-    "contacto.eyebrow":"Hablemos","contacto.h2":"¿Partner o sistema de IA?<br>Cuéntanos y vemos qué encaja.","contacto.p":"Sin compromiso. Te decimos con franqueza si tu negocio encaja mejor en un partnership o en un plan de sistemas de IA — respondemos en menos de 24h.",
+    "contacto.eyebrow":"Hablemos","contacto.h2":"El primer paso es una conversación.","contacto.p":"Sin compromiso. Te decimos con franqueza si tu negocio encaja mejor en un partnership o en un plan de sistemas de IA — respondemos en menos de 24h.",
     "contacto.f.nombre":"Nombre *","contacto.f.nombrePh":"Tu nombre","contacto.f.email":"Email *","contacto.f.emailPh":"tu@email.com","contacto.f.telefono":"Teléfono","contacto.f.telefonoPh":"+34 600 000 000","contacto.f.negocio":"Negocio / Instagram","contacto.f.negocioPh":"@tu_negocio",
     "contacto.f.interes":"Te interesa","contacto.f.optSistemas":"Quantum Stack","contacto.f.optPartnership":"Quantum Venture","contacto.f.optNoSe":"No lo tengo claro",
     "contacto.f.mensaje":"Cuéntanos en una línea qué te quita más tiempo","contacto.f.mensajePh":"Ej: contesto las mismas dudas de nutrición 20 veces al día",
@@ -473,13 +482,14 @@ const I18N = {
     "value.eyebrow":"Nuestro stack tecnológico","value.h2":"El motor detrás de negocios que escalan sin caos.",
     "value.p":"Automatizamos lo repetitivo, instalamos IA donde antes había horas manuales, y ordenamos cada proceso para que tu negocio crezca sin que tengas que estar en todas partes a la vez.",
     "story.eyebrow":"Dos caminos, un mismo destino","story.or":"o",
-    "story.c1.p":"Construimos y operamos tu empresa contigo — nuestro equipo, nuestro capital y nuestro riesgo, a cambio de una parte de lo que crezca. Solo con quienes seleccionamos, aunque siempre puedes aplicar.","story.c1.cta":"Descubre cómo funciona",
-    "story.c2.p":"Instalamos el sistema completo de IA en tu negocio y te enseñamos a operarlo tú mismo, al 100% de su capacidad — con garantía de resultado. Abierto a cualquiera que esté listo para escalar ya.","story.c2.cta":"Descubre cómo funciona",
+    "story.c1.p":"Construimos y operamos tu empresa contigo — nuestro equipo, nuestro capital y nuestro riesgo, a cambio de una parte de lo que crezca. Solo con quienes seleccionamos, aunque siempre puedes aplicar.","story.c1.cta":"Saber más",
+    "story.c2.p":"Instalamos el sistema completo de IA en tu negocio y te enseñamos a operarlo tú mismo, al 100% de su capacidad — con garantía de resultado. Abierto a cualquiera que esté listo para escalar ya.","story.c2.cta":"Saber más",
     "value.c1.h4":"Automatizaciones","value.c1.p":"Procesos que hoy haces a mano, funcionando solos — ventas, seguimiento, administración.",
     "value.c2.h4":"Inteligencia Artificial","value.c2.p":"Agentes que atienden, cualifican y resuelven 24/7, sin que tú estés detrás de la pantalla.",
     "value.c3.h4":"Organización","value.c3.p":"Un único sistema para clientes, tareas y datos — no seis herramientas sueltas que nadie revisa.",
     "value.c4.h4":"Optimización de tiempo","value.c4.p":"Cada hora que antes perdías en lo operativo, ahora se destina a crear y decidir.",
     "value.c5.h4":"Escalabilidad empresarial","value.c5.p":"Infraestructura pensada para crecer sin que el caos crezca contigo.",
+    "value.c6.h4":"Optimización fiscal","value.c6.p":"Estructura y procesos para que lo que factura tu negocio se quede en tu negocio, no en fricciones evitables.",
     "value.gw1.tag":"Por selección · Con aplicación abierta","value.gw1.h3":"Quantum Venture",
     "value.gw1.p":"Construimos y operamos tu empresa contigo, de principio a fin. Nuestro equipo, nuestro capital, nuestro riesgo.","value.gw1.cta":"Descubre Quantum Venture →",
     "value.gw2.tag":"Abierto a cualquier negocio","value.gw2.h3":"Quantum Stack",
@@ -556,7 +566,7 @@ const I18N = {
     "proceso.s3.h4":"We implement","proceso.s3.p":"Implementation meeting to physically set up the system: sensitive data, connections and access (MCPs, CRM, channels).",
     "proceso.s4.h4":"Manual","proceso.s4.p":"We hand you the usage manual — you run the system from day 1.",
     "proceso.s5.h4":"Support","proceso.s5.p":"Ongoing follow-up, maintenance and support while you run it.",
-    "contacto.eyebrow":"Let's talk","contacto.h2":"Partner or AI system?<br>Tell us and we'll see what fits.","contacto.p":"No strings attached. We'll tell you honestly whether your business fits better with a partnership or an AI systems plan — we reply in under 24h.",
+    "contacto.eyebrow":"Let's talk","contacto.h2":"The first step is a conversation.","contacto.p":"No strings attached. We'll tell you honestly whether your business fits better with a partnership or an AI systems plan — we reply in under 24h.",
     "contacto.f.nombre":"Name *","contacto.f.nombrePh":"Your name","contacto.f.email":"Email *","contacto.f.emailPh":"you@email.com","contacto.f.telefono":"Phone","contacto.f.telefonoPh":"+1 000 000 0000","contacto.f.negocio":"Business / Instagram","contacto.f.negocioPh":"@your_business",
     "contacto.f.interes":"You're interested in","contacto.f.optSistemas":"Quantum Stack","contacto.f.optPartnership":"Quantum Venture","contacto.f.optNoSe":"Not sure yet",
     "contacto.f.mensaje":"Tell us in one line what takes up most of your time","contacto.f.mensajePh":"E.g.: I answer the same nutrition questions 20 times a day",
@@ -567,13 +577,14 @@ const I18N = {
     "value.eyebrow":"Our technology stack","value.h2":"The engine behind businesses that scale without chaos.",
     "value.p":"We automate the repetitive, install AI where manual hours used to go, and bring order to every process so your business grows without you having to be everywhere at once.",
     "story.eyebrow":"Two paths, one destination","story.or":"or",
-    "story.c1.p":"We build and run your company with you — our team, our capital, our risk, in exchange for a share of what grows. Only with those we select, though you can always apply.","story.c1.cta":"See how it works",
-    "story.c2.p":"We install the complete AI system in your business and teach you to run it yourself, at full capacity — with a results guarantee. Open to anyone ready to scale now.","story.c2.cta":"See how it works",
+    "story.c1.p":"We build and run your company with you — our team, our capital, our risk, in exchange for a share of what grows. Only with those we select, though you can always apply.","story.c1.cta":"Learn more",
+    "story.c2.p":"We install the complete AI system in your business and teach you to run it yourself, at full capacity — with a results guarantee. Open to anyone ready to scale now.","story.c2.cta":"Learn more",
     "value.c1.h4":"Automations","value.c1.p":"Processes you handle by hand today, running on their own — sales, follow-up, admin.",
     "value.c2.h4":"Artificial Intelligence","value.c2.p":"Agents that respond, qualify and resolve 24/7, without you behind the screen.",
     "value.c3.h4":"Organization","value.c3.p":"One single system for clients, tasks and data — not six scattered tools nobody checks.",
     "value.c4.h4":"Time optimization","value.c4.p":"Every hour you used to lose on operations now goes toward creating and deciding.",
     "value.c5.h4":"Business scalability","value.c5.p":"Infrastructure built to grow without the chaos growing with it.",
+    "value.c6.h4":"Tax optimization","value.c6.p":"Structure and process so what your business bills stays in your business, not in avoidable friction.",
     "value.gw1.tag":"By selection · Applications open","value.gw1.h3":"Quantum Venture",
     "value.gw1.p":"We build and run your company with you, start to finish. Our team, our capital, our risk.","value.gw1.cta":"Discover Quantum Venture →",
     "value.gw2.tag":"Open to any business","value.gw2.h3":"Quantum Stack",
@@ -650,7 +661,7 @@ const I18N = {
     "proceso.s3.h4":"Внедряем","proceso.s3.p":"Встреча по физическому внедрению системы: чувствительные данные, подключения и доступы (MCP, CRM, каналы).",
     "proceso.s4.h4":"Инструкция","proceso.s4.p":"Передаём вам инструкцию по использованию — вы управляете системой с первого дня.",
     "proceso.s5.h4":"Поддержка","proceso.s5.p":"Постоянное сопровождение, обслуживание и поддержка, пока вы управляете системой.",
-    "contacto.eyebrow":"Обсудим","contacto.h2":"Партнёрство или ИИ-система?<br>Расскажите нам, и мы поймём, что подходит.","contacto.p":"Без обязательств. Мы честно скажем, подходит ли ваш бизнес больше для партнёрства или для плана ИИ-систем — ответим в течение 24 часов.",
+    "contacto.eyebrow":"Обсудим","contacto.h2":"Первый шаг — это разговор.","contacto.p":"Без обязательств. Мы честно скажем, подходит ли ваш бизнес больше для партнёрства или для плана ИИ-систем — ответим в течение 24 часов.",
     "contacto.f.nombre":"Имя *","contacto.f.nombrePh":"Ваше имя","contacto.f.email":"Email *","contacto.f.emailPh":"you@email.com","contacto.f.telefono":"Телефон","contacto.f.telefonoPh":"+7 900 000 00 00","contacto.f.negocio":"Бизнес / Instagram","contacto.f.negocioPh":"@ваш_бизнес",
     "contacto.f.interes":"Вас интересует","contacto.f.optSistemas":"Quantum Stack","contacto.f.optPartnership":"Quantum Venture","contacto.f.optNoSe":"Пока не уверен(а)",
     "contacto.f.mensaje":"Одной строкой — что отнимает больше всего времени","contacto.f.mensajePh":"Например: отвечаю на одни и те же вопросы о питании 20 раз в день",
@@ -661,13 +672,14 @@ const I18N = {
     "value.eyebrow":"Наш технологический стек","value.h2":"Двигатель для бизнеса, который растёт без хаоса.",
     "value.p":"Мы автоматизируем рутину, внедряем ИИ там, где раньше уходили часы ручного труда, и наводим порядок в каждом процессе, чтобы ваш бизнес рос без необходимости быть везде одновременно.",
     "story.eyebrow":"Два пути, одна цель","story.or":"или",
-    "story.c1.p":"Мы строим и управляем вашей компанией вместе с вами — наша команда, наш капитал, наш риск, в обмен на долю в том, что растёт. Только с теми, кого мы выбираем сами — но вы всегда можете подать заявку.","story.c1.cta":"Узнать, как это работает",
-    "story.c2.p":"Мы устанавливаем полную ИИ-систему в вашем бизнесе и учим вас управлять ею самостоятельно, на полную мощность — с гарантией результата. Открыто для всех, кто готов расти уже сейчас.","story.c2.cta":"Узнать, как это работает",
+    "story.c1.p":"Мы строим и управляем вашей компанией вместе с вами — наша команда, наш капитал, наш риск, в обмен на долю в том, что растёт. Только с теми, кого мы выбираем сами — но вы всегда можете подать заявку.","story.c1.cta":"Узнать больше",
+    "story.c2.p":"Мы устанавливаем полную ИИ-систему в вашем бизнесе и учим вас управлять ею самостоятельно, на полную мощность — с гарантией результата. Открыто для всех, кто готов расти уже сейчас.","story.c2.cta":"Узнать больше",
     "value.c1.h4":"Автоматизация","value.c1.p":"Процессы, которые сегодня вы делаете вручную, теперь работают сами — продажи, сопровождение, администрирование.",
     "value.c2.h4":"Искусственный интеллект","value.c2.p":"Агенты отвечают, квалифицируют и решают вопросы 24/7, без вашего постоянного участия.",
     "value.c3.h4":"Организация","value.c3.p":"Единая система для клиентов, задач и данных — а не шесть разрозненных инструментов, которые никто не проверяет.",
     "value.c4.h4":"Оптимизация времени","value.c4.p":"Каждый час, который раньше уходил на операционку, теперь идёт на создание и принятие решений.",
     "value.c5.h4":"Масштабируемость бизнеса","value.c5.p":"Инфраструктура, созданная расти без роста хаоса вместе с ней.",
+    "value.c6.h4":"Налоговая оптимизация","value.c6.p":"Структура и процессы, чтобы выручка вашего бизнеса оставалась в бизнесе, а не терялась в лишних издержках.",
     "value.gw1.tag":"По отбору · Заявки открыты","value.gw1.h3":"Quantum Venture",
     "value.gw1.p":"Мы строим и управляем вашей компанией вместе с вами, от начала до конца. Наша команда, наш капитал, наш риск.","value.gw1.cta":"Узнать про Quantum Venture →",
     "value.gw2.tag":"Открыто для любого бизнеса","value.gw2.h3":"Quantum Stack",
