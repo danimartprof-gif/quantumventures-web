@@ -16,7 +16,7 @@ const defaults = {
   CAL_URL: '#',
 };
 const vars = { ...defaults, ...data };
-if (!vars.slug || !vars.COLLAB_NAME) throw new Error('faltan slug / COLLAB_NAME');
+if (!vars.slug || !vars.COACH_NAME) throw new Error('faltan slug / COACH_NAME');
 
 let html = readFileSync(join(here, '_template.html'), 'utf8');
 const missing = [];
