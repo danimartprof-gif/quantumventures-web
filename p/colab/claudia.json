@@ -37,5 +37,17 @@
   "VALUE_QUOTE": "Si recomiendas algo, tu nombre va en ello. Mi compromiso es que cada persona que venga de tu parte <b>salga ganando</b> — esa es la base de esta colaboración.",
   "CAL_URL": "#agendar",
   "ACCENT": "#FF5C7A",
-  "ACCENT_DIM": "#C24460"
+  "ACCENT_DIM": "#C24460",
+  "CASE_1_QUOTE": "Pasé de una consulta saturada a un programa grupal con lista de espera. Por fin trabajo CON sistema y no contra el reloj.",
+  "CASE_1_NAME": "Ejemplo — Nutricionista deportiva",
+  "CASE_1_ROLE": "Alumna del programa",
+  "CASE_1_RESULT": "De 1:1 saturado → programa escalable",
+  "CASE_2_QUOTE": "En 3 meses ordené mi oferta, subí precios con confianza y dejé de competir por ser la más barata de mi ciudad.",
+  "CASE_2_NAME": "Ejemplo — Dietista-nutricionista",
+  "CASE_2_ROLE": "Alumna del programa",
+  "CASE_2_RESULT": "Oferta clara + precios dignos",
+  "CASE_3_QUOTE": "Más de 300 cortes de peso exitosos con peleadores profesionales. El mismo rigor que aplico ahora a los negocios de mis alumnos.",
+  "CASE_3_NAME": "Claudia Gutiérrez",
+  "CASE_3_ROLE": "Track record propio como nutricionista",
+  "CASE_3_RESULT": "+100 peleadores · +300 cortes de peso"
 }
