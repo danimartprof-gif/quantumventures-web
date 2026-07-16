@@ -173,6 +173,31 @@
   footer{background:linear-gradient(180deg,#0a0a0b,#050505 70%);position:relative;overflow:hidden;border-top:1px solid var(--line)}
   footer:before{content:"";position:absolute;left:50%;top:-20%;width:600px;height:400px;transform:translateX(-50%);background:radial-gradient(ellipse,var(--accent-dim),transparent 70%);opacity:.5;pointer-events:none}
   nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  /* ===== light sections — alternancia claro/oscuro (redesign 16-jul) ===== */
+  .sec-light{--bg:#f3f1ec;--panel:#ffffff;--panel-2:#faf9f6;--line:rgba(10,10,10,.09);--line-strong:rgba(10,10,10,.22);--fg:#0b0b0d;--mute:#5d5d64;--accent:#5b5bf0;--accent-dim:rgba(91,91,240,.14);background:var(--bg);color:var(--fg)}
+  .sec-light .text-white{color:#0b0b0d!important}
+  .sec-light [class*="text-white/"]{color:#45454c!important}
+  .sec-light .btn-w{background:#0b0b0d;color:#f5f5f5;box-shadow:0 6px 18px -8px rgba(0,0,0,.35)}
+  .sec-light .stack-card{background:#fff;border-color:rgba(10,10,10,.09)}
+  .sec-light .card{background:#fff;border-color:rgba(10,10,10,.09)}
+  .sec-light .story-name.outline{-webkit-text-stroke-color:rgba(10,10,10,.4)}
+  .sec-light .story-chapter:hover{background:rgba(10,10,10,.04)}
+  .sec-light .grid-tex{background-image:linear-gradient(rgba(10,10,10,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,10,.04) 1px,transparent 1px)}
+  /* diagonal cut on the bottom edge of light blocks (reference style) */
+  .diag-b{clip-path:polygon(0 0,100% 0,100% 100%,0 calc(100% - 3.4vw));padding-bottom:calc(3.4vw + 48px)!important}
+  .diag-t{clip-path:polygon(0 3.4vw,100% 0,100% 100%,0 100%);padding-top:calc(3.4vw + 48px)!important;border-top:none!important}
+  /* editorial photo cards */
+  .hero-card{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 50px 100px -34px rgba(15,15,45,.5);transform:rotate(1.2deg);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .hero-card:hover{transform:rotate(0) scale(1.01)}
+  .hero-card img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+  .hero-chip{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.94);color:#0b0b0d;font-weight:700;font-size:.74rem;padding:9px 15px;border-radius:999px;display:flex;gap:8px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .hero-chip .pulse{width:8px;height:8px;border-radius:99px;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 9px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+  .img-band{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px -30px rgba(15,15,45,.35)}
+  .img-band img{width:100%;display:block;object-fit:cover}
+  /* full-bleed photo CTA (contacto) */
+  .cta-photo{position:absolute;inset:0;background-image:url('/v2/assets/beam.jpg');background-size:cover;background-position:center 30%;opacity:.55;pointer-events:none}
+  .cta-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(5,5,5,.35) 30%,rgba(5,5,5,.55) 70%,var(--bg) 100%)}
   /* language switch */
   .lang-switch{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
   .lang-switch button{padding:.3rem .55rem;border-radius:6px;font-size:.68rem;font-weight:700;letter-spacing:.03em;color:var(--mute);transition:color .2s,background .2s}
@@ -205,21 +230,29 @@
 
 <div id="scrollTag" class="hidden lg:block"></div>
 
-<!-- HERO -->
-<header id="top" class="relative pt-24 pb-28 sm:pt-32 sm:pb-36 overflow-hidden">
-  <div class="hero-photo"></div>
-  <div class="grid-tex"></div>
+<!-- HERO (claro, editorial) -->
+<header id="top" class="sec-light diag-b relative pt-20 pb-24 sm:pt-24 sm:pb-28 overflow-hidden">
   <div class="wrap relative">
-    <div class="max-w-4xl">
-      <span class="eyebrow reveal"><span class="dot"></span><span data-i18n="hero.eyebrow">QUANTUM VENTURE · QUANTUM STACK</span></span>
-      <h1 class="display reveal text-[2.4rem] leading-[1.05] sm:text-6xl lg:text-[4.6rem] font-bold mt-7" data-i18n="hero.h1">
-        La firma privada que convierte<br>tu audiencia en patrimonio.
-      </h1>
-      <p class="reveal text-lg sm:text-xl text-mute leading-relaxed mt-7 max-w-2xl" data-i18n="hero.sub">
-        Quantum Venture construye tu negocio contigo. Quantum Stack te da el sistema para construirlo tú mismo.
-      </p>
+    <div class="grid lg:grid-cols-[1.12fr_.88fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <span class="eyebrow reveal"><span class="dot"></span><span data-i18n="hero.eyebrow">QUANTUM VENTURE · QUANTUM STACK</span></span>
+        <h1 class="display reveal text-[2.4rem] leading-[1.05] sm:text-6xl lg:text-[4.2rem] font-bold mt-7" data-i18n="hero.h1">
+          Convierte tu audiencia<br>en un negocio que factura solo.
+        </h1>
+        <p class="reveal text-lg sm:text-xl text-mute leading-relaxed mt-7 max-w-xl" data-i18n="hero.sub">
+          Dos caminos: construimos tu empresa contigo y a nuestro riesgo (Quantum Venture), o instalamos el sistema de IA que multiplica tus ingresos y te devuelve tus horas (Quantum Stack). El primer paso es una llamada gratuita.
+        </p>
+        <div class="reveal flex flex-wrap gap-3 mt-9">
+          <a href="#contacto" class="btn-w btn-lg" data-i18n="hero.cta1">Agenda una llamada →</a>
+          <a href="/v2/quantum-stack/" class="btn-o btn-lg" style="border-color:rgba(10,10,10,.25);color:#0b0b0d;background:transparent" data-i18n="hero.cta2">Cuéntanos tu caso</a>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <img src="/v2/assets/reach.jpg" alt="Quantum Ventures — activa tu potencial" loading="eager" fetchpriority="high">
+        <div class="hero-chip"><span class="pulse"></span><span data-i18n="hero.chip">Agentes de IA operando ahora mismo</span></div>
+      </div>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16 reveal">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16 pt-10 reveal" style="border-top:1px solid var(--line)">
       <div><div class="display text-3xl font-bold" data-i18n="hero.stat1">70M+</div><div class="text-xs text-mute mt-1 uppercase tracking-wide" data-i18n="hero.stat1l">Seguidores en la red de socios</div></div>
       <div><div class="display text-3xl font-bold" data-i18n="hero.stat2">Equity</div><div class="text-xs text-mute mt-1 uppercase tracking-wide" data-i18n="hero.stat2l">Sin fee fijo en partnerships</div></div>
       <div><div class="display text-3xl font-bold" data-i18n="hero.stat3">24/7</div><div class="text-xs text-mute mt-1 uppercase tracking-wide" data-i18n="hero.stat3l">Agentes de IA operando</div></div>
@@ -228,8 +261,8 @@
   </div>
 </header>
 
-<!-- SLOGAN -->
-<section class="py-12 sm:py-16"><div class="wrap text-center">
+<!-- SLOGAN (oscuro, transición desde el corte diagonal) -->
+<section class="py-14 sm:py-20" style="border-top:none"><div class="wrap text-center">
   <p class="slogan-line reveal text-2xl sm:text-4xl font-bold text-white" data-i18n="slogan">Auditamos. Automatizamos. Medimos. Evolucionamos.</p>
 </div></section>
 
@@ -249,11 +282,16 @@
   </div>
 </section>
 
-<!-- VALUE / STACK OVERVIEW -->
-<section class="py-24 sm:py-32"><div class="wrap">
-  <span class="eyebrow reveal"><span class="dot"></span><span data-i18n="value.eyebrow">Nuestro stack tecnológico</span></span>
-  <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-4 max-w-3xl" data-i18n="value.h2">El motor detrás de negocios que escalan sin caos.</h2>
-  <p class="reveal text-mute text-lg mt-5 max-w-2xl" data-i18n="value.p">Automatizamos lo repetitivo, instalamos IA donde antes había horas manuales, y ordenamos cada proceso para que tu negocio crezca sin que tengas que estar en todas partes a la vez.</p>
+<!-- VALUE / STACK OVERVIEW (claro, editorial) -->
+<section class="sec-light diag-t diag-b py-24 sm:py-32"><div class="wrap">
+  <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-10 lg:gap-16 items-center">
+    <div>
+      <span class="eyebrow reveal"><span class="dot"></span><span data-i18n="value.eyebrow">Nuestro stack tecnológico</span></span>
+      <h2 class="display reveal text-3xl sm:text-5xl font-bold leading-tight mt-4" data-i18n="value.h2">No compras tecnología. Compras las horas y los ingresos que recuperas.</h2>
+      <p class="reveal text-mute text-lg mt-5" data-i18n="value.p">Cada proceso que automatizamos son ventas que dejabas de cerrar y horas que vuelven a ti. Este es el stack que lo consigue — instalado, medido y evolucionando cada mes:</p>
+    </div>
+    <div class="img-band reveal hidden lg:block"><img src="/v2/assets/fusion.jpg" alt="La fusión Quantum" style="aspect-ratio:4/3"></div>
+  </div>
 
   <div class="stack-marquee mt-12 reveal">
     <div class="stack-track">
@@ -294,12 +332,12 @@
 
 <!-- FINAL CTA / LEAD FORM -->
 <section id="contacto" class="py-28 sm:py-36 relative overflow-hidden">
-  <div class="beam-glow" style="top:-10%"></div>
+  <div class="cta-photo"></div>
   <div class="wrap relative">
     <div class="text-center max-w-2xl mx-auto">
       <span class="eyebrow reveal justify-center"><span class="dot"></span><span data-i18n="contacto.eyebrow">Hablemos</span></span>
-      <h2 class="display reveal text-4xl sm:text-6xl font-bold mt-5" data-i18n="contacto.h2">Activa tu potencial con Quantum.</h2>
-      <p class="reveal text-mute text-lg mt-6" data-i18n="contacto.p">Sin compromiso. Te decimos con franqueza si tu negocio encaja mejor en un partnership o en un plan de sistemas de IA — respondemos en menos de 24h.</p>
+      <h2 class="display reveal text-4xl sm:text-6xl font-bold mt-5" data-i18n="contacto.h2">Tu próximo nivel empieza con una llamada.</h2>
+      <p class="reveal text-mute text-lg mt-6" data-i18n="contacto.p">15 minutos, gratis y sin compromiso: te decimos con franqueza cuánto puede crecer tu negocio, con qué división y en cuánto tiempo. Respondemos en menos de 24h.</p>
     </div>
 
     <form id="leadForm" class="card reveal max-w-xl mx-auto mt-12 p-7 sm:p-9 text-left">
@@ -421,9 +459,9 @@ const I18N = {
     "fusion.eyebrow":"La tesis","fusion.h2":"Dos átomos. Una fusión.","fusion.p":"En el núcleo de una estrella, dos átomos ligeros se funden en uno solo bajo presión extrema — y liberan más energía de la que ninguno tenía por separado. No sucede con cualquier átomo: solo bajo las condiciones adecuadas.",
     "fusion.result":"Esa energía no es simbólica: es contenido que se vuelve producto, audiencia que se vuelve negocio, negocio que se vuelve imperio.",
     "hero.eyebrow":"QUANTUM VENTURE · QUANTUM STACK",
-    "hero.h1":"La firma privada que convierte<br>tu audiencia en patrimonio.",
-    "hero.sub":"Quantum Venture construye tu negocio contigo. Quantum Stack te da el sistema para construirlo tú mismo.",
-    "hero.cta1":"Agenda una llamada →","hero.cta2":"Cuéntanos tu caso",
+    "hero.h1":"Convierte tu audiencia<br>en un negocio que factura solo.",
+    "hero.sub":"Dos caminos: construimos tu empresa contigo y a nuestro riesgo (Quantum Venture), o instalamos el sistema de IA que multiplica tus ingresos y te devuelve tus horas (Quantum Stack). El primer paso es una llamada gratuita.",
+    "hero.chip":"Agentes de IA operando ahora mismo","hero.cta1":"Agenda una llamada →","hero.cta2":"Cuéntanos tu caso",
     "hero.stat1":"70M+","hero.stat1l":"Seguidores en la red de socios","hero.stat2":"Equity","hero.stat2l":"Sin fee fijo en partnerships","hero.stat3":"24/7","hero.stat3l":"Agentes de IA operando","hero.stat4":"&lt;2h","hero.stat4l":"Setup del primer agente",
     "split.eyebrow":"01 · Dos caminos","split.h2":"Tú creas, nosotros activamos tu potencial.",
     "split.p":"A <span class=\"text-white font-medium\">Quantum Venture</span> se accede por selección — elegimos con quién construir para explotar al máximo su marca personal, aunque puedes aplicar si crees que encajas. <span class=\"text-white font-medium\">Quantum Stack</span> está abierto a cualquier negocio que quiera escalar ya.",
@@ -479,7 +517,7 @@ const I18N = {
     "proceso.s3.h4":"Implementamos","proceso.s3.p":"Reunión de implementación física del sistema: datos sensibles, conexiones y accesos (MCPs, CRM, canales).",
     "proceso.s4.h4":"Manual","proceso.s4.p":"Te entregamos el manual de utilización — tú operas el sistema desde el día 1.",
     "proceso.s5.h4":"Soporte","proceso.s5.p":"Seguimiento, mantenimiento y soporte continuo mientras lo operas tú.",
-    "contacto.eyebrow":"Hablemos","contacto.h2":"Activa tu potencial con Quantum.","contacto.p":"Sin compromiso. Te decimos con franqueza si tu negocio encaja mejor en un partnership o en un plan de sistemas de IA — respondemos en menos de 24h.",
+    "contacto.eyebrow":"Hablemos","contacto.h2":"Tu próximo nivel empieza con una llamada.","contacto.p":"15 minutos, gratis y sin compromiso: te decimos con franqueza cuánto puede crecer tu negocio, con qué división y en cuánto tiempo. Respondemos en menos de 24h.",
     "contacto.f.nombre":"Nombre *","contacto.f.nombrePh":"Tu nombre","contacto.f.email":"Email *","contacto.f.emailPh":"tu@email.com","contacto.f.telefono":"Teléfono","contacto.f.telefonoPh":"+34 600 000 000","contacto.f.negocio":"Negocio / Instagram","contacto.f.negocioPh":"@tu_negocio",
     "contacto.f.interes":"Te interesa","contacto.f.optSistemas":"Quantum Stack","contacto.f.optPartnership":"Quantum Venture","contacto.f.optNoSe":"No lo tengo claro",
     "contacto.f.mensaje":"Cuéntanos en una línea qué te quita más tiempo","contacto.f.mensajePh":"Ej: contesto las mismas dudas de nutrición 20 veces al día",
@@ -487,8 +525,8 @@ const I18N = {
     "contacto.f.privacy":"Tus datos entran directo a nuestro CRM. Sin spam, sin newsletters — solo la respuesta a esto.",
     "footer.tagline":"Quantum Venture y Quantum Stack para creadores. De la audiencia al imperio, con la división que corresponda a cada etapa.","footer.negocio":"Negocio","footer.contacto":"Contacto","footer.hablemos":"Hablemos →","footer.bottom":"Quantum Venture · Quantum Stack",
     "toast.name":"Un coach online","toast.action":"activó su Agente de Retención hace 6 min",
-    "value.eyebrow":"Nuestro stack tecnológico","value.h2":"El motor detrás de negocios que escalan sin caos.",
-    "value.p":"Automatizamos lo repetitivo, instalamos IA donde antes había horas manuales, y ordenamos cada proceso para que tu negocio crezca sin que tengas que estar en todas partes a la vez.",
+    "value.eyebrow":"Nuestro stack tecnológico","value.h2":"No compras tecnología. Compras las horas y los ingresos que recuperas.",
+    "value.p":"Cada proceso que automatizamos son ventas que dejabas de cerrar y horas que vuelven a ti. Este es el stack que lo consigue — instalado, medido y evolucionando cada mes:",
     "story.eyebrow":"Dos caminos, un mismo destino","story.or":"o",
     "story.c1.p":"Construimos y operamos tu empresa contigo — nuestro equipo, nuestro capital y nuestro riesgo, a cambio de una parte de lo que crezca. Solo con quienes seleccionamos, aunque siempre puedes aplicar.","story.c1.cta":"Saber más",
     "story.c2.p":"Instalamos el sistema completo de IA en tu negocio y te enseñamos a operarlo tú mismo, al 100% de su capacidad — con garantía de resultado. Abierto a cualquiera que esté listo para escalar ya.","story.c2.cta":"Saber más",
@@ -516,9 +554,9 @@ const I18N = {
     "fusion.eyebrow":"The thesis","fusion.h2":"Two atoms. One fusion.","fusion.p":"In a star's core, two light atoms fuse into one under extreme pressure — releasing more energy than either had alone. It doesn't happen with just any atom: only under the right conditions.",
     "fusion.result":"That energy isn't symbolic: it's content that becomes product, audience that becomes business, business that becomes empire.",
     "hero.eyebrow":"QUANTUM VENTURE · QUANTUM STACK",
-    "hero.h1":"The private firm that turns<br>your audience into wealth.",
-    "hero.sub":"Quantum Venture builds your business with you. Quantum Stack gives you the system to build it yourself.",
-    "hero.cta1":"Book a call →","hero.cta2":"Tell us your case",
+    "hero.h1":"Turn your audience<br>into a business that sells itself.",
+    "hero.sub":"Two paths: we build your company with you, at our risk (Quantum Venture) — or we install the AI system that multiplies your revenue and gives you your hours back (Quantum Stack). Step one is a free call.",
+    "hero.chip":"AI agents running right now","hero.cta1":"Book a call →","hero.cta2":"Tell us your case",
     "hero.stat1":"70M+","hero.stat1l":"Followers across our partner network","hero.stat2":"Equity","hero.stat2l":"No fixed fee on partnerships","hero.stat3":"24/7","hero.stat3l":"AI agents running","hero.stat4":"&lt;2h","hero.stat4l":"First agent setup time",
     "split.eyebrow":"01 · Two paths","split.h2":"You create, we activate your potential.",
     "split.p":"<span class=\"text-white font-medium\">Quantum Venture</span> is by selection — we choose who to build with to make the most of their personal brand, though you can apply if you think you fit. <span class=\"text-white font-medium\">Quantum Stack</span> is open to any business ready to scale now.",
@@ -574,7 +612,7 @@ const I18N = {
     "proceso.s3.h4":"We implement","proceso.s3.p":"Implementation meeting to physically set up the system: sensitive data, connections and access (MCPs, CRM, channels).",
     "proceso.s4.h4":"Manual","proceso.s4.p":"We hand you the usage manual — you run the system from day 1.",
     "proceso.s5.h4":"Support","proceso.s5.p":"Ongoing follow-up, maintenance and support while you run it.",
-    "contacto.eyebrow":"Let's talk","contacto.h2":"Activate your potential with Quantum.","contacto.p":"No strings attached. We'll tell you honestly whether your business fits better with a partnership or an AI systems plan — we reply in under 24h.",
+    "contacto.eyebrow":"Let's talk","contacto.h2":"Your next level starts with one call.","contacto.p":"15 minutes, free, no strings: we'll tell you frankly how much your business can grow, with which division and how fast. We reply within 24h.",
     "contacto.f.nombre":"Name *","contacto.f.nombrePh":"Your name","contacto.f.email":"Email *","contacto.f.emailPh":"you@email.com","contacto.f.telefono":"Phone","contacto.f.telefonoPh":"+1 000 000 0000","contacto.f.negocio":"Business / Instagram","contacto.f.negocioPh":"@your_business",
     "contacto.f.interes":"You're interested in","contacto.f.optSistemas":"Quantum Stack","contacto.f.optPartnership":"Quantum Venture","contacto.f.optNoSe":"Not sure yet",
     "contacto.f.mensaje":"Tell us in one line what takes up most of your time","contacto.f.mensajePh":"E.g.: I answer the same nutrition questions 20 times a day",
@@ -582,8 +620,8 @@ const I18N = {
     "contacto.f.privacy":"Your data goes straight into our CRM. No spam, no newsletters — just the reply to this.",
     "footer.tagline":"Quantum Venture and Quantum Stack for creators. From audience to empire, with the right division for each stage.","footer.negocio":"Business","footer.contacto":"Contact","footer.hablemos":"Let's talk →","footer.bottom":"Quantum Venture · Quantum Stack",
     "toast.name":"An online coach","toast.action":"activated their Retention Agent 6 min ago",
-    "value.eyebrow":"Our technology stack","value.h2":"The engine behind businesses that scale without chaos.",
-    "value.p":"We automate the repetitive, install AI where manual hours used to go, and bring order to every process so your business grows without you having to be everywhere at once.",
+    "value.eyebrow":"Our technology stack","value.h2":"You're not buying tech. You're buying back your hours and your revenue.",
+    "value.p":"Every process we automate is a sale you stopped losing and hours back in your pocket. This is the stack that delivers it — installed, measured and evolving monthly:",
     "story.eyebrow":"Two paths, one destination","story.or":"or",
     "story.c1.p":"We build and run your company with you — our team, our capital, our risk, in exchange for a share of what grows. Only with those we select, though you can always apply.","story.c1.cta":"Learn more",
     "story.c2.p":"We install the complete AI system in your business and teach you to run it yourself, at full capacity — with a results guarantee. Open to anyone ready to scale now.","story.c2.cta":"Learn more",
@@ -611,8 +649,8 @@ const I18N = {
     "fusion.eyebrow":"Наш тезис","fusion.h2":"Два атома. Одна фузия.","fusion.p":"В ядре звезды два лёгких атома сливаются в один под экстремальным давлением — и высвобождают больше энергии, чем было у каждого по отдельности. Это происходит не с любым атомом: только при подходящих условиях.",
     "fusion.result":"Эта энергия не символична: это контент, который становится продуктом, аудитория, которая становится бизнесом, бизнес, который становится империей.",
     "hero.eyebrow":"QUANTUM VENTURE · QUANTUM STACK",
-    "hero.h1":"Частная фирма, которая превращает<br>вашу аудиторию в капитал.",
-    "hero.sub":"Quantum Venture строит ваш бизнес вместе с вами. Quantum Stack даёт систему, чтобы вы построили его сами.",
+    "hero.h1":"Превратите аудиторию<br>в бизнес, который продаёт сам.",
+    "hero.sub":"Два пути: мы строим вашу компанию вместе с вами и на наш риск (Quantum Venture) — или устанавливаем ИИ-систему, которая умножает доход и возвращает вам время (Quantum Stack). Первый шаг — бесплатный звонок.","hero.chip":"ИИ-агенты работают прямо сейчас",
     "hero.cta1":"Забронировать звонок →","hero.cta2":"Расскажите о своём случае",
     "hero.stat1":"70M+","hero.stat1l":"Подписчиков в сети партнёров","hero.stat2":"Доля","hero.stat2l":"Без фиксированной комиссии в партнёрстве","hero.stat3":"24/7","hero.stat3l":"ИИ-агенты в работе","hero.stat4":"&lt;2ч","hero.stat4l":"Настройка первого агента",
     "split.eyebrow":"01 · Два пути","split.h2":"Вы создаёте, мы раскрываем ваш потенциал.",
@@ -669,7 +707,7 @@ const I18N = {
     "proceso.s3.h4":"Внедряем","proceso.s3.p":"Встреча по физическому внедрению системы: чувствительные данные, подключения и доступы (MCP, CRM, каналы).",
     "proceso.s4.h4":"Инструкция","proceso.s4.p":"Передаём вам инструкцию по использованию — вы управляете системой с первого дня.",
     "proceso.s5.h4":"Поддержка","proceso.s5.p":"Постоянное сопровождение, обслуживание и поддержка, пока вы управляете системой.",
-    "contacto.eyebrow":"Обсудим","contacto.h2":"Раскрой свой потенциал с Quantum.","contacto.p":"Без обязательств. Мы честно скажем, подходит ли ваш бизнес больше для партнёрства или для плана ИИ-систем — ответим в течение 24 часов.",
+    "contacto.eyebrow":"Обсудим","contacto.h2":"Ваш следующий уровень начинается со звонка.","contacto.p":"Без обязательств. Мы честно скажем, подходит ли ваш бизнес больше для партнёрства или для плана ИИ-систем — ответим в течение 24 часов.",
     "contacto.f.nombre":"Имя *","contacto.f.nombrePh":"Ваше имя","contacto.f.email":"Email *","contacto.f.emailPh":"you@email.com","contacto.f.telefono":"Телефон","contacto.f.telefonoPh":"+7 900 000 00 00","contacto.f.negocio":"Бизнес / Instagram","contacto.f.negocioPh":"@ваш_бизнес",
     "contacto.f.interes":"Вас интересует","contacto.f.optSistemas":"Quantum Stack","contacto.f.optPartnership":"Quantum Venture","contacto.f.optNoSe":"Пока не уверен(а)",
     "contacto.f.mensaje":"Одной строкой — что отнимает больше всего времени","contacto.f.mensajePh":"Например: отвечаю на одни и те же вопросы о питании 20 раз в день",
@@ -677,7 +715,7 @@ const I18N = {
     "contacto.f.privacy":"Ваши данные попадают прямо в нашу CRM. Без спама, без рассылок — только ответ на это сообщение.",
     "footer.tagline":"Quantum Venture и Quantum Stack для авторов. От аудитории до империи — с нужным направлением на каждом этапе.","footer.negocio":"Бизнес","footer.contacto":"Контакты","footer.hablemos":"Обсудим →","footer.bottom":"Quantum Venture · Quantum Stack",
     "toast.name":"Онлайн-коуч","toast.action":"подключил своего агента удержания 6 минут назад",
-    "value.eyebrow":"Наш технологический стек","value.h2":"Двигатель для бизнеса, который растёт без хаоса.",
+    "value.eyebrow":"Наш технологический стек","value.h2":"Вы покупаете не технологии, а свои часы и доход.",
     "value.p":"Мы автоматизируем рутину, внедряем ИИ там, где раньше уходили часы ручного труда, и наводим порядок в каждом процессе, чтобы ваш бизнес рос без необходимости быть везде одновременно.",
     "story.eyebrow":"Два пути, одна цель","story.or":"или",
     "story.c1.p":"Мы строим и управляем вашей компанией вместе с вами — наша команда, наш капитал, наш риск, в обмен на долю в том, что растёт. Только с теми, кого мы выбираем сами — но вы всегда можете подать заявку.","story.c1.cta":"Узнать больше",
